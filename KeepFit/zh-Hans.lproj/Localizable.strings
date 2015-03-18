@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  KeepFit
+
+  Created by ZhuHaikun on 15/1/31.
+  Copyright (c) 2015年 ZhuHaikun. All rights reserved.
+*/
+
+
+"Distance:" = "距离";
+//步数
+"Steps:" = "步数:";
+
+
+"Today" = "今天";
+"Yesterday" = "昨天";
+"Last 7 Days" = "过去7天";
+"Last 30 Days" = "过去30天";

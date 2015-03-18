@@ -32,6 +32,14 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    // 发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    NSLog(@"%s,applicationWillEnterForeground",__func__);
+    
+    
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
