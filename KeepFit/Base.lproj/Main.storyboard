@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boy-xf-Xp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="399"/>
+            <point key="canvasLocation" x="-945" y="570"/>
         </scene>
         <!--饮食照片-->
         <scene sceneID="UGc-NK-faS">
@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5y-88-0ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-789" y="1068.75"/>
+            <point key="canvasLocation" x="-867" y="1292"/>
         </scene>
         <!--热量消耗-->
         <scene sceneID="4eS-XN-BsC">
@@ -366,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEf-Qy-NeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-874.5" y="-295.5"/>
+            <point key="canvasLocation" x="-875" y="-309"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hTe-4y-ruu">
