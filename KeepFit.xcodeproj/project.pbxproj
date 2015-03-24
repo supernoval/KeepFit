@@ -40,6 +40,8 @@
 		B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */; };
 		B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */; };
 		B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */; };
+		B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */; };
+		B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +153,10 @@
 		B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRotationLoopProgressView.m; sourceTree = "<group>"; };
 		B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDTransparentPieProgressView.h; sourceTree = "<group>"; };
 		B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDTransparentPieProgressView.m; sourceTree = "<group>"; };
+		B366F9B71AC187CF002A92F4 /* KFWelComeSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeSecondViewController.h; sourceTree = "<group>"; };
+		B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeSecondViewController.m; sourceTree = "<group>"; };
+		B366F9BA1AC1A4A6002A92F4 /* TAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertView.h; sourceTree = "<group>"; };
+		B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +366,8 @@
 			children = (
 				B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */,
 				B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */,
+				B366F9B71AC187CF002A92F4 /* KFWelComeSecondViewController.h */,
+				B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */,
 			);
 			name = "欢迎界面";
 			sourceTree = "<group>";
@@ -367,12 +375,13 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
-				B366F9A01AC15C62002A92F4 /* Lib */,
+				B366F9BD1AC1A4D8002A92F4 /* TAlerView */,
+				B366F9A01AC15C62002A92F4 /* Circle _Lib */,
 			);
 			name = Thirdclass;
 			sourceTree = "<group>";
 		};
-		B366F9A01AC15C62002A92F4 /* Lib */ = {
+		B366F9A01AC15C62002A92F4 /* Circle _Lib */ = {
 			isa = PBXGroup;
 			children = (
 				B366F9A11AC15C62002A92F4 /* SDBallProgressView.h */,
@@ -391,7 +400,17 @@
 				B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */,
 				B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */,
 			);
+			name = "Circle _Lib";
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		B366F9BD1AC1A4D8002A92F4 /* TAlerView */ = {
+			isa = PBXGroup;
+			children = (
+				B366F9BA1AC1A4A6002A92F4 /* TAlertView.h */,
+				B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */,
+			);
+			name = TAlerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -568,12 +587,14 @@
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
 				B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */,
+				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */,
 				B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
+				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
 				B366F9B01AC15C62002A92F4 /* SDBallProgressView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,
 				B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */,

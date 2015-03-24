@@ -15,4 +15,7 @@
 
 - (IBAction)nextAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *bodyweightTextField;
+
 @end

@@ -40,7 +40,6 @@
 #define kCyclingDistantQuantityType          [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling]
 
 
-//是否第一次打开app
-#define kHadShowWelComeView    @"HadShowWelComeView"
+
 
 

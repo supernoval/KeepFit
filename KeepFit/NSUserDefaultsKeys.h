@@ -7,6 +7,15 @@
 //
 
 
+//目前身高
+#define kCurrentHeight @"CurrentHeight"
+//目前体重
+#define kCurrentWeiht @"CurrentWeight"
+
 
 //目标体重
 #define kTargetWeight   @"TaigetWeight"
+
+
+//是否第一次打开app
+#define kHadShowWelComeView    @"HadShowWelComeView"

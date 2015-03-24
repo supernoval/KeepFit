@@ -21,3 +21,5 @@
 #define kWelComeNav       @"WelComeNav"
 
 #define kKFWelComeFirstViewController   @"KFWelComeFirstViewController"
+
+#define kKFWelComeSecondViewController     @"KFWelComeSecondViewController"

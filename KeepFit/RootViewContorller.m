@@ -9,6 +9,7 @@
 #import "RootViewContorller.h"
 #import "ConstantValues.h"
 #import "ViewControllerIDs.h"
+#import "NSUserDefaultsKeys.h"
 @interface RootViewContorller ()
 
 @end
@@ -22,14 +23,10 @@
     
     BOOL hadShowWelComeView = [[[NSUserDefaults standardUserDefaults ] objectForKey:kHadShowWelComeView]boolValue];
     
-    // if (!hadShowWelComeView)
+     if (!hadShowWelComeView)
     {
         
-        [[NSUserDefaults standardUserDefaults ] setObject:@(1) forKey:kHadShowWelComeView];
-        
-        [[NSUserDefaults standardUserDefaults ] synchronize];
-        
-        
+     
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         
         UINavigationController *nav =(UINavigationController*)[storyBoard instantiateViewControllerWithIdentifier:kWelComeNav];
