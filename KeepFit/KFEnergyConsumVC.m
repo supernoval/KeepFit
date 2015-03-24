@@ -117,7 +117,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowNotification) name:UIKeyboardDidShowNotification object:nil];
     
  
-   
+
 
 
     
@@ -132,6 +132,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _userWeight = 0.0;
     
     _stepsMuDict = [[NSMutableDictionary alloc]init];
+    
+    
+    
+    
+
     
     
     

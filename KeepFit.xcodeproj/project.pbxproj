@@ -31,6 +31,15 @@
 		1542CA851A7C84B10035A5B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1542CA871A7C84B10035A5B9 /* Localizable.strings */; };
 		15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */; };
 		15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */; };
+		B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9991AC1379D002A92F4 /* RootViewContorller.m */; };
+		B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */; };
+		B366F9B01AC15C62002A92F4 /* SDBallProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */; };
+		B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */; };
+		B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */; };
+		B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */; };
+		B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */; };
+		B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */; };
+		B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +132,25 @@
 		15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTakingPictureViewController.m; sourceTree = "<group>"; };
 		15A4CBE31AB08E6F002375AA /* KFTakePotoBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFTakePotoBasicViewController.h; sourceTree = "<group>"; };
 		15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTakePotoBasicViewController.m; sourceTree = "<group>"; };
+		B366F9981AC1379D002A92F4 /* RootViewContorller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewContorller.h; sourceTree = "<group>"; };
+		B366F9991AC1379D002A92F4 /* RootViewContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewContorller.m; sourceTree = "<group>"; };
+		B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeFirstViewController.h; sourceTree = "<group>"; };
+		B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeFirstViewController.m; sourceTree = "<group>"; };
+		B366F9A11AC15C62002A92F4 /* SDBallProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBallProgressView.h; sourceTree = "<group>"; };
+		B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBallProgressView.m; sourceTree = "<group>"; };
+		B366F9A31AC15C62002A92F4 /* SDBaseProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseProgressView.h; sourceTree = "<group>"; };
+		B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseProgressView.m; sourceTree = "<group>"; };
+		B366F9A51AC15C62002A92F4 /* SDLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLoopProgressView.h; sourceTree = "<group>"; };
+		B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLoopProgressView.m; sourceTree = "<group>"; };
+		B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieLoopProgressView.h; sourceTree = "<group>"; };
+		B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieLoopProgressView.m; sourceTree = "<group>"; };
+		B366F9A91AC15C62002A92F4 /* SDPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieProgressView.h; sourceTree = "<group>"; };
+		B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieProgressView.m; sourceTree = "<group>"; };
+		B366F9AB1AC15C62002A92F4 /* SDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDProgressView.h; sourceTree = "<group>"; };
+		B366F9AC1AC15C62002A92F4 /* SDRotationLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRotationLoopProgressView.h; sourceTree = "<group>"; };
+		B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRotationLoopProgressView.m; sourceTree = "<group>"; };
+		B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDTransparentPieProgressView.h; sourceTree = "<group>"; };
+		B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDTransparentPieProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +224,12 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
+				B366F99B1AC1407C002A92F4 /* 欢迎界面 */,
 				1542CA1D1A7A76390035A5B9 /* AppDelegate.h */,
 				1542CA1E1A7A76390035A5B9 /* AppDelegate.m */,
+				B366F9981AC1379D002A92F4 /* RootViewContorller.h */,
+				B366F9991AC1379D002A92F4 /* RootViewContorller.m */,
 				1542CA771A7C758D0035A5B9 /* KeepFit.entitlements */,
 				1542CA791A7C837E0035A5B9 /* Constants */,
 				1520F4EC1A7CFDBA00E6ACF5 /* graphBarView */,
@@ -321,6 +353,45 @@
 				15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */,
 			);
 			name = "Taking PictureViewController";
+			sourceTree = "<group>";
+		};
+		B366F99B1AC1407C002A92F4 /* 欢迎界面 */ = {
+			isa = PBXGroup;
+			children = (
+				B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */,
+				B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */,
+			);
+			name = "欢迎界面";
+			sourceTree = "<group>";
+		};
+		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
+			isa = PBXGroup;
+			children = (
+				B366F9A01AC15C62002A92F4 /* Lib */,
+			);
+			name = Thirdclass;
+			sourceTree = "<group>";
+		};
+		B366F9A01AC15C62002A92F4 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				B366F9A11AC15C62002A92F4 /* SDBallProgressView.h */,
+				B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */,
+				B366F9A31AC15C62002A92F4 /* SDBaseProgressView.h */,
+				B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */,
+				B366F9A51AC15C62002A92F4 /* SDLoopProgressView.h */,
+				B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */,
+				B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */,
+				B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */,
+				B366F9A91AC15C62002A92F4 /* SDPieProgressView.h */,
+				B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */,
+				B366F9AB1AC15C62002A92F4 /* SDProgressView.h */,
+				B366F9AC1AC15C62002A92F4 /* SDRotationLoopProgressView.h */,
+				B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */,
+				B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */,
+				B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,13 +566,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
+				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
+				B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */,
+				B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */,
+				B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
+				B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
+				B366F9B01AC15C62002A92F4 /* SDBallProgressView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,
+				B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */,
 				15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */,
 				1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */,
+				B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */,
 				1542CA251A7A76390035A5B9 /* KFEnergyConsumVC.m in Sources */,
+				B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */,
 				1542CA221A7A76390035A5B9 /* KeepFit.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
