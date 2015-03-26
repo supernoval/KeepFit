@@ -34,6 +34,7 @@ KFTranslateWorkOutEnergyToFat *_energytoFat = nil;
     
     dispatch_once(&once, ^{
        
+        
         _energytoFat = [[KFTranslateWorkOutEnergyToFat alloc]init];
         
         

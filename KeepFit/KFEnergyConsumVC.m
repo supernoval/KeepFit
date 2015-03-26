@@ -12,6 +12,7 @@
 
 #import "GraphBarView.h"
 
+#import "KFTranslateWorkOutEnergyToFat.h"
 
 
 
@@ -61,7 +62,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     GraphBarView *_barView_lastonemonth;
     
     
-    NSMutableDictionary *_stepsMuDict;
+    NSMutableDictionary *_stepsMuDict; //步数加距离
     
     UIActivityIndicatorView *_activetyIndicator;
     ActivityIndicatorAnimatingStatus _activityStatus;
@@ -332,8 +333,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
           
             
-            
             steps = [[_stepsMuDict objectForKey:todayStepKey]doubleValue];
+            
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
             
             [_barView_today animatewithSteps:steps expectedSteps:expectedSteps distance:distance timetype:timetype];
@@ -475,6 +476,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         else
         {
             
+            KFTranslateWorkOutEnergyToFat *_fatTranlater = [KFTranslateWorkOutEnergyToFat shareEnergyToFat];
+            
+            
             double todaydistance = 0.0;
             double yesterdistance = 0.0;
             
@@ -549,6 +553,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     [_stepsMuDict setObject:@(yesterdistance) forKey:yesterdaydistanceKey];
                     
                     hadGetLastTwoDaysDistance = YES;
+                    
+                    CGFloat todayfats = [_fatTranlater wakingDistanceToFat:todaydistance];
+                    CGFloat yesterdayfats = [_fatTranlater wakingDistanceToFat:yesterdistance];
+                    
+                    NSLog(@"%s,todayfats%.2f,yesterdayfats:%.2f",__func__,todayfats,yesterdayfats);
+                    
+                    
                     
                     if (hadGetLastTwoDaysSteps) {
                         
