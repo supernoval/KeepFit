@@ -42,6 +42,7 @@
 		B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */; };
 		B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */; };
 		B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */; };
+		B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */ = {isa = PBXBuildFile; fileRef = B396B6F21AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,8 @@
 		B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeSecondViewController.m; sourceTree = "<group>"; };
 		B366F9BA1AC1A4A6002A92F4 /* TAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertView.h; sourceTree = "<group>"; };
 		B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAlertView.m; sourceTree = "<group>"; };
+		B396B6F11AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFTranslateWorkOutEnergyToFat.h; sourceTree = "<group>"; };
+		B396B6F21AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTranslateWorkOutEnergyToFat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +233,7 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */,
 				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
 				B366F99B1AC1407C002A92F4 /* 欢迎界面 */,
 				1542CA1D1A7A76390035A5B9 /* AppDelegate.h */,
@@ -413,6 +417,15 @@
 			name = TAlerView;
 			sourceTree = "<group>";
 		};
+		B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */ = {
+			isa = PBXGroup;
+			children = (
+				B396B6F11AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.h */,
+				B396B6F21AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m */,
+			);
+			name = CaculeEnergyToFat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -589,6 +602,7 @@
 				B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */,
+				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
 				B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */,
