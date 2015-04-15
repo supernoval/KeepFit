@@ -137,10 +137,6 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     
     
-
-    
-    
-    
     //添加从后台返回 通知接收
     [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appWillEnterForword) name:UIApplicationWillEnterForegroundNotification object:nil];
     
@@ -187,7 +183,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
        
         [_myHealthStore requestAuthorization:^(BOOL isSucess) {
             
-            if (isSucess) {
+            if (isSucess)
+            {
           
                 [self requestDataFromHealhStore];
                 
@@ -216,6 +213,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     [self getWalkingStepsWithDayType:WalkingStepsTimeTypeLastTwodays];
     [self getwalkingDistanceWithDayType:WalkingStepsTimeTypeLastTwodays];
+    
+    [self getWalkingStepsWithDayType:WalkingStepsTimeTypeLastMonth];
+    [self getwalkingDistanceWithDayType:WalkingStepsTimeTypeLastMonth];
+    
     
 }
 

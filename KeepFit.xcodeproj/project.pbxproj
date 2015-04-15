@@ -235,7 +235,7 @@
 			children = (
 				B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */,
 				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
-				B366F99B1AC1407C002A92F4 /* 欢迎界面 */,
+				B366F99B1AC1407C002A92F4 /* welcomeView */,
 				1542CA1D1A7A76390035A5B9 /* AppDelegate.h */,
 				1542CA1E1A7A76390035A5B9 /* AppDelegate.m */,
 				B366F9981AC1379D002A92F4 /* RootViewContorller.h */,
@@ -365,7 +365,7 @@
 			name = "Taking PictureViewController";
 			sourceTree = "<group>";
 		};
-		B366F99B1AC1407C002A92F4 /* 欢迎界面 */ = {
+		B366F99B1AC1407C002A92F4 /* welcomeView */ = {
 			isa = PBXGroup;
 			children = (
 				B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */,
@@ -373,7 +373,7 @@
 				B366F9B71AC187CF002A92F4 /* KFWelComeSecondViewController.h */,
 				B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */,
 			);
-			name = "欢迎界面";
+			name = welcomeView;
 			sourceTree = "<group>";
 		};
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
