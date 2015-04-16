@@ -64,10 +64,15 @@
     CGContextStrokePath(ctx);
     
     // 进度数字
-    NSString *progressStr = [NSString stringWithFormat:@"%.0f%s", self.progress * 100, "\%"];
+    NSString *progressStr = [NSString stringWithFormat:@"%.0fm", self.progress *10000];
+   // NSLog(@"%s,%.2f",__func__,self.progress*_distance);
+    CGFloat textWithScale = SDProgressViewFontScale/progressStr.length;
+    
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-    attributes[NSFontAttributeName] = [UIFont boldSystemFontOfSize:20 * SDProgressViewFontScale];
-    attributes[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    attributes[NSFontAttributeName] = [UIFont boldSystemFontOfSize:15 * textWithScale];
+    
+    
+    attributes[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
     [self setCenterProgressText:progressStr withAttributes:attributes];
 }
 

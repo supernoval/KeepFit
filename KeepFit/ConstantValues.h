@@ -12,7 +12,7 @@
 //屏幕高度
 #define kScreenHeight   [UIScreen mainScreen].bounds.size.height
 
-
+#define TopBarHeight 64
 
 #define TapBarHeight  49
 

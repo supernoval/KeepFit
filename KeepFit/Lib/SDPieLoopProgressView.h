@@ -10,4 +10,6 @@
 
 @interface SDPieLoopProgressView : SDBaseProgressView
 
+@property (nonatomic,assign) CGFloat distance;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1333BB6B1ADFAE52009B2B32 /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */; };
 		1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */; };
 		1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */; };
 		1542CA1C1A7A76390035A5B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1B1A7A76390035A5B9 /* main.m */; };
@@ -33,13 +34,7 @@
 		15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */; };
 		B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9991AC1379D002A92F4 /* RootViewContorller.m */; };
 		B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */; };
-		B366F9B01AC15C62002A92F4 /* SDBallProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */; };
-		B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */; };
-		B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */; };
 		B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */; };
-		B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */; };
-		B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */; };
-		B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */; };
 		B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */; };
 		B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */; };
 		B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */ = {isa = PBXBuildFile; fileRef = B396B6F21AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m */; };
@@ -84,6 +79,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1333BB691ADFAE4E009B2B32 /* SDBaseProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDBaseProgressView.h; sourceTree = "<group>"; };
+		1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseProgressView.m; sourceTree = "<group>"; };
 		1520F4E11A7C8F7F00E6ACF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1520F4E31A7CCA6C00E6ACF5 /* NSUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsKeys.h; sourceTree = "<group>"; };
 		1520F4E61A7CCAB800E6ACF5 /* ConstantHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeaders.h; sourceTree = "<group>"; };
@@ -139,21 +136,9 @@
 		B366F9991AC1379D002A92F4 /* RootViewContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewContorller.m; sourceTree = "<group>"; };
 		B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeFirstViewController.h; sourceTree = "<group>"; };
 		B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeFirstViewController.m; sourceTree = "<group>"; };
-		B366F9A11AC15C62002A92F4 /* SDBallProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBallProgressView.h; sourceTree = "<group>"; };
-		B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBallProgressView.m; sourceTree = "<group>"; };
-		B366F9A31AC15C62002A92F4 /* SDBaseProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseProgressView.h; sourceTree = "<group>"; };
-		B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseProgressView.m; sourceTree = "<group>"; };
-		B366F9A51AC15C62002A92F4 /* SDLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLoopProgressView.h; sourceTree = "<group>"; };
-		B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLoopProgressView.m; sourceTree = "<group>"; };
 		B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieLoopProgressView.h; sourceTree = "<group>"; };
 		B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieLoopProgressView.m; sourceTree = "<group>"; };
-		B366F9A91AC15C62002A92F4 /* SDPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieProgressView.h; sourceTree = "<group>"; };
-		B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieProgressView.m; sourceTree = "<group>"; };
 		B366F9AB1AC15C62002A92F4 /* SDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDProgressView.h; sourceTree = "<group>"; };
-		B366F9AC1AC15C62002A92F4 /* SDRotationLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRotationLoopProgressView.h; sourceTree = "<group>"; };
-		B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRotationLoopProgressView.m; sourceTree = "<group>"; };
-		B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDTransparentPieProgressView.h; sourceTree = "<group>"; };
-		B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDTransparentPieProgressView.m; sourceTree = "<group>"; };
 		B366F9B71AC187CF002A92F4 /* KFWelComeSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeSecondViewController.h; sourceTree = "<group>"; };
 		B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeSecondViewController.m; sourceTree = "<group>"; };
 		B366F9BA1AC1A4A6002A92F4 /* TAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertView.h; sourceTree = "<group>"; };
@@ -388,21 +373,11 @@
 		B366F9A01AC15C62002A92F4 /* Circle _Lib */ = {
 			isa = PBXGroup;
 			children = (
-				B366F9A11AC15C62002A92F4 /* SDBallProgressView.h */,
-				B366F9A21AC15C62002A92F4 /* SDBallProgressView.m */,
-				B366F9A31AC15C62002A92F4 /* SDBaseProgressView.h */,
-				B366F9A41AC15C62002A92F4 /* SDBaseProgressView.m */,
-				B366F9A51AC15C62002A92F4 /* SDLoopProgressView.h */,
-				B366F9A61AC15C62002A92F4 /* SDLoopProgressView.m */,
+				1333BB691ADFAE4E009B2B32 /* SDBaseProgressView.h */,
+				1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */,
 				B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */,
 				B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */,
-				B366F9A91AC15C62002A92F4 /* SDPieProgressView.h */,
-				B366F9AA1AC15C62002A92F4 /* SDPieProgressView.m */,
 				B366F9AB1AC15C62002A92F4 /* SDProgressView.h */,
-				B366F9AC1AC15C62002A92F4 /* SDRotationLoopProgressView.h */,
-				B366F9AD1AC15C62002A92F4 /* SDRotationLoopProgressView.m */,
-				B366F9AE1AC15C62002A92F4 /* SDTransparentPieProgressView.h */,
-				B366F9AF1AC15C62002A92F4 /* SDTransparentPieProgressView.m */,
 			);
 			name = "Circle _Lib";
 			path = Lib;
@@ -598,20 +573,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
+				1333BB6B1ADFAE52009B2B32 /* SDBaseProgressView.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
-				B366F9B21AC15C62002A92F4 /* SDLoopProgressView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
-				B366F9B41AC15C62002A92F4 /* SDPieProgressView.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
-				B366F9B61AC15C62002A92F4 /* SDTransparentPieProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
-				B366F9B11AC15C62002A92F4 /* SDBaseProgressView.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
 				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
-				B366F9B01AC15C62002A92F4 /* SDBallProgressView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,
-				B366F9B51AC15C62002A92F4 /* SDRotationLoopProgressView.m in Sources */,
 				15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */,
 				1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */,
 				B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */,

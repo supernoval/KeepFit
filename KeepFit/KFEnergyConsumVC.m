@@ -10,10 +10,10 @@
 #import <HealthKit/HealthKit.h>
 #import "KFHealthStore.h"
 
-#import "GraphBarView.h"
+
 
 #import "KFTranslateWorkOutEnergyToFat.h"
-
+#import "SDProgressView.h"
 
 
 static NSString *todayStepKey = @"todaysteps";
@@ -42,24 +42,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     UIScrollView *_totalScrollView; //总的 scrollview
     
    
-    UIView *_todayView;
-    
-    GraphBarView *_barView_today;
     
     
-    UIView *_yesterdayView;
-    
-    GraphBarView *_barView_yesterday;
     
     
-    UIView *_lastsevendaysView;
+  
     
-    GraphBarView *_barView_lastsevendays;
-    
-    
-    UIView *_lastonemonthview;
-    
-    GraphBarView *_barView_lastonemonth;
+
     
     
     NSMutableDictionary *_stepsMuDict; //步数加距离
@@ -84,6 +73,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     BOOL hadGetLastOneMonthDistance;
     
     
+    SDPieLoopProgressView *_todayProgressView;
+    SDPieLoopProgressView *_yesterdayProgressView;
+    SDPieLoopProgressView *_lastsevendayProgressView;
+    SDPieLoopProgressView *_lastmonthProgressView;
     
     
     
@@ -204,7 +197,61 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
-
+-(void)simulateAnimation:(NSTimer*)timer
+{
+    WalkingStepsTimeType timetype = [[[timer userInfo] objectForKey:@"timetype"]integerValue];
+    CGFloat persent = [[[timer userInfo] objectForKey:@"persent"]floatValue];
+    NSInteger steps = [[[timer userInfo]objectForKey:@"steps"]integerValue];
+    
+    
+    static CGFloat progress = 0.0;
+    
+    if (progress <= persent)
+    {
+        progress += 0.01;
+        
+    }
+    else
+    {
+        [timer invalidate];
+        
+    }
+    
+    NSLog(@"progress:%.2f",progress);
+    
+    switch (timetype) {
+        case WalkingStepsTimeTypeToday:
+        {
+            _todayProgressView.progress = progress;
+            _todayProgressView.distance = steps;
+            
+            
+        }
+            break;
+        case WalkingStepsTimeTypeYesterday:
+        {
+            _yesterdayProgressView.progress = progress;
+            
+        }
+            break;
+        case WalkingStepsTimeTypeLastSevendays:
+        {
+       
+        }
+            break;
+        case WalkingStepsTimeTypeLastMonth:
+        {
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    
+}
 #pragma mark - 请求数据
 -(void)requestDataFromHealhStore
 {
@@ -229,7 +276,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 //初始化scrollview
 -(void)initScrollViews
 {
-    CGFloat scrollviewHeight = kScreenHeight - HeadtextlabelsHeight - TapBarHeight;
+    CGFloat scrollviewHeight = kScreenHeight - HeadtextlabelsHeight - TapBarHeight - TopBarHeight;
 
     
     
@@ -248,49 +295,21 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     [self.view addSubview:_totalScrollView];
     
     
-    _todayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWith, scrollviewHeight)];
     
-    _todayView.backgroundColor = [UIColor clearColor];
+    _todayProgressView = [self getSDPieLoopView];
     
-   
-    _barView_today = [self barViewinit];
+    [_totalScrollView addSubview:_todayProgressView];
     
-    [_todayView addSubview:_barView_today];
-    
-    [_totalScrollView addSubview:_todayView];
-    
-   
-    
-    
-    
-    _yesterdayView = [[UIView alloc]initWithFrame:CGRectMake(kScreenWith, 0, kScreenWith, scrollviewHeight)];
-    _yesterdayView.backgroundColor = [UIColor clearColor];
-    
-    _barView_yesterday = [self barViewinit];
-    
-    [_yesterdayView addSubview:_barView_yesterday];
-    
-    [_totalScrollView addSubview:_yesterdayView];
-    
-    _lastsevendaysView = [[UIView alloc]initWithFrame:CGRectMake( kScreenWith *2,0, kScreenWith, scrollviewHeight)];
-    _lastsevendaysView.backgroundColor = [UIColor clearColor];
-    
-    _barView_lastsevendays = [self barViewinit];
-    [_lastsevendaysView addSubview:_barView_lastsevendays];
-    
-    [_totalScrollView addSubview:_lastsevendaysView];
-    
-    _lastonemonthview = [[UIView alloc]initWithFrame:CGRectMake( kScreenWith *3, 0,kScreenWith, scrollviewHeight)];
-    
-    _lastonemonthview.backgroundColor = [UIColor clearColor];
-    
-    _barView_lastonemonth = [self barViewinit];
-    [_lastonemonthview addSubview:_barView_lastonemonth];
-    
-    [_totalScrollView addSubview:_lastonemonthview];
-    
-    
-    
+//    _yesterdayProgressView = [self getSDPieLoopView];
+//    
+//    [_totalScrollView addSubview:_yesterdayProgressView];
+//    
+//    
+//    _lastsevendayProgressView = [self getSDPieLoopView];
+//    [_totalScrollView addSubview:_lastsevendayProgressView];
+//    
+//    _lastmonthProgressView = [self getSDPieLoopView];
+//    [_totalScrollView addSubview:_lastmonthProgressView];
     
     
     
@@ -311,13 +330,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     });
 }
 
-#pragma mark - 添加 barview
+#pragma mark - show progressview animation
 
 -(void)animateBarViewWithTimeType:(WalkingStepsTimeType)timetype
 {
     double steps = 0.0;
     double expectedSteps = 1000.0;
-    double distance = 0.0;
+    double distance = 10.0;
     
     if (_activityStatus == ActivityIndicatorAnimatingStatusAnimating) {
         
@@ -337,10 +356,21 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             steps = [[_stepsMuDict objectForKey:todayStepKey]doubleValue];
             
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
+            CGFloat persent = steps/expectedSteps;
             
-            [_barView_today animatewithSteps:steps expectedSteps:expectedSteps distance:distance timetype:timetype];
+            persent = persent > 1?1:persent;
+            
+            _todayProgressView.dataendprogress = persent;
+            _todayProgressView.distance = steps;
             
             _totalScrollView.scrollEnabled = YES;
+            
+            NSDictionary *userinfo = @{@"timetype":@(timetype),@"persent":@(persent),@"steps":@(steps)};
+            
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(simulateAnimation:) userInfo:userinfo repeats:YES];
+            
+            [timer fire];
+            
             
             
         }
@@ -350,15 +380,14 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:yesterStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:yesterdaydistanceKey]doubleValue];
             
-             [_barView_yesterday animatewithSteps:steps expectedSteps:expectedSteps distance:distance timetype:timetype];
+         
         }
             break;
         case WalkingStepsTimeTypeLastSevendays:
         {
              steps = [[_stepsMuDict objectForKey:lastsevendaysStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastsevendaysdistanceKey]doubleValue];
-            
-             [_barView_lastsevendays animatewithSteps:steps expectedSteps:expectedSteps distance:distance timetype:timetype];
+    
         }
             break;
         case WalkingStepsTimeTypeLastMonth:
@@ -366,7 +395,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:lastonemonthStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastonemonthdistanceKey]doubleValue];
             
-             [_barView_lastonemonth animatewithSteps:steps expectedSteps:expectedSteps distance:distance timetype:timetype];
+        
         }
             break;
             
@@ -381,17 +410,18 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
- //初始化barView
--(GraphBarView*)barViewinit
+#pragma mark - 获得progressview
+-(SDPieLoopProgressView*)getSDPieLoopView
 {
      CGFloat scrollviewHeight = kScreenHeight - HeadtextlabelsHeight - TapBarHeight;
+    CGFloat progressWith = kScreenWith - 150;
     
-   GraphBarView * tembarView = [[GraphBarView alloc]initWithFrame:CGRectMake(0,scrollviewHeight - kBarViewHeight - BarBottomPADDING, kScreenWith, kBarViewHeight)];
+   SDPieLoopProgressView * _pieLoopProgressView = [[SDPieLoopProgressView alloc]initWithFrame:CGRectMake(0,scrollviewHeight - kBarViewHeight - BarBottomPADDING, progressWith, progressWith)];
     
-    tembarView.barColor = [UIColor redColor];
+  
     
     
-    return tembarView;
+    return _pieLoopProgressView;
     
 }
 
@@ -461,7 +491,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             break;
     }
     
-    NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
+   // NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
     
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
     
@@ -1000,7 +1030,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     NSInteger pageIndex = xorigin/kScreenWith;
     
-    NSLog(@"%s,pageIndex:%ld",__func__,(long)pageIndex);
+   // NSLog(@"%s,pageIndex:%ld",__func__,(long)pageIndex);
     
     switch (pageIndex) {
         case 0:
