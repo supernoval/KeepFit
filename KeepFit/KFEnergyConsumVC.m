@@ -201,7 +201,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 {
     WalkingStepsTimeType timetype = [[[timer userInfo] objectForKey:@"timetype"]integerValue];
     CGFloat persent = [[[timer userInfo] objectForKey:@"persent"]floatValue];
-    NSInteger steps = [[[timer userInfo]objectForKey:@"steps"]integerValue];
+//    NSInteger steps = [[[timer userInfo]objectForKey:@"steps"]integerValue];
     
     
     static CGFloat progress = 0.0;
@@ -223,7 +223,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         case WalkingStepsTimeTypeToday:
         {
             _todayProgressView.progress = progress;
-            _todayProgressView.distance = steps;
+         
             
             
         }
@@ -276,20 +276,23 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 //初始化scrollview
 -(void)initScrollViews
 {
-    CGFloat scrollviewHeight = kScreenHeight - HeadtextlabelsHeight - TapBarHeight - TopBarHeight;
+    CGFloat scrollviewHeight = kScreenHeight;
 
     
     
-    _totalScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, HeadtextlabelsHeight, kScreenWith, scrollviewHeight )];
+    _totalScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     
     _totalScrollView.delegate = self;
     
-    _totalScrollView.contentSize = CGSizeMake(kScreenWith *4, scrollviewHeight);
+    _totalScrollView.contentSize = CGSizeMake(kScreenWith *4, _totalScrollView.frame.size.height);
     
     _totalScrollView.pagingEnabled = YES;
     
     _totalScrollView.showsHorizontalScrollIndicator = NO;
-    _totalScrollView.scrollEnabled = NO;
+    _totalScrollView.showsVerticalScrollIndicator = NO;
+    
+   // _totalScrollView.scrollEnabled = NO;
+    [_totalScrollView setDirectionalLockEnabled:YES];
     
     
     [self.view addSubview:_totalScrollView];
@@ -297,6 +300,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     
     _todayProgressView = [self getSDPieLoopView];
+    _todayProgressView.center = CGPointMake(kScreenWith/2, scrollviewHeight/2 - 100);
     
     [_totalScrollView addSubview:_todayProgressView];
     
@@ -335,8 +339,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 -(void)animateBarViewWithTimeType:(WalkingStepsTimeType)timetype
 {
     double steps = 0.0;
-    double expectedSteps = 1000.0;
-    double distance = 10.0;
+    double expectedSteps = 10000.0;
+    double distance = 0.0;
     
     if (_activityStatus == ActivityIndicatorAnimatingStatusAnimating) {
         
@@ -356,12 +360,12 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             steps = [[_stepsMuDict objectForKey:todayStepKey]doubleValue];
             
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
-            CGFloat persent = steps/expectedSteps;
+            CGFloat persent = distance*1000/expectedSteps;
             
             persent = persent > 1?1:persent;
             
             _todayProgressView.dataendprogress = persent;
-            _todayProgressView.distance = steps;
+            _todayProgressView.distance = expectedSteps;
             
             _totalScrollView.scrollEnabled = YES;
             

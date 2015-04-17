@@ -64,8 +64,8 @@
     CGContextStrokePath(ctx);
     
     // 进度数字
-    NSString *progressStr = [NSString stringWithFormat:@"%.0fm", self.progress *10000];
-   // NSLog(@"%s,%.2f",__func__,self.progress*_distance);
+    NSString *progressStr = [NSString stringWithFormat:@"%.0fm", self.progress *_distance];
+    NSLog(@"%s,%.2f",__func__,self.progress*_distance);
     CGFloat textWithScale = SDProgressViewFontScale/progressStr.length;
     
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];

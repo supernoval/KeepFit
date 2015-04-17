@@ -16,7 +16,7 @@
 
 #define TapBarHeight  49
 
-#define HeadtextlabelsHeight  140
+#define HeadtextlabelsHeight  100
 
 #define BarBottomPADDING   10
 

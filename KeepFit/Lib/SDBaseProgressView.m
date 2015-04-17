@@ -24,7 +24,7 @@
 {
     _progress = progress;
     
-    if (progress < 1.0)
+    if (progress < _dataendprogress)
     {
         
         [self setNeedsDisplay];
