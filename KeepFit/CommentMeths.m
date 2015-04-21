@@ -10,7 +10,32 @@
 
 @implementation CommentMeths
 
-
++(NSString*)getMMddDateStrWithDate:(NSDate *)date
+{
+    NSCalendar *currentCalent = [NSCalendar currentCalendar];
+    
+    NSInteger dateUnit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour |NSCalendarUnitMinute;
+    
+    NSDateComponents *component = [currentCalent components:dateUnit fromDate:date];
+    
+  
+    NSInteger month = component.month;
+    NSInteger day = component.day;
+    
+    NSString *temDateStr = [NSString stringWithFormat:@"%ld %ld",(long)month,(long)day];
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc]init];
+    [dateFormater setDateFormat:@"MM dd"];
+    
+    //NSString *dateStr = [dateFormater stringFromDate:date];
+    
+    NSDate *MMddDate = [dateFormater dateFromString:temDateStr];
+    
+    NSString *dateStr = [dateFormater stringFromDate:MMddDate];
+    
+    return dateStr;
+    
+}
 +(NSDate*)getYYYYMMddDateWithDate:(NSDate *)date
 {
     

@@ -27,6 +27,8 @@
     if ((self = [super init]))
     {
         [self setupLayer];
+        
+       
     }
     
     return self;
@@ -79,7 +81,7 @@
 {
     _currentDistance = currentDistance;
       _percent = [self calculatePercent:_currentDistance toTime:_expectedDistance];
-    [self startAnimation];
+//    [self startAnimation];
 }
 
 - (double)percent {

@@ -10,10 +10,9 @@
 #import <HealthKit/HealthKit.h>
 #import "KFHealthStore.h"
 
-
-
+#import "CircleProgressView.h"
 #import "KFTranslateWorkOutEnergyToFat.h"
-#import "SDProgressView.h"
+#import "OneDayViewController.h"
 
 
 static NSString *todayStepKey = @"todaysteps";
@@ -44,9 +43,19 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
    
     
     
+    CircleProgressView *_todayCircleView;
+    
+    CircleProgressView *_yesterCircleView;
+    
+    CircleProgressView *_lastSevenDayCircleView;
+    
+    CircleProgressView *_lastMonthCircleView;
     
     
-  
+    
+    
+    
+    OneDayViewController *_todayDataVC;
     
 
     
@@ -73,10 +82,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     BOOL hadGetLastOneMonthDistance;
     
     
-    SDPieLoopProgressView *_todayProgressView;
-    SDPieLoopProgressView *_yesterdayProgressView;
-    SDPieLoopProgressView *_lastsevendayProgressView;
-    SDPieLoopProgressView *_lastmonthProgressView;
+
     
     
     
@@ -127,11 +133,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _stepsMuDict = [[NSMutableDictionary alloc]init];
     
-    
+    self.title = @"Keep Fit";
     
     
     //添加从后台返回 通知接收
-    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appWillEnterForword) name:UIApplicationWillEnterForegroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appWillEnterForword) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     
     //目标体重
@@ -197,61 +203,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
--(void)simulateAnimation:(NSTimer*)timer
-{
-    WalkingStepsTimeType timetype = [[[timer userInfo] objectForKey:@"timetype"]integerValue];
-    CGFloat persent = [[[timer userInfo] objectForKey:@"persent"]floatValue];
-//    NSInteger steps = [[[timer userInfo]objectForKey:@"steps"]integerValue];
-    
-    
-    static CGFloat progress = 0.0;
-    
-    if (progress <= persent)
-    {
-        progress += 0.01;
-        
-    }
-    else
-    {
-        [timer invalidate];
-        
-    }
-    
-    NSLog(@"progress:%.2f",progress);
-    
-    switch (timetype) {
-        case WalkingStepsTimeTypeToday:
-        {
-            _todayProgressView.progress = progress;
-         
-            
-            
-        }
-            break;
-        case WalkingStepsTimeTypeYesterday:
-        {
-            _yesterdayProgressView.progress = progress;
-            
-        }
-            break;
-        case WalkingStepsTimeTypeLastSevendays:
-        {
-       
-        }
-            break;
-        case WalkingStepsTimeTypeLastMonth:
-        {
-            
-        }
-            break;
-            
-            
-        default:
-            break;
-    }
-    
-    
-}
+
 #pragma mark - 请求数据
 -(void)requestDataFromHealhStore
 {
@@ -280,47 +232,80 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 
     
     
-    _totalScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    
-    _totalScrollView.delegate = self;
-    
-    _totalScrollView.contentSize = CGSizeMake(kScreenWith *4, _totalScrollView.frame.size.height);
-    
-    _totalScrollView.pagingEnabled = YES;
-    
-    _totalScrollView.showsHorizontalScrollIndicator = NO;
-    _totalScrollView.showsVerticalScrollIndicator = NO;
+//    _totalScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+//    
+//    _totalScrollView.delegate = self;
+//    
+//    _totalScrollView.contentSize = CGSizeMake(kScreenWith *4, _totalScrollView.frame.size.height);
+//    
+//    _totalScrollView.pagingEnabled = YES;
+//    
+//    _totalScrollView.showsHorizontalScrollIndicator = NO;
+//    _totalScrollView.showsVerticalScrollIndicator = NO;
     
    // _totalScrollView.scrollEnabled = NO;
-    [_totalScrollView setDirectionalLockEnabled:YES];
+    
+    _myscrollView.contentSize = CGSizeMake(kScreenWith *4, _myscrollView.frame.size.height);
     
     
-    [self.view addSubview:_totalScrollView];
+    _todayDataVC = [self.storyboard instantiateViewControllerWithIdentifier:kOneDayViewController];
+    
+   
+    
+   
     
     
+    _todayCircleView = [self getCircleProgressViewWithTimeType:WalkingStepsTimeTypeToday];
     
-    _todayProgressView = [self getSDPieLoopView];
-    _todayProgressView.center = CGPointMake(kScreenWith/2, scrollviewHeight/2 - 100);
+  
     
-    [_totalScrollView addSubview:_todayProgressView];
-    
-//    _yesterdayProgressView = [self getSDPieLoopView];
-//    
-//    [_totalScrollView addSubview:_yesterdayProgressView];
-//    
-//    
-//    _lastsevendayProgressView = [self getSDPieLoopView];
-//    [_totalScrollView addSubview:_lastsevendayProgressView];
-//    
-//    _lastmonthProgressView = [self getSDPieLoopView];
-//    [_totalScrollView addSubview:_lastmonthProgressView];
-    
+   
     
     
     
     
 }
 
+-(CircleProgressView*)getCircleProgressViewWithTimeType:(WalkingStepsTimeType)timetype
+{
+    
+
+    CircleProgressView *temcircle;
+    
+    CGFloat  circleX = 0;
+    CGFloat offset = 80;
+    switch (timetype) {
+        case WalkingStepsTimeTypeToday:
+        {
+             circleX = offset;
+        }
+            break;
+        case WalkingStepsTimeTypeYesterday:
+        {
+              circleX = offset +kScreenWith;
+        }
+            break;
+      
+        case WalkingStepsTimeTypeLastSevendays:
+        {
+            circleX = offset + kScreenWith *2;
+        }
+            break;
+        case WalkingStepsTimeTypeLastMonth:
+        {
+            circleX = offset + kScreenWith *3;
+        }
+            break;
+        default:
+            break;
+    }
+    
+      temcircle = [[CircleProgressView alloc]initWithFrame:CGRectMake(circleX, 0, kScreenWith - offset*2, kScreenWith - offset*2)];
+     
+    return temcircle;
+    
+    
+}
 
 #pragma mark - 显示数据
 -(void)showdatasWithTimeType:(WalkingStepsTimeType)timetype
@@ -360,20 +345,28 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             steps = [[_stepsMuDict objectForKey:todayStepKey]doubleValue];
             
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
-            CGFloat persent = distance*1000/expectedSteps;
-            
-            persent = persent > 1?1:persent;
-            
-            _todayProgressView.dataendprogress = persent;
-            _todayProgressView.distance = expectedSteps;
-            
+       
+        
             _totalScrollView.scrollEnabled = YES;
             
-            NSDictionary *userinfo = @{@"timetype":@(timetype),@"persent":@(persent),@"steps":@(steps)};
             
-            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(simulateAnimation:) userInfo:userinfo repeats:YES];
+            [_myscrollView addSubview:_todayCircleView];
             
-            [timer fire];
+            _todayCircleView.currentSteps = steps;
+            _todayCircleView.currentDistance = distance;
+            _todayCircleView.expectedDistance = 10.0;
+            
+            [_todayCircleView animateLabelProgress];
+            
+            NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
+            
+            
+            _todayDataVC.currentSteps = steps;
+            _todayDataVC.currentDistance = distance;
+            _todayDataVC.expectedDistance = 10.0;
+            
+            [_myscrollView addSubview:_todayDataVC.view];
+            
             
             
             
@@ -414,20 +407,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
-#pragma mark - 获得progressview
--(SDPieLoopProgressView*)getSDPieLoopView
-{
-     CGFloat scrollviewHeight = kScreenHeight - HeadtextlabelsHeight - TapBarHeight;
-    CGFloat progressWith = kScreenWith - 150;
-    
-   SDPieLoopProgressView * _pieLoopProgressView = [[SDPieLoopProgressView alloc]initWithFrame:CGRectMake(0,scrollviewHeight - kBarViewHeight - BarBottomPADDING, progressWith, progressWith)];
-    
-  
-    
-    
-    return _pieLoopProgressView;
-    
-}
+
 
 
 #pragma mark - 获取距离
@@ -575,7 +555,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 
             }
             
-            NSLog(@"%s,totaldistacne:%.2f",__func__,totaldistance);
+           // NSLog(@"%s,totaldistacne:%.2f",__func__,totaldistance);
             
             switch (timetype) {
                 case WalkingStepsTimeTypeLastTwodays:
@@ -592,7 +572,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     CGFloat todayfats = [_fatTranlater wakingDistanceToFat:todaydistance];
                     CGFloat yesterdayfats = [_fatTranlater wakingDistanceToFat:yesterdistance];
                     
-                    NSLog(@"%s,todayfats%.2f,yesterdayfats:%.2f",__func__,todayfats,yesterdayfats);
+                   // NSLog(@"%s,todayfats%.2f,yesterdayfats:%.2f",__func__,todayfats,yesterdayfats);
                     
                     
                     
@@ -721,7 +701,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             break;
     }
     
-      NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
+     // NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
     
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
     

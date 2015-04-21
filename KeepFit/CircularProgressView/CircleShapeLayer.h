@@ -17,4 +17,7 @@
 @property (assign, nonatomic, readonly) double percent;
 @property (nonatomic) UIColor *progressColor;
 
+
+- (void)startAnimation;
+
 @end

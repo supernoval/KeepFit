@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, ActivityIndicatorAnimatingStatus)
 {
     
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *myscrollView;
 @property (weak, nonatomic) IBOutlet UITextField *targetWeightTF;
 @property (weak, nonatomic) IBOutlet UITextField *weghtTextField;
 @property (nonatomic) HKHealthStore *healthStore;

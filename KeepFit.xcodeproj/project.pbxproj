@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1333BB6B1ADFAE52009B2B32 /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */; };
-		137B1A2C1AE4F59A00A6E142 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A291AE4F59A00A6E142 /* CircleProgressView.m */; };
-		137B1A2D1AE4F59A00A6E142 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 137B1A2B1AE4F59A00A6E142 /* CircleShapeLayer.m */; };
+		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
+		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
+		136AEA911AE63AB900215720 /* OneDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA901AE63AB900215720 /* OneDayViewController.m */; };
 		1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */; };
 		1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */; };
 		1542CA1C1A7A76390035A5B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1B1A7A76390035A5B9 /* main.m */; };
@@ -36,7 +36,6 @@
 		15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */; };
 		B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9991AC1379D002A92F4 /* RootViewContorller.m */; };
 		B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */; };
-		B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */; };
 		B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */; };
 		B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9BB1AC1A4AE002A92F4 /* TAlertView.m */; };
 		B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */ = {isa = PBXBuildFile; fileRef = B396B6F21AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m */; };
@@ -81,12 +80,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1333BB691ADFAE4E009B2B32 /* SDBaseProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDBaseProgressView.h; sourceTree = "<group>"; };
-		1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseProgressView.m; sourceTree = "<group>"; };
-		137B1A281AE4F59A00A6E142 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
-		137B1A291AE4F59A00A6E142 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
-		137B1A2A1AE4F59A00A6E142 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
-		137B1A2B1AE4F59A00A6E142 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		136AEA881AE6254D00215720 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
+		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
+		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
+		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		136AEA8F1AE63AB900215720 /* OneDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayViewController.h; sourceTree = "<group>"; };
+		136AEA901AE63AB900215720 /* OneDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayViewController.m; sourceTree = "<group>"; };
 		1520F4E11A7C8F7F00E6ACF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1520F4E31A7CCA6C00E6ACF5 /* NSUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsKeys.h; sourceTree = "<group>"; };
 		1520F4E61A7CCAB800E6ACF5 /* ConstantHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeaders.h; sourceTree = "<group>"; };
@@ -142,9 +141,6 @@
 		B366F9991AC1379D002A92F4 /* RootViewContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewContorller.m; sourceTree = "<group>"; };
 		B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeFirstViewController.h; sourceTree = "<group>"; };
 		B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeFirstViewController.m; sourceTree = "<group>"; };
-		B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieLoopProgressView.h; sourceTree = "<group>"; };
-		B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieLoopProgressView.m; sourceTree = "<group>"; };
-		B366F9AB1AC15C62002A92F4 /* SDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDProgressView.h; sourceTree = "<group>"; };
 		B366F9B71AC187CF002A92F4 /* KFWelComeSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeSecondViewController.h; sourceTree = "<group>"; };
 		B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFWelComeSecondViewController.m; sourceTree = "<group>"; };
 		B366F9BA1AC1A4A6002A92F4 /* TAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertView.h; sourceTree = "<group>"; };
@@ -180,15 +176,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		137B1A271AE4F59A00A6E142 /* CircularProgressView */ = {
+		136AEA871AE6254D00215720 /* CircularProgressView */ = {
 			isa = PBXGroup;
 			children = (
-				137B1A281AE4F59A00A6E142 /* CircleProgressView.h */,
-				137B1A291AE4F59A00A6E142 /* CircleProgressView.m */,
-				137B1A2A1AE4F59A00A6E142 /* CircleShapeLayer.h */,
-				137B1A2B1AE4F59A00A6E142 /* CircleShapeLayer.m */,
+				136AEA881AE6254D00215720 /* CircleProgressView.h */,
+				136AEA891AE6254D00215720 /* CircleProgressView.m */,
+				136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */,
+				136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */,
 			);
 			path = CircularProgressView;
+			sourceTree = "<group>";
+		};
+		136AEA8E1AE63A7A00215720 /* OneDayView */ = {
+			isa = PBXGroup;
+			children = (
+				136AEA8F1AE63AB900215720 /* OneDayViewController.h */,
+				136AEA901AE63AB900215720 /* OneDayViewController.m */,
+			);
+			name = OneDayView;
 			sourceTree = "<group>";
 		};
 		1520F4E21A7CA46D00E6ACF5 /* EnergyConsum */ = {
@@ -235,6 +240,7 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				136AEA8E1AE63A7A00215720 /* OneDayView */,
 				B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */,
 				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
 				B366F99B1AC1407C002A92F4 /* welcomeView */,
@@ -381,24 +387,10 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
-				137B1A271AE4F59A00A6E142 /* CircularProgressView */,
+				136AEA871AE6254D00215720 /* CircularProgressView */,
 				B366F9BD1AC1A4D8002A92F4 /* TAlerView */,
-				B366F9A01AC15C62002A92F4 /* Circle _Lib */,
 			);
 			name = Thirdclass;
-			sourceTree = "<group>";
-		};
-		B366F9A01AC15C62002A92F4 /* Circle _Lib */ = {
-			isa = PBXGroup;
-			children = (
-				1333BB691ADFAE4E009B2B32 /* SDBaseProgressView.h */,
-				1333BB6A1ADFAE52009B2B32 /* SDBaseProgressView.m */,
-				B366F9A71AC15C62002A92F4 /* SDPieLoopProgressView.h */,
-				B366F9A81AC15C62002A92F4 /* SDPieLoopProgressView.m */,
-				B366F9AB1AC15C62002A92F4 /* SDProgressView.h */,
-			);
-			name = "Circle _Lib";
-			path = Lib;
 			sourceTree = "<group>";
 		};
 		B366F9BD1AC1A4D8002A92F4 /* TAlerView */ = {
@@ -516,6 +508,7 @@
 					};
 					1542CA451A7A764B0035A5B9 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = K5443SNRTU;
 					};
 					1542CA541A7A764B0035A5B9 = {
 						CreatedOnToolsVersion = 6.2;
@@ -591,7 +584,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
-				1333BB6B1ADFAE52009B2B32 /* SDBaseProgressView.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
@@ -601,12 +593,12 @@
 				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,
 				15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */,
-				137B1A2D1AE4F59A00A6E142 /* CircleShapeLayer.m in Sources */,
+				136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */,
 				1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */,
-				B366F9B31AC15C62002A92F4 /* SDPieLoopProgressView.m in Sources */,
+				136AEA911AE63AB900215720 /* OneDayViewController.m in Sources */,
 				1542CA251A7A76390035A5B9 /* KFEnergyConsumVC.m in Sources */,
 				B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */,
-				137B1A2C1AE4F59A00A6E142 /* CircleProgressView.m in Sources */,
+				136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */,
 				1542CA221A7A76390035A5B9 /* KeepFit.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,6 +869,7 @@
 		1542CA681A7A764B0035A5B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -891,6 +884,7 @@
 		1542CA691A7A764B0035A5B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "KeepFit WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";

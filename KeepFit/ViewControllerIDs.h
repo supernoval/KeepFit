@@ -23,3 +23,5 @@
 #define kKFWelComeFirstViewController   @"KFWelComeFirstViewController"
 
 #define kKFWelComeSecondViewController     @"KFWelComeSecondViewController"
+
+#define kOneDayViewController       @"OneDayViewController"

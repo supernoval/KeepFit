@@ -9,12 +9,21 @@
 #define kLabelHeight 20.0
 #define kHelveticaNeue    @"HelveticaNeue"
 #define kHelveticaNeue_Bold  @"HelveticaNeue-Bold"
+#define kTimerschduleInterval  0.01
+//动画环颜色
+#define kCircleProgressViewColor    [UIColor colorWithRed:50.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0]
+
 
 #import "CircleProgressView.h"
 #import "CircleShapeLayer.h"
-
 @interface CircleProgressView()
-
+{
+    NSTimer *_animateTimer;
+    
+    CircleProgressViewAnimateState _animateState;
+    
+    
+}
 @property (nonatomic, strong) CircleShapeLayer *progressLayer;
 @property (strong, nonatomic) UILabel *stepsLabel;
 @property (nonatomic,strong) UILabel *stepTitleLabel;
@@ -43,14 +52,66 @@
     [super layoutSubviews];
     
     self.progressLayer.frame = self.bounds;
+    self.progressLayer.progressColor = kCircleProgressViewColor;
     
 //    [self.progressLabel sizeToFit];
 //    self.progressLabel.center = CGPointMake(self.center.x - self.frame.origin.x, self.center.y- self.frame.origin.y);
     
-    [self.stepsLabel sizeToFit];
+   // [self.stepsLabel sizeToFit];
+    _animateSteps = 0.0;
+    _animateDistance = 0.0;
+    _stepsLabel.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 );
+    _stepTitleLabel.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - kLabelHeight *2);
+    _walkingDisLabel.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + kLabelHeight*2 );
+    _animateState = CircleProgressViewAnimateNone;
+    
+  
     
 }
 
+-(void)animateLabelProgress
+{
+   
+   
+    
+    [self.progressLayer startAnimation];
+    
+    _animateTimer = [NSTimer scheduledTimerWithTimeInterval:kTimerschduleInterval target:self selector:@selector(updateStepsAndDistance) userInfo:nil repeats:YES];
+    
+     _animateState = CircleProgressViewAnimateStart;
+}
+
+-(void)updateStepsAndDistance
+{
+//    if (_animateState == CircleProgressViewAnimateStart)
+    
+    if (_animateSteps < self.currentSteps) {
+        
+    
+        
+        CGFloat averageSteps = self.currentSteps* kTimerschduleInterval;
+        
+        CGFloat averageDis =  self.currentDistance * kTimerschduleInterval;
+        
+        _animateSteps += averageSteps;
+        
+        _animateDistance +=averageDis;
+        
+     
+        
+        _stepsLabel.attributedText = [self getstepslabelString:_animateSteps];
+        
+        _walkingDisLabel.attributedText = [self getdistanceString:_animateDistance];
+        
+        
+    
+        
+        NSLog(@"animateStep:%.2f",_animateSteps);
+        
+    }
+    
+
+}
 - (void)updateConstraints {
     [super updateConstraints];
 }
@@ -64,6 +125,7 @@
         _stepsLabel.textAlignment = NSTextAlignmentCenter;
         _stepsLabel.font = [UIFont fontWithName:kHelveticaNeue size:20];
         _stepsLabel.textColor = [UIColor blackColor];
+        //_stepsLabel.backgroundColor = [UIColor yellowColor];
         
         [self addSubview:_stepsLabel];
         
@@ -122,9 +184,8 @@
 {
     self.progressLayer.currentDistance = currentDistance;
     
-//    _stepsLabel.attributedText = [self getstepslabelString:currentDistance];
-    
-    _stepsLabel.text = @"5161616";
+    _stepsLabel.attributedText = [self getstepslabelString:currentDistance];
+
     
     
 }
@@ -155,7 +216,8 @@
     self.progressLayer.backgroundColor = [UIColor clearColor].CGColor;
     [self.layer addSublayer:self.progressLayer];
     [self stepsLabel];
-    
+    [self stepTitleLabel];
+    [self  walkingDisLabel];
   
     
     
@@ -182,7 +244,7 @@
 
 -(NSMutableAttributedString*)getdistanceString:(CGFloat)distance
 {
-    NSMutableAttributedString *muStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"步行%.0f千米",distance]];
+    NSMutableAttributedString *muStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"步行%.2f千米",distance]];
     
     
     return muStr;
