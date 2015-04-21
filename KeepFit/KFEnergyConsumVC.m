@@ -12,8 +12,8 @@
 
 #import "CircleProgressView.h"
 #import "KFTranslateWorkOutEnergyToFat.h"
-#import "OneDayViewController.h"
 
+#import "OneDayDataView.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -38,28 +38,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     NSTimer *onecetimer;
     
-    UIScrollView *_totalScrollView; //总的 scrollview
     
    
-    
-    
-    CircleProgressView *_todayCircleView;
-    
-    CircleProgressView *_yesterCircleView;
-    
-    CircleProgressView *_lastSevenDayCircleView;
-    
-    CircleProgressView *_lastMonthCircleView;
-    
-    
-    
-    
-    
-    OneDayViewController *_todayDataVC;
-    
-
-    
-    
     NSMutableDictionary *_stepsMuDict; //步数加距离
     
     UIActivityIndicatorView *_activetyIndicator;
@@ -82,7 +62,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     BOOL hadGetLastOneMonthDistance;
     
     
-
+    OneDayDataView *_oneDayDataView;
+    
     
     
     
@@ -228,39 +209,16 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 //初始化scrollview
 -(void)initScrollViews
 {
-    CGFloat scrollviewHeight = kScreenHeight;
+   
 
-    
-    
-//    _totalScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-//    
-//    _totalScrollView.delegate = self;
-//    
-//    _totalScrollView.contentSize = CGSizeMake(kScreenWith *4, _totalScrollView.frame.size.height);
-//    
-//    _totalScrollView.pagingEnabled = YES;
-//    
-//    _totalScrollView.showsHorizontalScrollIndicator = NO;
-//    _totalScrollView.showsVerticalScrollIndicator = NO;
-    
-   // _totalScrollView.scrollEnabled = NO;
-    
+
     _myscrollView.contentSize = CGSizeMake(kScreenWith *4, _myscrollView.frame.size.height);
     
-    
-    _todayDataVC = [self.storyboard instantiateViewControllerWithIdentifier:kOneDayViewController];
-    
+
    
+    _oneDayDataView = [[OneDayDataView alloc]initWithFrame:CGRectMake(0, -64, kScreenWith, kScreenHeight - 64)];
     
-   
-    
-    
-    _todayCircleView = [self getCircleProgressViewWithTimeType:WalkingStepsTimeTypeToday];
-    
-  
-    
-   
-    
+    [_myscrollView addSubview:_oneDayDataView];
     
     
     
@@ -347,25 +305,22 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
        
         
-            _totalScrollView.scrollEnabled = YES;
-            
-            
-            [_myscrollView addSubview:_todayCircleView];
-            
-            _todayCircleView.currentSteps = steps;
-            _todayCircleView.currentDistance = distance;
-            _todayCircleView.expectedDistance = 10.0;
-            
-            [_todayCircleView animateLabelProgress];
+    
             
             NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
             
             
-            _todayDataVC.currentSteps = steps;
-            _todayDataVC.currentDistance = distance;
-            _todayDataVC.expectedDistance = 10.0;
+   
             
-            [_myscrollView addSubview:_todayDataVC.view];
+            
+            _oneDayDataView.currentSteps = steps;
+            _oneDayDataView.currentDis = distance;
+            _oneDayDataView.expectedDis = 10.0;
+            _oneDayDataView.showDate = [NSDate date];
+            
+            [_myscrollView addSubview:_oneDayDataView];
+            
+            [_oneDayDataView animate];
             
             
             
@@ -799,7 +754,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     }
                  
                     
-              
+                     NSLog(@"todaySteps steps:%f",todaySteps);
                     
                     
                 }
@@ -819,6 +774,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                         
                         
                     }
+                    
+                           NSLog(@"yesterday steps:%f",yestdaySteps);
                 }
                     break;
                 case WalkingStepsTimeTypeLastMonth:
@@ -845,9 +802,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             
             
-              NSLog(@"todaySteps steps:%f",todaySteps);
+       
             
-              NSLog(@"yesterday steps:%f",yestdaySteps);
+       
             
             NSLog(@"totalSteps:%f",totalSteps);
             

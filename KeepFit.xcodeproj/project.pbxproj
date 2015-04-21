@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
-		136AEA911AE63AB900215720 /* OneDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA901AE63AB900215720 /* OneDayViewController.m */; };
 		1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */; };
 		1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */; };
+		152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 152C74ED1AE69BFE005509EB /* OneDayDataView.m */; };
 		1542CA1C1A7A76390035A5B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1B1A7A76390035A5B9 /* main.m */; };
 		1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1E1A7A76390035A5B9 /* AppDelegate.m */; };
 		1542CA221A7A76390035A5B9 /* KeepFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA201A7A76390035A5B9 /* KeepFit.xcdatamodeld */; };
@@ -84,8 +84,6 @@
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
-		136AEA8F1AE63AB900215720 /* OneDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayViewController.h; sourceTree = "<group>"; };
-		136AEA901AE63AB900215720 /* OneDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayViewController.m; sourceTree = "<group>"; };
 		1520F4E11A7C8F7F00E6ACF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1520F4E31A7CCA6C00E6ACF5 /* NSUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsKeys.h; sourceTree = "<group>"; };
 		1520F4E61A7CCAB800E6ACF5 /* ConstantHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeaders.h; sourceTree = "<group>"; };
@@ -93,6 +91,8 @@
 		1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentMeths.m; sourceTree = "<group>"; };
 		1520F4ED1A7CFDE000E6ACF5 /* GraphBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphBarView.h; sourceTree = "<group>"; };
 		1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphBarView.m; sourceTree = "<group>"; };
+		152C74EC1AE69BFE005509EB /* OneDayDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayDataView.h; sourceTree = "<group>"; };
+		152C74ED1AE69BFE005509EB /* OneDayDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayDataView.m; sourceTree = "<group>"; };
 		1542CA161A7A76390035A5B9 /* KeepFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1542CA1A1A7A76390035A5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1542CA1B1A7A76390035A5B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,19 +190,19 @@
 		136AEA8E1AE63A7A00215720 /* OneDayView */ = {
 			isa = PBXGroup;
 			children = (
-				136AEA8F1AE63AB900215720 /* OneDayViewController.h */,
-				136AEA901AE63AB900215720 /* OneDayViewController.m */,
+				152C74EC1AE69BFE005509EB /* OneDayDataView.h */,
+				152C74ED1AE69BFE005509EB /* OneDayDataView.m */,
 			);
 			name = OneDayView;
 			sourceTree = "<group>";
 		};
-		1520F4E21A7CA46D00E6ACF5 /* EnergyConsum */ = {
+		1520F4E21A7CA46D00E6ACF5 /* EnergyConsumVC */ = {
 			isa = PBXGroup;
 			children = (
 				1542CA231A7A76390035A5B9 /* KFEnergyConsumVC.h */,
 				1542CA241A7A76390035A5B9 /* KFEnergyConsumVC.m */,
 			);
-			name = EnergyConsum;
+			name = EnergyConsumVC;
 			sourceTree = "<group>";
 		};
 		1520F4EC1A7CFDBA00E6ACF5 /* graphBarView */ = {
@@ -252,7 +252,7 @@
 				1542CA791A7C837E0035A5B9 /* Constants */,
 				1520F4EC1A7CFDBA00E6ACF5 /* graphBarView */,
 				1542CA701A7C70AF0035A5B9 /* HealthStoredata */,
-				1520F4E21A7CA46D00E6ACF5 /* EnergyConsum */,
+				1520F4E21A7CA46D00E6ACF5 /* EnergyConsumVC */,
 				15A4CBDF1AAF4009002375AA /* Taking PictureViewController */,
 				1542CA261A7A76390035A5B9 /* Main.storyboard */,
 				1542CA291A7A76390035A5B9 /* Images.xcassets */,
@@ -585,6 +585,7 @@
 			files = (
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
+				152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
@@ -595,7 +596,6 @@
 				15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */,
 				136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */,
 				1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */,
-				136AEA911AE63AB900215720 /* OneDayViewController.m in Sources */,
 				1542CA251A7A76390035A5B9 /* KFEnergyConsumVC.m in Sources */,
 				B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */,
 				136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */,
