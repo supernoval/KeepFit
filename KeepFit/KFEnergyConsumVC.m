@@ -62,7 +62,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     BOOL hadGetLastOneMonthDistance;
     
     
-    OneDayDataView *_oneDayDataView;
+    OneDayDataView *_todayDataView;
+    OneDayDataView *_yesterDayDataView;
     
     
     
@@ -214,11 +215,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 
     _myscrollView.contentSize = CGSizeMake(kScreenWith *4, _myscrollView.frame.size.height);
     
-
-   
-    _oneDayDataView = [[OneDayDataView alloc]initWithFrame:CGRectMake(0, -64, kScreenWith, kScreenHeight - 64)];
+    _myscrollView.delegate = self;
     
-    [_myscrollView addSubview:_oneDayDataView];
+   
+    _todayDataView = [[OneDayDataView alloc]initWithFrame:CGRectMake(0, -64, kScreenWith, _myscrollView.frame.size.height)];
+    
+    _yesterDayDataView = [[OneDayDataView alloc]initWithFrame:CGRectMake(kScreenWith, -64, kScreenWith, _myscrollView.frame.size.height)];
+    
     
     
     
@@ -265,6 +268,18 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
+#pragma mark - 显示一天的数据动画
+-(void)showOneDayData:(OneDayDataView*)onedayview currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
+{
+    onedayview.currentSteps = steps;
+    onedayview.currentDis = currentDis;
+    onedayview.expectedDis = 10.0;
+    onedayview.showDate = date;
+    
+    [_myscrollView addSubview:onedayview];
+    
+    [onedayview animate];
+}
 #pragma mark - 显示数据
 -(void)showdatasWithTimeType:(WalkingStepsTimeType)timetype
 {
@@ -309,18 +324,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
             
-            
-   
-            
-            
-            _oneDayDataView.currentSteps = steps;
-            _oneDayDataView.currentDis = distance;
-            _oneDayDataView.expectedDis = 10.0;
-            _oneDayDataView.showDate = [NSDate date];
-            
-            [_myscrollView addSubview:_oneDayDataView];
-            
-            [_oneDayDataView animate];
+        
+            [self showOneDayData:_todayDataView currentsteps:steps currentDistance:distance expectDistance:10.0 date:[NSDate date]];
             
             
             
@@ -332,7 +337,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:yesterStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:yesterdaydistanceKey]doubleValue];
             
-         
+            [self showOneDayData:_yesterDayDataView currentsteps:steps currentDistance:distance expectDistance:10.0 date:[NSDate dateWithTimeIntervalSinceNow:-24*60*60]];
         }
             break;
         case WalkingStepsTimeTypeLastSevendays:
