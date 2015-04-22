@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="djl-E3-CN1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="djl-E3-CN1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -85,6 +85,7 @@
                         <constraints>
                             <constraint firstItem="eX6-1C-SfX" firstAttribute="top" secondItem="yWR-Vs-tJD" secondAttribute="bottom" id="0sU-Er-r7p"/>
                             <constraint firstAttribute="trailing" secondItem="yWR-Vs-tJD" secondAttribute="trailing" id="ACn-lC-cCo"/>
+                            <constraint firstItem="yWR-Vs-tJD" firstAttribute="top" secondItem="o1f-La-jpL" secondAttribute="top" constant="64" id="Bql-aV-50I"/>
                             <constraint firstItem="yWR-Vs-tJD" firstAttribute="leading" secondItem="o1f-La-jpL" secondAttribute="leading" id="jKK-8K-bja"/>
                             <constraint firstItem="yWR-Vs-tJD" firstAttribute="top" secondItem="x2i-b9-QFS" secondAttribute="bottom" id="yaD-aV-JKA"/>
                         </constraints>
@@ -94,6 +95,7 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ACn-lC-cCo"/>
+                                <exclude reference="Bql-aV-50I"/>
                                 <exclude reference="jKK-8K-bja"/>
                                 <exclude reference="yaD-aV-JKA"/>
                                 <exclude reference="0sU-Er-r7p"/>
@@ -105,8 +107,9 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="ACn-lC-cCo"/>
+                                <include reference="Bql-aV-50I"/>
                                 <include reference="jKK-8K-bja"/>
-                                <include reference="yaD-aV-JKA"/>
+                                <exclude reference="yaD-aV-JKA"/>
                                 <include reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
@@ -128,12 +131,13 @@
         <!--One Day View Controller-->
         <scene sceneID="LWx-4h-UO7">
             <objects>
-                <viewController id="f9D-1I-LDI" customClass="OneDayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OneDayViewController" id="f9D-1I-LDI" customClass="OneDayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c8r-ME-Xp8"/>
                         <viewControllerLayoutGuide type="bottom" id="NPx-R1-Hns"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zPL-WO-tjN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4月21号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hn-ik-GTl">
