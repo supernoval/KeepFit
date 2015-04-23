@@ -14,6 +14,8 @@
 #import "KFTranslateWorkOutEnergyToFat.h"
 
 #import "OneDayDataView.h"
+#import "OneWeekDataView.h"
+#import "OneMonthDataView.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -64,6 +66,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     OneDayDataView *_todayDataView;
     OneDayDataView *_yesterDayDataView;
+    OneWeekDataView *_lastWeekDataView;
+    OneMonthDataView  *_lastMonthDataView;
+    
+    
+    NSInteger currentScrollViewPageIndex;
     
     
     
@@ -223,63 +230,52 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _yesterDayDataView = [[OneDayDataView alloc]initWithFrame:CGRectMake(kScreenWith, -64, kScreenWith, _myscrollView.frame.size.height)];
     
+    _lastWeekDataView = [[OneWeekDataView alloc]initWithFrame:CGRectMake(kScreenWith *2, -64, kScreenWith, _myscrollView.frame.size.height)];
+    
+    _lastMonthDataView = [[OneMonthDataView alloc]initWithFrame:CGRectMake(kScreenWith *3, -64, kScreenWith, _myscrollView.frame.size.height)];
+    
     
     
     
 }
 
--(CircleProgressView*)getCircleProgressViewWithTimeType:(WalkingStepsTimeType)timetype
-{
-    
 
-    CircleProgressView *temcircle;
-    
-    CGFloat  circleX = 0;
-    CGFloat offset = 80;
-    switch (timetype) {
-        case WalkingStepsTimeTypeToday:
-        {
-             circleX = offset;
-        }
-            break;
-        case WalkingStepsTimeTypeYesterday:
-        {
-              circleX = offset +kScreenWith;
-        }
-            break;
-      
-        case WalkingStepsTimeTypeLastSevendays:
-        {
-            circleX = offset + kScreenWith *2;
-        }
-            break;
-        case WalkingStepsTimeTypeLastMonth:
-        {
-            circleX = offset + kScreenWith *3;
-        }
-            break;
-        default:
-            break;
-    }
-    
-      temcircle = [[CircleProgressView alloc]initWithFrame:CGRectMake(circleX, 0, kScreenWith - offset*2, kScreenWith - offset*2)];
-     
-    return temcircle;
-    
-    
-}
 
 #pragma mark - 显示一天的数据动画
 -(void)showOneDayData:(OneDayDataView*)onedayview currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
 {
     onedayview.currentSteps = steps;
     onedayview.currentDis = currentDis;
-    onedayview.expectedDis = 10.0;
+    onedayview.expectedDis = expectDistance;
     onedayview.showDate = date;
     
     [_myscrollView addSubview:onedayview];
     
     [onedayview animate];
+}
+#pragma mark - 显示一个星期数据动画
+-(void)showOneWeekData:(OneWeekDataView*)oneWeekData currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
+{
+    oneWeekData.currentSteps = steps;
+    oneWeekData.currentDis = currentDis;
+    oneWeekData.expectedDis = expectDistance;
+    oneWeekData.showDate = date;
+    
+    [_myscrollView addSubview:oneWeekData];
+    
+    [oneWeekData animate];
+}
+#pragma mark - 显示一个月数据动画
+-(void)showOneMonthData:(OneMonthDataView*)oneMonthData currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
+{
+    oneMonthData.currentSteps = steps;
+    oneMonthData.currentDis = currentDis;
+    oneMonthData.expectedDis = expectDistance;
+    oneMonthData.showDate = date;
+    
+    [_myscrollView addSubview:oneMonthData];
+    
+    [oneMonthData animate];
 }
 #pragma mark - 显示数据
 -(void)showdatasWithTimeType:(WalkingStepsTimeType)timetype
@@ -343,6 +339,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         {
              steps = [[_stepsMuDict objectForKey:lastsevendaysStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastsevendaysdistanceKey]doubleValue];
+            
+            [self showOneWeekData:_lastWeekDataView currentsteps:steps currentDistance:distance expectDistance:30.0 date:[NSDate date]];
+            
+            
     
         }
             break;
@@ -351,7 +351,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:lastonemonthStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastonemonthdistanceKey]doubleValue];
             
-        
+            [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:200 date:[NSDate date]];
+            
+            
         }
             break;
             
@@ -551,7 +553,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                     hadGetLastSevenDaysDistance = YES;
                     
-                    if (hadGetLastSevenDaysSteps) {
+                    if (hadGetLastSevenDaysSteps && currentScrollViewPageIndex == 2) {
                         
                         [self showdatasWithTimeType:WalkingStepsTimeTypeLastSevendays];
                         
@@ -570,7 +572,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                     hadGetLastOneMonthDistance = YES;
                     
-                    if (hadGetLastOneMonthSteps) {
+                    if (hadGetLastOneMonthSteps && currentScrollViewPageIndex == 3) {
                         
                         [self showdatasWithTimeType:WalkingStepsTimeTypeLastMonth];
                         
@@ -770,7 +772,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                     hadGetLastSevenDaysSteps = YES;
                     
-                    if (hadGetLastSevenDaysDistance) {
+                    if (hadGetLastSevenDaysDistance && currentScrollViewPageIndex == 2) {
                         
                         [self showdatasWithTimeType:WalkingStepsTimeTypeLastSevendays];
                         
@@ -789,7 +791,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                     hadGetLastOneMonthSteps = YES;
                     
-                    if (hadGetLastOneMonthDistance) {
+                    if (hadGetLastOneMonthDistance && currentScrollViewPageIndex == 3) {
                         
                         [self showdatasWithTimeType:WalkingStepsTimeTypeLastMonth];
                         hadShowedLastOneMonthData = YES;
@@ -974,6 +976,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat xorigin = scrollView.contentOffset.x;
     
     NSInteger pageIndex = xorigin/kScreenWith;
+    
+    currentScrollViewPageIndex = pageIndex;
     
    // NSLog(@"%s,pageIndex:%ld",__func__,(long)pageIndex);
     

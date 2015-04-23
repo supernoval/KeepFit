@@ -32,6 +32,8 @@
 		1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA721A7C70FD0035A5B9 /* KFHealthStore.m */; };
 		1542CA781A7C758D0035A5B9 /* KeepFit.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 1542CA771A7C758D0035A5B9 /* KeepFit.entitlements */; };
 		1542CA851A7C84B10035A5B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1542CA871A7C84B10035A5B9 /* Localizable.strings */; };
+		157569D81AE943D0001A6803 /* OneWeekDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 157569D71AE943D0001A6803 /* OneWeekDataView.m */; };
+		157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 157569DB1AE947E8001A6803 /* OneMonthDataView.m */; };
 		15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */; };
 		15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */; };
 		B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9991AC1379D002A92F4 /* RootViewContorller.m */; };
@@ -133,6 +135,10 @@
 		1542CA881A7C84B30035A5B9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1542CA891A7C84D10035A5B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		156090FE1A7FB9A60033305F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationKeys.h; sourceTree = "<group>"; };
+		157569D61AE943D0001A6803 /* OneWeekDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneWeekDataView.h; path = OneWeekDataView/OneWeekDataView.h; sourceTree = "<group>"; };
+		157569D71AE943D0001A6803 /* OneWeekDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneWeekDataView.m; path = OneWeekDataView/OneWeekDataView.m; sourceTree = "<group>"; };
+		157569DA1AE947E8001A6803 /* OneMonthDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneMonthDataView.h; path = OneMonthDataView/OneMonthDataView.h; sourceTree = "<group>"; };
+		157569DB1AE947E8001A6803 /* OneMonthDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneMonthDataView.m; path = OneMonthDataView/OneMonthDataView.m; sourceTree = "<group>"; };
 		15A4CBE01AAF4043002375AA /* KFTakingPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFTakingPictureViewController.h; sourceTree = "<group>"; };
 		15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTakingPictureViewController.m; sourceTree = "<group>"; };
 		15A4CBE31AB08E6F002375AA /* KFTakePotoBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFTakePotoBasicViewController.h; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				157569D91AE947BD001A6803 /* OneMonthDataView */,
+				157569D51AE94381001A6803 /* OneWeekDataView */,
 				136AEA8E1AE63A7A00215720 /* OneDayView */,
 				B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */,
 				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
@@ -360,6 +368,24 @@
 				156090FE1A7FB9A60033305F /* NotificationKeys.h */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		157569D51AE94381001A6803 /* OneWeekDataView */ = {
+			isa = PBXGroup;
+			children = (
+				157569D61AE943D0001A6803 /* OneWeekDataView.h */,
+				157569D71AE943D0001A6803 /* OneWeekDataView.m */,
+			);
+			name = OneWeekDataView;
+			sourceTree = "<group>";
+		};
+		157569D91AE947BD001A6803 /* OneMonthDataView */ = {
+			isa = PBXGroup;
+			children = (
+				157569DA1AE947E8001A6803 /* OneMonthDataView.h */,
+				157569DB1AE947E8001A6803 /* OneMonthDataView.m */,
+			);
+			name = OneMonthDataView;
 			sourceTree = "<group>";
 		};
 		15A4CBDF1AAF4009002375AA /* Taking PictureViewController */ = {
@@ -588,6 +614,7 @@
 				152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
+				157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
@@ -598,6 +625,7 @@
 				1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */,
 				1542CA251A7A76390035A5B9 /* KFEnergyConsumVC.m in Sources */,
 				B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */,
+				157569D81AE943D0001A6803 /* OneWeekDataView.m in Sources */,
 				136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */,
 				1542CA221A7A76390035A5B9 /* KeepFit.xcdatamodeld in Sources */,
 			);

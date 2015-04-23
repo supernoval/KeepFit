@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 @interface CommentMeths : NSObject
 
++(NSString*)getddDateStrWithDate:(NSDate*)date;
+
 +(NSString*)getMMddDateStrWithDate:(NSDate*)date;
 
 +(NSDate*)getYYYYMMddDateWithDate:(NSDate*)date;

@@ -10,6 +10,25 @@
 
 @implementation CommentMeths
 
++(NSString*)getddDateStrWithDate:(NSDate *)date
+{
+    NSCalendar *currentCalent = [NSCalendar currentCalendar];
+    
+    NSInteger dateUnit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour |NSCalendarUnitMinute;
+    
+    NSDateComponents *component = [currentCalent components:dateUnit fromDate:date];
+    
+    
+   // NSInteger month = component.month;
+    NSInteger day = component.day;
+    
+    NSString *dateStr = [NSString stringWithFormat:@"%ld日",(long)day];
+    
+    
+    
+    return dateStr;
+    
+}
 +(NSString*)getMMddDateStrWithDate:(NSDate *)date
 {
     NSCalendar *currentCalent = [NSCalendar currentCalendar];
