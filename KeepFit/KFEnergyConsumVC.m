@@ -71,6 +71,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     
     
+    
 }
 
 @property (nonatomic) KFHealthStore *myHealthStore;
@@ -320,8 +321,6 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
        
         
-    
-            
             NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
             
         
