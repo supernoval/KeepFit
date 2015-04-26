@@ -106,7 +106,7 @@
         
     
         
-        NSLog(@"animateStep:%.2f",_animateSteps);
+        //NSLog(@"animateStep:%.2f",_animateSteps);
         
     }
     
@@ -273,7 +273,7 @@
     [_distancetext addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:15],NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(stepsStr.length +1, disStr.length +3)];
     
     [_distancetext addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:30],NSForegroundColorAttributeName:[UIColor blackColor]} range:NSMakeRange(2, stepsStr.length +2 )];
-    NSLog(@"distanceLenth:%ld",(long)disStr.length);
+  //  NSLog(@"distanceLenth:%ld",(long)disStr.length);
     
     
 
