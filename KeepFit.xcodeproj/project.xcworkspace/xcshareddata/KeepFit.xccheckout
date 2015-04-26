@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E1776126-1E7A-46BE-992B-171059E3A84B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>KeepFit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3D47C06FA194BCFD6595B9D852354BAF03D16276</key>
 		<string>https://github.com/supernoval/KeepFit</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>KeepFit.xcodeproj/project.xcworkspace</string>
+	<string>KeepFit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3D47C06FA194BCFD6595B9D852354BAF03D16276</key>
