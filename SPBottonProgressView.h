@@ -9,9 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @interface SPBottonProgressView : UIView
+{
+    UILabel *energyBackGroundLabel;
+    
+    UILabel *calLabel;
+    UILabel *calHeadLabel;
+    
+    UILabel *fatLabel;
+    UILabel *fatHeadLabel;
+    
+}
 -(id)initWithFrame:(CGRect)frame;
 
 @property (nonatomic) CGFloat calValue;
 @property (nonatomic) CGFloat fatValue;
+
+-(void)animate;
 
 @end
