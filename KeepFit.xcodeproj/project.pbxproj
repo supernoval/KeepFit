@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
+		138C8BCE1AF753D5001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BCD1AF753D5001B0EAB /* SPBottonProgressView.m */; };
 		1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */; };
 		1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */; };
-		152AB5991AF6E90400869694 /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB5981AF6E90400869694 /* SPBottonProgressView.m */; };
 		152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 152C74ED1AE69BFE005509EB /* OneDayDataView.m */; };
 		1542CA1C1A7A76390035A5B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1B1A7A76390035A5B9 /* main.m */; };
 		1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA1E1A7A76390035A5B9 /* AppDelegate.m */; };
@@ -87,6 +87,8 @@
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		138C8BCC1AF753D1001B0EAB /* SPBottonProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPBottonProgressView.h; path = ../SPBottonProgressView.h; sourceTree = "<group>"; };
+		138C8BCD1AF753D5001B0EAB /* SPBottonProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPBottonProgressView.m; path = ../SPBottonProgressView.m; sourceTree = "<group>"; };
 		1520F4E11A7C8F7F00E6ACF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1520F4E31A7CCA6C00E6ACF5 /* NSUserDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsKeys.h; sourceTree = "<group>"; };
 		1520F4E61A7CCAB800E6ACF5 /* ConstantHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeaders.h; sourceTree = "<group>"; };
@@ -94,8 +96,6 @@
 		1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentMeths.m; sourceTree = "<group>"; };
 		1520F4ED1A7CFDE000E6ACF5 /* GraphBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphBarView.h; sourceTree = "<group>"; };
 		1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphBarView.m; sourceTree = "<group>"; };
-		152AB5971AF6E8FF00869694 /* SPBottonProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPBottonProgressView.h; sourceTree = "<group>"; };
-		152AB5981AF6E90400869694 /* SPBottonProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBottonProgressView.m; sourceTree = "<group>"; };
 		152C74EC1AE69BFE005509EB /* OneDayDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayDataView.h; sourceTree = "<group>"; };
 		152C74ED1AE69BFE005509EB /* OneDayDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayDataView.m; sourceTree = "<group>"; };
 		1542CA161A7A76390035A5B9 /* KeepFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +205,15 @@
 			name = OneDayView;
 			sourceTree = "<group>";
 		};
+		138C8BCF1AF753FC001B0EAB /* BottonBarView */ = {
+			isa = PBXGroup;
+			children = (
+				138C8BCC1AF753D1001B0EAB /* SPBottonProgressView.h */,
+				138C8BCD1AF753D5001B0EAB /* SPBottonProgressView.m */,
+			);
+			name = BottonBarView;
+			sourceTree = "<group>";
+		};
 		1520F4E21A7CA46D00E6ACF5 /* EnergyConsumVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,8 +235,6 @@
 		1542CA0D1A7A76380035A5B9 = {
 			isa = PBXGroup;
 			children = (
-				152AB5971AF6E8FF00869694 /* SPBottonProgressView.h */,
-				152AB5981AF6E90400869694 /* SPBottonProgressView.m */,
 				1542CA6F1A7C6E890035A5B9 /* Frameworks */,
 				1542CA181A7A76390035A5B9 /* KeepFit */,
 				1542CA351A7A76390035A5B9 /* KeepFitTests */,
@@ -251,6 +258,7 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				138C8BCF1AF753FC001B0EAB /* BottonBarView */,
 				157569D91AE947BD001A6803 /* OneMonthDataView */,
 				157569D51AE94381001A6803 /* OneWeekDataView */,
 				136AEA8E1AE63A7A00215720 /* OneDayView */,
@@ -620,7 +628,7 @@
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
 				157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */,
-				152AB5991AF6E90400869694 /* SPBottonProgressView.m in Sources */,
+				138C8BCE1AF753D5001B0EAB /* SPBottonProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,

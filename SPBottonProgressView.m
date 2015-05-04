@@ -17,9 +17,10 @@ CGFloat titleLabelWidth = 60.0;
 #define kTextColor   [UIColor darkGrayColor]
 #define kCalAnimateBarColor [UIColor orangeColor]
 #define kTextFont    [UIFont systemFontOfSize:15]
+#define kLabelBackgroundColor  [UIColor lightGrayColor]
 
-#define kAnimationDuration  2.0
-
+#define kAnimationDuration  1.2
+#define kTimeInterval   1.0/60.0
 
 @implementation SPBottonProgressView
 
@@ -39,11 +40,12 @@ CGFloat titleLabelWidth = 60.0;
 
 -(void)initLabels
 {
-    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset, titleLabelWidth, 20) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"耗能"];
+    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"耗能"];
     
     [self addSubview:energyTitleLabel];
     
     
+  
     energyBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, offset, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kTextColor  font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
     energyBackGroundLabel.backgroundColor = [UIColor lightGrayColor];
     energyBackGroundLabel.layer.cornerRadius = labelHeight/2;
@@ -56,7 +58,8 @@ CGFloat titleLabelWidth = 60.0;
     calLabel.layer.cornerRadius = CGRectGetHeight(calLabel.frame)/2;
     calLabel.clipsToBounds = YES;
     calLabel.backgroundColor = kCalAnimateBarColor;
-    calHeadLabel = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y, 0, 0) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    
+    calHeadLabel = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y  - labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
     
     calHeadLabel.layer.cornerRadius = CGRectGetHeight(calLabel.frame)/2;
     calHeadLabel.clipsToBounds = YES;
@@ -68,8 +71,34 @@ CGFloat titleLabelWidth = 60.0;
     [self  addSubview:energyUnittitleLabel];
     
     
+    //脂肪消耗
+    UILabel *fatTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset *2 + labelHeight , titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"燃脂"];
     
-
+    [self addSubview:fatTitleLabel];
+    
+    
+    UILabel *fatUnitLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - titleLabelWidth - offset, offset * 2 + labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"克"];
+    
+    [self addSubview:fatUnitLabel];
+    
+    UILabel *fatBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, offset * 2 + labelHeight, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    fatBackGroundLabel.backgroundColor = kLabelBackgroundColor;
+    fatBackGroundLabel.layer.cornerRadius = CGRectGetHeight(fatBackGroundLabel.frame)/2;
+    fatBackGroundLabel.clipsToBounds = YES;
+    
+    [self addSubview:fatBackGroundLabel];
+    
+    fatLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x, offset * 2 + labelHeight, 0, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    fatLabel.layer.cornerRadius = CGRectGetHeight(fatLabel.frame)/2;
+    fatLabel.clipsToBounds = YES;
+    fatLabel.backgroundColor = kCalAnimateBarColor;
+    
+    [self addSubview:fatLabel];
+    
+    fatHeadLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x,fatBackGroundLabel.frame.origin.y + labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    
+    [self addSubview:fatHeadLabel];
+    
 }
 
 -(UILabel*)getLabelWithFrame:(CGRect)frame TextColor:(UIColor*)color font:(UIFont*)font textAligment:(NSTextAlignment)alignment text:(NSString*)text
@@ -93,12 +122,73 @@ CGFloat titleLabelWidth = 60.0;
        
         CGRect calFrame = calLabel.frame;
         
-        calFrame.size.width = CGRectGetWidth(energyBackGroundLabel.frame)*_calValue ;
+        calFrame.size.width = CGRectGetWidth(energyBackGroundLabel.frame)*_calPersent ;
         calLabel.frame = calFrame;
+        
+        CGRect  calHeadFrame = calHeadLabel.frame;
+        
+        calHeadFrame.origin.x = CGRectGetWidth(calFrame);
+        calHeadLabel.center = CGPointMake(calLabel.frame.size.width + calLabel.frame.origin.x, calHeadLabel.center.y);
+        
+        
+        
+        
+        CGRect fatFrame = fatLabel.frame;
+        
+        fatFrame.size.width = CGRectGetWidth(energyBackGroundLabel.frame) *_fatPersent;
+        
+        fatLabel.frame = fatFrame;
+        
+        CGRect fatHeadFrame = fatHeadLabel.frame;
+        
+        fatHeadFrame.size.width = CGRectGetWidth(fatLabel.frame) *_fatPersent;
+        
+        fatHeadLabel.center = CGPointMake(fatLabel.frame.size.width + fatLabel.frame.origin.x, fatHeadLabel.center.y);
         
         
         
     }];
+    
+    calTextValue = 0.0;
+    
+    fatTextValue = 0.0;
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(changeLabelValue) userInfo:nil repeats:YES];
+    
+    [timer fire];
+    
+}
+
+-(void)changeLabelValue
+{
+    if (calTextValue < _calNum)
+    {
+        
+        calTextValue += kTimeInterval/kAnimationDuration *_calNum;
+        
+          [calHeadLabel sizeToFit];
+         calHeadLabel.text = [NSString stringWithFormat:@"%.2f",calTextValue];
+    }
+    
+    if (fatTextValue < _fatNum)
+    {
+        
+        fatTextValue +=kTimeInterval/kAnimationDuration * _fatNum;
+        
+        [fatHeadLabel sizeToFit];
+        
+    
+        fatHeadLabel.text = [NSString stringWithFormat:@"%.2f",fatTextValue];
+        
+        NSLog(@"%.2f",fatTextValue);
+        
+        
+    }
+    
+  
+
+    
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.
