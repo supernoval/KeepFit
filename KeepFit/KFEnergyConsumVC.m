@@ -16,6 +16,7 @@
 #import "OneDayDataView.h"
 #import "OneWeekDataView.h"
 #import "OneMonthDataView.h"
+#import "SPBottonProgressView.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -73,6 +74,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     NSInteger currentScrollViewPageIndex;
     
     
+    SPBottonProgressView *_todayBottonView;
+    SPBottonProgressView *_yesterDayBottonView;
+    SPBottonProgressView *_lastWeekBottonView;
+    SPBottonProgressView *_lastMonthBottonView;
     
     
     
@@ -234,11 +239,43 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _lastMonthDataView = [[OneMonthDataView alloc]initWithFrame:CGRectMake(kScreenWith *3, -64, kScreenWith, _myscrollView.frame.size.height)];
     
+    CGFloat BottonViewHeight = 250.0;
+    CGFloat BottonViewY = kScreenHeight - BottonViewHeight;
+    
+    NSLog(@"myscrollviewHeight:%.2f",_myscrollView.frame.size.height);
+    
+    _todayBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(0, BottonViewY, kScreenWith, BottonViewHeight)];
+    
+    _yesterDayBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith, BottonViewY, kScreenWith, BottonViewHeight)];
+    
+    _lastWeekBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*2, BottonViewY, kScreenWith, BottonViewHeight)];
+    
+    _lastMonthBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*3, BottonViewY, kScreenWith, BottonViewHeight)];
     
     
     
 }
 
+#pragma mark - 显示底部数据条
+-(void)showBottonViewWithTimeType:(SPBottonProgressView*)bottonView currentSteps:(CGFloat)currentSteps currentDis:(CGFloat)currentDis expectedDis:(CGFloat)expectedDis
+{
+    CGFloat fat = [[KFTranslateWorkOutEnergyToFat shareEnergyToFat] wakingDistanceToFat:currentDis];
+    CGFloat persent = currentDis/expectedDis;
+    
+    NSLog(@"%s,fat:%.2f,currentDis:%.2f",__func__,fat,currentDis);
+    
+    bottonView.fatNum = fat;
+    bottonView.fatPersent = persent;
+    
+    bottonView.calPersent = persent;
+    bottonView.calNum = 90.0;
+    
+    [_myscrollView addSubview:bottonView];
+    
+    [bottonView animate];
+    
+    
+}
 
 
 #pragma mark - 显示一天的数据动画
@@ -252,6 +289,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     [_myscrollView addSubview:onedayview];
     
     [onedayview animate];
+    
+    
 }
 #pragma mark - 显示一个星期数据动画
 -(void)showOneWeekData:(OneWeekDataView*)oneWeekData currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
@@ -264,6 +303,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     [_myscrollView addSubview:oneWeekData];
     
     [oneWeekData animate];
+    
+    
 }
 #pragma mark - 显示一个月数据动画
 -(void)showOneMonthData:(OneMonthDataView*)oneMonthData currentsteps:(CGFloat)steps currentDistance:(CGFloat)currentDis expectDistance:(CGFloat)expectDistance date:(NSDate*)date
@@ -282,7 +323,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 {
     dispatch_async(dispatch_get_main_queue(), ^{
        
-        [self animateBarViewWithTimeType:timetype];
+        [self animatecircleViewWithTimeType:timetype];
         
         
         
@@ -291,11 +332,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 
 #pragma mark - show progressview animation
 
--(void)animateBarViewWithTimeType:(WalkingStepsTimeType)timetype
+-(void)animatecircleViewWithTimeType:(WalkingStepsTimeType)timetype
 {
     double steps = 0.0;
     double expectedSteps = 10000.0;
     double distance = 0.0;
+    double expectedDistance = 10.0;
+    
     
     if (_activityStatus == ActivityIndicatorAnimatingStatusAnimating) {
         
@@ -320,7 +363,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
             
         
-            [self showOneDayData:_todayDataView currentsteps:steps currentDistance:distance expectDistance:10.0 date:[NSDate date]];
+            [self showOneDayData:_todayDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate date]];
+            
+            
+            
+            [self showBottonViewWithTimeType:_todayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
             
             
@@ -332,26 +379,35 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:yesterStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:yesterdaydistanceKey]doubleValue];
             
-            [self showOneDayData:_yesterDayDataView currentsteps:steps currentDistance:distance expectDistance:10.0 date:[NSDate dateWithTimeIntervalSinceNow:-24*60*60]];
+            [self showOneDayData:_yesterDayDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate dateWithTimeIntervalSinceNow:-24*60*60]];
+            
+             [self showBottonViewWithTimeType:_yesterDayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
         }
             break;
         case WalkingStepsTimeTypeLastSevendays:
         {
+            
+            expectedDistance = 100.0;
+            
              steps = [[_stepsMuDict objectForKey:lastsevendaysStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastsevendaysdistanceKey]doubleValue];
             
-            [self showOneWeekData:_lastWeekDataView currentsteps:steps currentDistance:distance expectDistance:30.0 date:[NSDate date]];
+            [self showOneWeekData:_lastWeekDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate date]];
             
-            
+             [self showBottonViewWithTimeType:_lastWeekBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
     
         }
             break;
         case WalkingStepsTimeTypeLastMonth:
         {
+            expectedDistance = 500.0;
+            
              steps = [[_stepsMuDict objectForKey:lastonemonthStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastonemonthdistanceKey]doubleValue];
             
             [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:200 date:[NSDate date]];
+            
+             [self showBottonViewWithTimeType:_lastMonthBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
             
         }
@@ -993,7 +1049,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             if (!hadShowedYesterdayData && hadGetLastTwoDaysSteps && hadGetLastTwoDaysDistance) {
                
-                 [self animateBarViewWithTimeType:WalkingStepsTimeTypeYesterday];
+                 [self animatecircleViewWithTimeType:WalkingStepsTimeTypeYesterday];
                 
                 hadShowedYesterdayData = YES;
             }
@@ -1005,7 +1061,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         {
             if (!hadShowedLastSevenDaysData && hadGetLastSevenDaysDistance && hadGetLastSevenDaysSteps) {
                 
-                [self animateBarViewWithTimeType:WalkingStepsTimeTypeLastSevendays];
+                [self animatecircleViewWithTimeType:WalkingStepsTimeTypeLastSevendays];
                 
                 hadShowedLastSevenDaysData = YES;
                 
@@ -1029,7 +1085,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         {
             if (!hadShowedLastOneMonthData && hadGetLastOneMonthDistance && hadGetLastOneMonthSteps) {
                 
-                [self animateBarViewWithTimeType:WalkingStepsTimeTypeLastMonth];
+                [self animatecircleViewWithTimeType:WalkingStepsTimeTypeLastMonth];
                 hadShowedLastOneMonthData = YES;
                 
                 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="djl-E3-CN1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="djl-E3-CN1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--拍摄-->
@@ -94,11 +94,11 @@
                                 <exclude reference="yWR-Vs-tJD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="0sU-Er-r7p"/>
                                 <exclude reference="ACn-lC-cCo"/>
                                 <exclude reference="Bql-aV-50I"/>
                                 <exclude reference="jKK-8K-bja"/>
                                 <exclude reference="yaD-aV-JKA"/>
-                                <exclude reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -106,11 +106,11 @@
                                 <include reference="yWR-Vs-tJD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0sU-Er-r7p"/>
                                 <include reference="ACn-lC-cCo"/>
                                 <include reference="Bql-aV-50I"/>
                                 <include reference="jKK-8K-bja"/>
                                 <exclude reference="yaD-aV-JKA"/>
-                                <include reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                     </view>
@@ -147,7 +147,7 @@
                                     <constraint firstAttribute="width" constant="208" id="zn3-9H-dTh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">

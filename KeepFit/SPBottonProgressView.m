@@ -19,8 +19,8 @@ CGFloat titleLabelWidth = 60.0;
 #define kTextFont    [UIFont systemFontOfSize:15]
 #define kLabelBackgroundColor  [UIColor lightGrayColor]
 
-#define kAnimationDuration  1.2
-#define kTimeInterval   1.0/60.0
+#define kAnimationDuration  1.0
+#define kTimeInterval   0.1
 
 @implementation SPBottonProgressView
 
@@ -166,8 +166,8 @@ CGFloat titleLabelWidth = 60.0;
         
         calTextValue += kTimeInterval/kAnimationDuration *_calNum;
         
-          [calHeadLabel sizeToFit];
          calHeadLabel.text = [NSString stringWithFormat:@"%.2f",calTextValue];
+         [calHeadLabel sizeToFit];
     }
     
     if (fatTextValue < _fatNum)
@@ -175,11 +175,9 @@ CGFloat titleLabelWidth = 60.0;
         
         fatTextValue +=kTimeInterval/kAnimationDuration * _fatNum;
         
-        [fatHeadLabel sizeToFit];
-        
-    
+       
         fatHeadLabel.text = [NSString stringWithFormat:@"%.2f",fatTextValue];
-        
+         [fatHeadLabel sizeToFit];
         NSLog(@"%.2f",fatTextValue);
         
         

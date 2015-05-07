@@ -67,7 +67,11 @@ KFTranslateWorkOutEnergyToFat *_energytoFat = nil;
     
     CGFloat currentbodyweight = [[[NSUserDefaults standardUserDefaults ] objectForKey:kCurrentWeiht] floatValue];
     
-    
+    if (currentbodyweight == 0) {
+        
+        currentbodyweight = 70.0;
+        
+    }
     CGFloat totalConsumeEnergy = quantity *kWalkingEnergyConsumePerKM(currentbodyweight);
     
     
