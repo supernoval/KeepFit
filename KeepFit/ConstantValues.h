@@ -39,9 +39,13 @@
 //骑自行车 quantitytype
 #define kCyclingDistantQuantityType          [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling]
 
+//graph 填充色
+#define kGraphFillColors  @[[UIColor colorWithRed:0.251 green:0.232 blue:1.000 alpha:1.000],[UIColor colorWithRed:0.282 green:0.945 blue:1.000 alpha:1.000]]
 
+//graph 线条颜色
+#define kGraphColor  [UIColor colorWithRed:0.500 green:0.158 blue:1.000 alpha:1.000]
 
-
-
+//graph 背景颜色
+#define kGraphDetailBackGroundColor [UIColor colorWithRed:0.444 green:0.842 blue:1.000 alpha:1.000]
 
 

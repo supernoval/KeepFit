@@ -17,6 +17,8 @@
 #import "OneWeekDataView.h"
 #import "OneMonthDataView.h"
 #import "SPBottonProgressView.h"
+#import "MPPlot.h"
+#import "MPGraphView.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -79,6 +81,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     SPBottonProgressView *_lastWeekBottonView;
     SPBottonProgressView *_lastMonthBottonView;
     
+    MPGraphView *_todayPlotView;
+    MPGraphView *_yesterdayPlotView;
+  
+    NSMutableArray *_todayDisArray;
+    
     
     
     
@@ -127,6 +134,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _userWeight = 0.0;
     
     _stepsMuDict = [[NSMutableDictionary alloc]init];
+    _todayDisArray = [[NSMutableArray alloc]init];
     
     self.title = @"Keep Fit";
     
@@ -246,13 +254,37 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _todayBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(0, BottonViewY, kScreenWith, BottonViewHeight)];
     
+    
     _yesterDayBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith, BottonViewY, kScreenWith, BottonViewHeight)];
     
     _lastWeekBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*2, BottonViewY, kScreenWith, BottonViewHeight)];
     
     _lastMonthBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*3, BottonViewY, kScreenWith, BottonViewHeight)];
     
+    CGFloat graphViewHeight = 120;
     
+    CGFloat graphViewY = BottonViewY - 40;
+    
+    _todayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight)];
+    _todayPlotView.fillColors = kGraphFillColors;
+    //_todayPlotView.backgroundColor = [UIColor yellowColor];
+    
+    _todayPlotView.graphColor = [UIColor clearColor];
+    _todayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
+    _todayPlotView.curved = YES;
+    
+    
+    
+}
+
+#pragma mark - 显示数据波形图
+-(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values
+{
+    plotView.values = values;
+    
+    [self.view addSubview:plotView];
+    
+    [plotView animate];
     
 }
 
@@ -369,6 +401,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             [self showBottonViewWithTimeType:_todayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
+            [self showChartViewWithView:_todayPlotView values:_todayDisArray];
             
             
             
@@ -547,6 +580,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                    
                         todaydistance += distance;
                         
+                        [_todayDisArray addObject:@(distance)];
                         
                         
                     }

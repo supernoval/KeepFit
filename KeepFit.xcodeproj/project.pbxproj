@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131BD4551B0332B700BC17B1 /* MPPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4501B0332B700BC17B1 /* MPPlot.m */; };
+		131BD4561B0332B700BC17B1 /* MPGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4521B0332B700BC17B1 /* MPGraphView.m */; };
+		131BD4571B0332B700BC17B1 /* MPBarsGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4541B0332B700BC17B1 /* MPBarsGraphView.m */; };
+		131BD45D1B03389100BC17B1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD45A1B03389100BC17B1 /* UIView+Frame.m */; };
+		131BD45E1B03389100BC17B1 /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD45C1B03389100BC17B1 /* UIBezierPath+curved.m */; };
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
 		138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */; };
@@ -83,6 +88,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		131BD44F1B0332B700BC17B1 /* MPPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPlot.h; sourceTree = "<group>"; };
+		131BD4501B0332B700BC17B1 /* MPPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPlot.m; sourceTree = "<group>"; };
+		131BD4511B0332B700BC17B1 /* MPGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGraphView.h; sourceTree = "<group>"; };
+		131BD4521B0332B700BC17B1 /* MPGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGraphView.m; sourceTree = "<group>"; };
+		131BD4531B0332B700BC17B1 /* MPBarsGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBarsGraphView.h; sourceTree = "<group>"; };
+		131BD4541B0332B700BC17B1 /* MPBarsGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBarsGraphView.m; sourceTree = "<group>"; };
+		131BD4591B03389100BC17B1 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		131BD45A1B03389100BC17B1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		131BD45B1B03389100BC17B1 /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
+		131BD45C1B03389100BC17B1 /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
 		136AEA881AE6254D00215720 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
@@ -185,6 +200,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131BD4581B0332C100BC17B1 /* MPPlot */ = {
+			isa = PBXGroup;
+			children = (
+				131BD4591B03389100BC17B1 /* UIView+Frame.h */,
+				131BD45A1B03389100BC17B1 /* UIView+Frame.m */,
+				131BD45B1B03389100BC17B1 /* UIBezierPath+curved.h */,
+				131BD45C1B03389100BC17B1 /* UIBezierPath+curved.m */,
+				131BD44F1B0332B700BC17B1 /* MPPlot.h */,
+				131BD4501B0332B700BC17B1 /* MPPlot.m */,
+				131BD4511B0332B700BC17B1 /* MPGraphView.h */,
+				131BD4521B0332B700BC17B1 /* MPGraphView.m */,
+				131BD4531B0332B700BC17B1 /* MPBarsGraphView.h */,
+				131BD4541B0332B700BC17B1 /* MPBarsGraphView.m */,
+			);
+			name = MPPlot;
+			sourceTree = "<group>";
+		};
 		136AEA871AE6254D00215720 /* CircularProgressView */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,7 +290,6 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
-				138C8BCF1AF753FC001B0EAB /* BottonBarView */,
 				157569D91AE947BD001A6803 /* OneMonthDataView */,
 				157569D51AE94381001A6803 /* OneWeekDataView */,
 				136AEA8E1AE63A7A00215720 /* OneDayView */,
@@ -426,6 +457,8 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
+				131BD4581B0332C100BC17B1 /* MPPlot */,
+				138C8BCF1AF753FC001B0EAB /* BottonBarView */,
 				136AEA871AE6254D00215720 /* CircularProgressView */,
 				B366F9BD1AC1A4D8002A92F4 /* TAlerView */,
 			);
@@ -622,9 +655,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				131BD45D1B03389100BC17B1 /* UIView+Frame.m in Sources */,
+				131BD4551B0332B700BC17B1 /* MPPlot.m in Sources */,
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
 				152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */,
+				131BD4561B0332B700BC17B1 /* MPGraphView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
 				157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */,
@@ -633,6 +669,7 @@
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
 				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
+				131BD4571B0332B700BC17B1 /* MPBarsGraphView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,
 				15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */,
 				136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */,
@@ -642,6 +679,7 @@
 				157569D81AE943D0001A6803 /* OneWeekDataView.m in Sources */,
 				136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */,
 				1542CA221A7A76390035A5B9 /* KeepFit.xcdatamodeld in Sources */,
+				131BD45E1B03389100BC17B1 /* UIBezierPath+curved.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
