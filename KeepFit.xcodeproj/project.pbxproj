@@ -39,6 +39,8 @@
 		1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1542CA721A7C70FD0035A5B9 /* KFHealthStore.m */; };
 		1542CA781A7C758D0035A5B9 /* KeepFit.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 1542CA771A7C758D0035A5B9 /* KeepFit.entitlements */; };
 		1542CA851A7C84B10035A5B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1542CA871A7C84B10035A5B9 /* Localizable.strings */; };
+		155C35C11B04DF4100BC42E1 /* UILabel+GetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 155C35C01B04DF4100BC42E1 /* UILabel+GetLabel.m */; };
+		155C35C41B04DF8200BC42E1 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 155C35C31B04DF8200BC42E1 /* CommonMethods.m */; };
 		157569D81AE943D0001A6803 /* OneWeekDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 157569D71AE943D0001A6803 /* OneWeekDataView.m */; };
 		157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 157569DB1AE947E8001A6803 /* OneMonthDataView.m */; };
 		15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */; };
@@ -155,6 +157,10 @@
 		1542CA861A7C84B10035A5B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1542CA881A7C84B30035A5B9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1542CA891A7C84D10035A5B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		155C35BF1B04DF4100BC42E1 /* UILabel+GetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GetLabel.h"; sourceTree = "<group>"; };
+		155C35C01B04DF4100BC42E1 /* UILabel+GetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GetLabel.m"; sourceTree = "<group>"; };
+		155C35C21B04DF7E00BC42E1 /* CommonMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
+		155C35C31B04DF8200BC42E1 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
 		156090FE1A7FB9A60033305F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationKeys.h; sourceTree = "<group>"; };
 		157569D61AE943D0001A6803 /* OneWeekDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneWeekDataView.h; path = OneWeekDataView/OneWeekDataView.h; sourceTree = "<group>"; };
 		157569D71AE943D0001A6803 /* OneWeekDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneWeekDataView.m; path = OneWeekDataView/OneWeekDataView.m; sourceTree = "<group>"; };
@@ -426,6 +432,15 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
+		155C35BE1B04DF1000BC42E1 /* UIlabelHelper */ = {
+			isa = PBXGroup;
+			children = (
+				155C35BF1B04DF4100BC42E1 /* UILabel+GetLabel.h */,
+				155C35C01B04DF4100BC42E1 /* UILabel+GetLabel.m */,
+			);
+			name = UIlabelHelper;
+			sourceTree = "<group>";
+		};
 		157569D51AE94381001A6803 /* OneWeekDataView */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +484,9 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
+				155C35C21B04DF7E00BC42E1 /* CommonMethods.h */,
+				155C35C31B04DF8200BC42E1 /* CommonMethods.m */,
+				155C35BE1B04DF1000BC42E1 /* UIlabelHelper */,
 				131BD4C01B04750900BC17B1 /* DateHelper */,
 				131BD4581B0332C100BC17B1 /* MPPlot */,
 				138C8BCF1AF753FC001B0EAB /* BottonBarView */,
@@ -673,6 +691,7 @@
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
 				152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */,
+				155C35C11B04DF4100BC42E1 /* UILabel+GetLabel.m in Sources */,
 				131BD4561B0332B700BC17B1 /* MPGraphView.m in Sources */,
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
@@ -682,6 +701,7 @@
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
+				155C35C41B04DF8200BC42E1 /* CommonMethods.m in Sources */,
 				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
 				131BD4571B0332B700BC17B1 /* MPBarsGraphView.m in Sources */,
 				15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */,

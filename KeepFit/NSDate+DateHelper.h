@@ -11,6 +11,8 @@
 @interface NSDate(DateHelper)
 
 +(NSString*)HHmmStringWithDate:(NSDate*)date;
++(NSString*)HHStringWithDate:(NSDate*)date;
++(NSString*)mmStringWithDate:(NSDate*)date;
 
 
 @end

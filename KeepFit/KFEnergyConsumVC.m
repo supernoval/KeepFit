@@ -20,6 +20,7 @@
 #import "MPPlot.h"
 #import "MPGraphView.h"
 #import "NSDate+DateHelper.h"
+#import "CommentMeths.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -253,7 +254,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat BottonViewHeight = 250.0;
     CGFloat BottonViewY = kScreenHeight - BottonViewHeight + 30;
     
-    NSLog(@"myscrollviewHeight:%.2f",_myscrollView.frame.size.height);
+  //  NSLog(@"myscrollviewHeight:%.2f",_myscrollView.frame.size.height);
     
     _todayBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(0, BottonViewY, kScreenWith, BottonViewHeight)];
     
@@ -284,11 +285,32 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 #pragma mark - 显示数据波形图
 -(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values
 {
-    plotView.values = values;
     
-    [_myscrollView addSubview:plotView];
+    NSMutableArray *muValues = [[NSMutableArray alloc]init];
     
-    [plotView animate];
+    for (int i = 0; i < values.count; i++) {
+        
+        NSDictionary *oneValue = [values objectAtIndex:i];
+        
+        CGFloat value = [[oneValue objectForKey:@"value"]floatValue];
+        
+        [muValues addObject:@(value)];
+        
+        
+        
+    }
+    
+    if (muValues.count > 0) {
+        
+          plotView.values = muValues;
+        
+        [_myscrollView addSubview:plotView];
+        
+        [plotView animate];
+    }
+
+    
+
     
 }
 
@@ -298,7 +320,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat fat = [[KFTranslateWorkOutEnergyToFat shareEnergyToFat] wakingDistanceToFat:currentDis];
     CGFloat persent = currentDis/expectedDis;
     
-    NSLog(@"%s,fat:%.2f,currentDis:%.2f",__func__,fat,currentDis);
+    //NSLog(@"%s,fat:%.2f,currentDis:%.2f",__func__,fat,currentDis);
     
     bottonView.fatNum = fat;
     bottonView.fatPersent = persent;
@@ -396,7 +418,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             distance = [[_stepsMuDict objectForKey:todaydistanceKey]doubleValue];
        
         
-            NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
+            //NSLog(@"%s,steps:%.2f,distance:%.2f",__func__,steps,distance);
             
         
             [self showOneDayData:_todayDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate date]];
@@ -805,11 +827,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 NSString *starttimeStr  = [NSDate HHmmStringWithDate:quantityStartDate];
                 NSString *endtimeStr = [NSDate HHmmStringWithDate:quantityEndDate];
                 
-              
+                NSString *hourStr = [NSDate HHStringWithDate:quantityStartDate];
+                NSString *minuteStr = [NSDate mmStringWithDate:quantityStartDate];
                 
-               // NSLog(@"%s,time:%f",__func__,time);
                 
-               // NSLog(@"startDate:%@",startDate);
+//                NSLog(@"%s,time:%@",__func__,starttimeStr);
+                
+//                NSLog(@"startDate:%@",startDate);
                 
                 
                 if (timetype == WalkingStepsTimeTypeLastTwodays)
@@ -823,7 +847,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                         
                         todaySteps += steps;
                     
-                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps)};
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps),@"startdate":startDate,@"hour":hourStr,@"minute":minuteStr};
+                    
                     
                     [_todayStepsArray addObject:dataDict];
                     
@@ -849,8 +874,20 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 
             
                 
-            }
+             }
             
+            
+//            NSSortDescriptor *sortDes = [[NSSortDescriptor alloc]initWithKey:@"hour" ascending:YES];
+//            NSSortDescriptor *minuteDes = [[NSSortDescriptor alloc]initWithKey:@"minute" ascending:YES];
+//            NSArray *sort = [[NSArray alloc]initWithObjects:sortDes, nil];
+            
+            
+//            [_todayStepsArray sortUsingDescriptors:@[sortDes]];
+            
+             //[_todayStepsArray sortUsingDescriptors:@[sortDes]];
+            
+            
+//            NSLog(@"%@",_todayStepsArray);
             
             switch (timetype) {
                 case WalkingStepsTimeTypeLastTwodays:
@@ -870,7 +907,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     }
                  
                     
-                     NSLog(@"todaySteps steps:%f",todaySteps);
+                   //  NSLog(@"todaySteps steps:%f",todaySteps);
                     
                     
                 }
@@ -891,7 +928,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                         
                     }
                     
-                           NSLog(@"yesterday steps:%f",yestdaySteps);
+                        //   NSLog(@"yesterday steps:%f",yestdaySteps);
                 }
                     break;
                 case WalkingStepsTimeTypeLastMonth:
@@ -922,7 +959,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
        
             
-            NSLog(@"totalSteps:%f",totalSteps);
+            //NSLog(@"totalSteps:%f",totalSteps);
             
             
         }
@@ -958,7 +995,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
              _userWeight = [quantity doubleValueForUnit:weightUnit];
             
-            NSLog(@"get usersweight:%.1f",_userWeight);
+           // NSLog(@"get usersweight:%.1f",_userWeight);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                
@@ -1010,7 +1047,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         }
         else
         {
-            NSLog(@"sucess save weight");
+         //   NSLog(@"sucess save weight");
             
             
         }

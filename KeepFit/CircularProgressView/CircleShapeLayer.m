@@ -122,7 +122,7 @@
     pathAnimation.toValue = @(self.percent);
     pathAnimation.removedOnCompletion = YES;
     self.progressLayer.strokeEnd = self.percent;
-      NSLog(@"Percent = %.2f,currentDis:%.2f,expectedDis:%.2f", _percent,_currentDistance,_expectedDistance);
+     // NSLog(@"Percent = %.2f,currentDis:%.2f,expectedDis:%.2f", _percent,_currentDistance,_expectedDistance);
     
     [self.progressLayer addAnimation:pathAnimation forKey:nil];
     

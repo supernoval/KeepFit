@@ -8,7 +8,7 @@
 
 #import "MPGraphView.h"
 #import "UIBezierPath+curved.h"
-
+#import "CommentMeths.h"
 
 @implementation MPGraphView
 
@@ -71,16 +71,27 @@
             [path moveToPoint:point];
         
         
-        MPButton *button=[MPButton buttonWithType:UIButtonTypeCustom tappableAreaOffset:UIOffsetMake(25, 25)];
-        [button setBackgroundColor:[UIColor clearColor]];
-        button.layer.cornerRadius=3;
-        button.frame=CGRectMake(0, 0, 6, 6);
-        button.center=point;
-        [button addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
-        button.tag=i;
-        [self addSubview:button];
+//        MPButton *button=[MPButton buttonWithType:UIButtonTypeCustom tappableAreaOffset:UIOffsetMake(25, 25)];
+//        [button setBackgroundColor:[UIColor clearColor]];
+//        button.layer.cornerRadius=3;
+//        button.frame=CGRectMake(0, 0, 6, 6);
+//        button.center=point;
+//        [button addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
+//        button.tag=i;
+//        [self addSubview:button];
+//        
+//        [buttons addObject:button];
         
-        [buttons addObject:button];
+        CGPoint labelPoint = [self labelPointAtIndex:i];
+        
+        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 6, 6)];
+        timeLabel.center = labelPoint;
+        timeLabel.textAlignment = NSTextAlignmentCenter;
+        timeLabel.textColor = [UIColor redColor];
+        timeLabel.text = @"12";
+        
+        [self addSubview:timeLabel];
+        
         
         [path addLineToPoint:point];
         
@@ -131,6 +142,14 @@
 
     
     return CGPointMake(space+(space)*index,self.height-((self.height-PADDING*2)*[[points objectAtIndex:index] floatValue]+PADDING));
+//    return CGPointMake(space+(space)*index,self.height + PADDING);
+}
+
+-(CGPoint)labelPointAtIndex:(NSInteger)index
+{
+        CGFloat space=(self.frame.size.width)/(points.count+1);
+    
+        return CGPointMake(space+(space)*index,self.height + PADDING);
 }
 
 

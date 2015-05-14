@@ -17,8 +17,12 @@
     
     
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSInteger uinitFlag = NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSInteger uinitFlag =NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents *components = [currentCalendar components:uinitFlag fromDate:date];
+    
+//    NSInteger year = [components year];
+//    NSInteger month = [components month];
+//    NSInteger day = [components day];
     
     NSInteger hour = [components hour];
     
@@ -31,6 +35,58 @@
     
     return dateStr;
     
+}
+
++(NSString*)HHStringWithDate:(NSDate *)date
+{
+    
+    NSString *dateStr = @"";
+    
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSInteger uinitFlag =NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *components = [currentCalendar components:uinitFlag fromDate:date];
+    
+//    NSInteger year = [components year];
+//    NSInteger month = [components month];
+//    NSInteger day = [components day];
+    
+    NSInteger hour = [components hour];
+    
+//    NSInteger minute = [components minute];
+    
+    dateStr = [NSString stringWithFormat:@"%ld",hour];
+    
+    
+    
+    
+    return dateStr;
+}
+
++(NSString*)mmStringWithDate:(NSDate *)date
+{
+    
+    NSString *dateStr = @"";
+    
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSInteger uinitFlag =NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *components = [currentCalendar components:uinitFlag fromDate:date];
+    
+//    NSInteger year = [components year];
+//    NSInteger month = [components month];
+//    NSInteger day = [components day];
+//    
+//    NSInteger hour = [components hour];
+    
+    NSInteger minute = [components minute];
+    
+    dateStr = [NSString stringWithFormat:@"%ld",minute];
+    
+    
+    
+    
+    return dateStr;
 }
 
 @end

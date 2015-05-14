@@ -178,7 +178,7 @@ CGFloat titleLabelWidth = 60.0;
        
         fatHeadLabel.text = [NSString stringWithFormat:@"%.2f",fatTextValue];
          [fatHeadLabel sizeToFit];
-        NSLog(@"%.2f",fatTextValue);
+      //  NSLog(@"%.2f",fatTextValue);
         
         
     }
