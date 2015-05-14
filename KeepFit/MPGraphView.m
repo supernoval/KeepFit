@@ -154,12 +154,12 @@
 //        
 //    }];
     
-    CABasicAnimation *gradientAnimation = [CABasicAnimation animation];
-    gradientAnimation.fromValue = @(0.0);
-    gradientAnimation.toValue = @(2);
-    gradientAnimation.duration = self.animationDuration;
-    
-    [gradient addAnimation:gradientAnimation forKey:@"gradient"];
+//    CABasicAnimation *gradientAnimation = [CABasicAnimation animation];
+//    gradientAnimation.fromValue = @(0.0);
+//    gradientAnimation.toValue = @(2);
+//    gradientAnimation.duration = self.animationDuration;
+//    
+//    [gradient addAnimation:gradientAnimation forKey:@"gradient"];
     
     
     
@@ -185,7 +185,7 @@
     
     buttons=[[NSMutableArray alloc] init];
     
-    //CGFloat delay=((CGFloat)self.animationDuration)/(CGFloat)points.count;
+    CGFloat delay=((CGFloat)self.animationDuration)/(CGFloat)points.count;
     
 
     
@@ -205,7 +205,7 @@
         button.transform=CGAffineTransformMakeScale(0,0);
         [self addSubview:button];
         
-        //[self performSelector:@selector(displayPoint:) withObject:button afterDelay:delay*i];
+        [self performSelector:@selector(displayPoint:) withObject:button afterDelay:delay*i];
         
         [buttons addObject:button];
         

@@ -19,6 +19,7 @@
 #import "SPBottonProgressView.h"
 #import "MPPlot.h"
 #import "MPGraphView.h"
+#import "NSDate+DateHelper.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -86,6 +87,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
   
     NSMutableArray *_todayDisArray;
     
+    NSMutableArray *_todayStepsArray;
     
     
     
@@ -135,6 +137,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _stepsMuDict = [[NSMutableDictionary alloc]init];
     _todayDisArray = [[NSMutableArray alloc]init];
+    _todayStepsArray = [[NSMutableArray alloc]init];
     
     self.title = @"Keep Fit";
     
@@ -248,7 +251,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _lastMonthDataView = [[OneMonthDataView alloc]initWithFrame:CGRectMake(kScreenWith *3, -64, kScreenWith, _myscrollView.frame.size.height)];
     
     CGFloat BottonViewHeight = 250.0;
-    CGFloat BottonViewY = kScreenHeight - BottonViewHeight;
+    CGFloat BottonViewY = kScreenHeight - BottonViewHeight + 30;
     
     NSLog(@"myscrollviewHeight:%.2f",_myscrollView.frame.size.height);
     
@@ -261,16 +264,17 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _lastMonthBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*3, BottonViewY, kScreenWith, BottonViewHeight)];
     
-    CGFloat graphViewHeight = 120;
+    CGFloat graphViewHeight = 150;
     
-    CGFloat graphViewY = BottonViewY - 40;
+    CGFloat graphViewY = BottonViewY - graphViewHeight - BarBottomPADDING *2;
     
-    _todayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight)];
+    _todayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
     _todayPlotView.fillColors = kGraphFillColors;
     //_todayPlotView.backgroundColor = [UIColor yellowColor];
     
     _todayPlotView.graphColor = [UIColor clearColor];
     _todayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
+    _todayPlotView.detailTextColor = [UIColor whiteColor];
     _todayPlotView.curved = YES;
     
     
@@ -282,7 +286,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 {
     plotView.values = values;
     
-    [self.view addSubview:plotView];
+    [_myscrollView addSubview:plotView];
     
     [plotView animate];
     
@@ -401,7 +405,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             [self showBottonViewWithTimeType:_todayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
-            [self showChartViewWithView:_todayPlotView values:_todayDisArray];
+            [self showChartViewWithView:_todayPlotView values:_todayStepsArray];
             
             
             
@@ -792,8 +796,19 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 
                 HKUnit *countUnit = [HKUnit countUnit];
                 
+                
                 double steps = [quantity doubleValueForUnit:countUnit];
-     
+                
+                NSDate *quantityStartDate = oneSample.startDate;
+                NSDate *quantityEndDate = oneSample.endDate;
+                
+                NSString *starttimeStr  = [NSDate HHmmStringWithDate:quantityStartDate];
+                NSString *endtimeStr = [NSDate HHmmStringWithDate:quantityEndDate];
+                
+              
+                
+               // NSLog(@"%s,time:%f",__func__,time);
+                
                // NSLog(@"startDate:%@",startDate);
                 
                 
@@ -807,6 +822,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                         
                         todaySteps += steps;
+                    
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps)};
+                    
+                    [_todayStepsArray addObject:dataDict];
+                    
                     
                         
                     

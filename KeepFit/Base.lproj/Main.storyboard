@@ -87,6 +87,7 @@
                             <constraint firstAttribute="trailing" secondItem="yWR-Vs-tJD" secondAttribute="trailing" id="ACn-lC-cCo"/>
                             <constraint firstItem="yWR-Vs-tJD" firstAttribute="top" secondItem="o1f-La-jpL" secondAttribute="top" constant="64" id="Bql-aV-50I"/>
                             <constraint firstItem="yWR-Vs-tJD" firstAttribute="leading" secondItem="o1f-La-jpL" secondAttribute="leading" id="jKK-8K-bja"/>
+                            <constraint firstItem="yWR-Vs-tJD" firstAttribute="top" secondItem="x2i-b9-QFS" secondAttribute="bottom" id="ncF-ls-zOz"/>
                             <constraint firstItem="yWR-Vs-tJD" firstAttribute="top" secondItem="x2i-b9-QFS" secondAttribute="bottom" id="yaD-aV-JKA"/>
                         </constraints>
                         <variation key="default">
@@ -94,11 +95,12 @@
                                 <exclude reference="yWR-Vs-tJD"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0sU-Er-r7p"/>
                                 <exclude reference="ACn-lC-cCo"/>
                                 <exclude reference="Bql-aV-50I"/>
                                 <exclude reference="jKK-8K-bja"/>
+                                <exclude reference="ncF-ls-zOz"/>
                                 <exclude reference="yaD-aV-JKA"/>
+                                <exclude reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -106,11 +108,12 @@
                                 <include reference="yWR-Vs-tJD"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0sU-Er-r7p"/>
                                 <include reference="ACn-lC-cCo"/>
-                                <include reference="Bql-aV-50I"/>
+                                <exclude reference="Bql-aV-50I"/>
                                 <include reference="jKK-8K-bja"/>
+                                <include reference="ncF-ls-zOz"/>
                                 <exclude reference="yaD-aV-JKA"/>
+                                <include reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                     </view>

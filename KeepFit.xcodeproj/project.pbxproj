@@ -12,6 +12,7 @@
 		131BD4571B0332B700BC17B1 /* MPBarsGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4541B0332B700BC17B1 /* MPBarsGraphView.m */; };
 		131BD45D1B03389100BC17B1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD45A1B03389100BC17B1 /* UIView+Frame.m */; };
 		131BD45E1B03389100BC17B1 /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD45C1B03389100BC17B1 /* UIBezierPath+curved.m */; };
+		131BD4C31B04753B00BC17B1 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4C21B04753B00BC17B1 /* NSDate+DateHelper.m */; };
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
 		138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */; };
@@ -98,6 +99,8 @@
 		131BD45A1B03389100BC17B1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		131BD45B1B03389100BC17B1 /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
 		131BD45C1B03389100BC17B1 /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
+		131BD4C11B04753B00BC17B1 /* NSDate+DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateHelper.h"; sourceTree = "<group>"; };
+		131BD4C21B04753B00BC17B1 /* NSDate+DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateHelper.m"; sourceTree = "<group>"; };
 		136AEA881AE6254D00215720 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
@@ -215,6 +218,15 @@
 				131BD4541B0332B700BC17B1 /* MPBarsGraphView.m */,
 			);
 			name = MPPlot;
+			sourceTree = "<group>";
+		};
+		131BD4C01B04750900BC17B1 /* DateHelper */ = {
+			isa = PBXGroup;
+			children = (
+				131BD4C11B04753B00BC17B1 /* NSDate+DateHelper.h */,
+				131BD4C21B04753B00BC17B1 /* NSDate+DateHelper.m */,
+			);
+			name = DateHelper;
 			sourceTree = "<group>";
 		};
 		136AEA871AE6254D00215720 /* CircularProgressView */ = {
@@ -457,6 +469,7 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
+				131BD4C01B04750900BC17B1 /* DateHelper */,
 				131BD4581B0332C100BC17B1 /* MPPlot */,
 				138C8BCF1AF753FC001B0EAB /* BottonBarView */,
 				136AEA871AE6254D00215720 /* CircularProgressView */,
@@ -664,6 +677,7 @@
 				B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */,
 				B396B6F31AC3EAC500D81BD5 /* KFTranslateWorkOutEnergyToFat.m in Sources */,
 				157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */,
+				131BD4C31B04753B00BC17B1 /* NSDate+DateHelper.m in Sources */,
 				138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */,
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
