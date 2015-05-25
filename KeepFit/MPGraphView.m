@@ -68,8 +68,9 @@
         CGPoint point=[self pointAtIndex:i];
         
         if(i==0)
+        {
             [path moveToPoint:point];
-        
+        }
         
 //        MPButton *button=[MPButton buttonWithType:UIButtonTypeCustom tappableAreaOffset:UIOffsetMake(25, 25)];
 //        [button setBackgroundColor:[UIColor clearColor]];
@@ -84,11 +85,12 @@
         
         CGPoint labelPoint = [self labelPointAtIndex:i];
         
-        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 6, 6)];
-        timeLabel.center = labelPoint;
+        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 8, 6)];
+        timeLabel.center = CGPointMake(point.x, self.height + PADDING);
         timeLabel.textAlignment = NSTextAlignmentCenter;
         timeLabel.textColor = [UIColor redColor];
         timeLabel.text = @"12";
+        timeLabel.font = [UIFont systemFontOfSize:6];
         
         [self addSubview:timeLabel];
         
