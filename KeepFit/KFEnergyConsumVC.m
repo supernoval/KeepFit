@@ -320,13 +320,15 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat fat = [[KFTranslateWorkOutEnergyToFat shareEnergyToFat] wakingDistanceToFat:currentDis];
     CGFloat persent = currentDis/expectedDis;
     
+    CGFloat calNum = [[KFTranslateWorkOutEnergyToFat shareEnergyToFat] walkingDistanceToCal:currentDis];
+    
     //NSLog(@"%s,fat:%.2f,currentDis:%.2f",__func__,fat,currentDis);
     
     bottonView.fatNum = fat;
     bottonView.fatPersent = persent;
     
     bottonView.calPersent = persent;
-    bottonView.calNum = 90.0;
+    bottonView.calNum = calNum;
     
     [_myscrollView addSubview:bottonView];
     

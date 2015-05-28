@@ -15,6 +15,7 @@
 		131BD4C31B04753B00BC17B1 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4C21B04753B00BC17B1 /* NSDate+DateHelper.m */; };
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
+		137F24D11B16EB4700A94CE1 /* MyGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 137F24D01B16EB4700A94CE1 /* MyGraphView.m */; };
 		138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */; };
 		1520F4EB1A7CDCAB00E6ACF5 /* CommentMeths.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EA1A7CDCAB00E6ACF5 /* CommentMeths.m */; };
 		1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1520F4EE1A7CFDE000E6ACF5 /* GraphBarView.m */; };
@@ -107,6 +108,8 @@
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		137F24CF1B16EB4700A94CE1 /* MyGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGraphView.h; path = MyGraphView/MyGraphView.h; sourceTree = "<group>"; };
+		137F24D01B16EB4700A94CE1 /* MyGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyGraphView.m; path = MyGraphView/MyGraphView.m; sourceTree = "<group>"; };
 		138C8BD71AF9AC0A001B0EAB /* SPBottonProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPBottonProgressView.h; sourceTree = "<group>"; };
 		138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBottonProgressView.m; sourceTree = "<group>"; };
 		1520F4E11A7C8F7F00E6ACF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -255,6 +258,15 @@
 			name = OneDayView;
 			sourceTree = "<group>";
 		};
+		137F24CE1B16EAEC00A94CE1 /* MyGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				137F24CF1B16EB4700A94CE1 /* MyGraphView.h */,
+				137F24D01B16EB4700A94CE1 /* MyGraphView.m */,
+			);
+			name = MyGraphView;
+			sourceTree = "<group>";
+		};
 		138C8BCF1AF753FC001B0EAB /* BottonBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +320,7 @@
 		1542CA181A7A76390035A5B9 /* KeepFit */ = {
 			isa = PBXGroup;
 			children = (
+				137F24CE1B16EAEC00A94CE1 /* MyGraphView */,
 				157569D91AE947BD001A6803 /* OneMonthDataView */,
 				157569D51AE94381001A6803 /* OneWeekDataView */,
 				136AEA8E1AE63A7A00215720 /* OneDayView */,
@@ -701,6 +714,7 @@
 				1542CA1F1A7A76390035A5B9 /* AppDelegate.m in Sources */,
 				1542CA1C1A7A76390035A5B9 /* main.m in Sources */,
 				1520F4EF1A7CFDE000E6ACF5 /* GraphBarView.m in Sources */,
+				137F24D11B16EB4700A94CE1 /* MyGraphView.m in Sources */,
 				155C35C41B04DF8200BC42E1 /* CommonMethods.m in Sources */,
 				B366F9BC1AC1A4AE002A92F4 /* TAlertView.m in Sources */,
 				131BD4571B0332B700BC17B1 /* MPBarsGraphView.m in Sources */,

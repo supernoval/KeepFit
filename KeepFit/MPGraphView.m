@@ -83,16 +83,16 @@
 //        
 //        [buttons addObject:button];
         
-        CGPoint labelPoint = [self labelPointAtIndex:i];
+//        CGPoint labelPoint = [self labelPointAtIndex:i];
         
-        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 8, 6)];
-        timeLabel.center = CGPointMake(point.x, self.height + PADDING);
-        timeLabel.textAlignment = NSTextAlignmentCenter;
-        timeLabel.textColor = [UIColor redColor];
-        timeLabel.text = @"12";
-        timeLabel.font = [UIFont systemFontOfSize:6];
-        
-        [self addSubview:timeLabel];
+//        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 8, 6)];
+//        timeLabel.center = CGPointMake(point.x, self.height + PADDING);
+//        timeLabel.textAlignment = NSTextAlignmentCenter;
+//        timeLabel.textColor = [UIColor redColor];
+//        timeLabel.text = @"12";
+//        timeLabel.font = [UIFont systemFontOfSize:6];
+//        
+//        [self addSubview:timeLabel];
         
         
         [path addLineToPoint:point];

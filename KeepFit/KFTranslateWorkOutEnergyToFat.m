@@ -46,6 +46,21 @@ KFTranslateWorkOutEnergyToFat *_energytoFat = nil;
     
 }
 
+-(CGFloat)walkingDistanceToCal:(CGFloat)distance
+{
+    
+    CGFloat currentbodyweight = [[[NSUserDefaults standardUserDefaults ] objectForKey:kCurrentWeiht] floatValue];
+    
+    if (currentbodyweight == 0) {
+        
+        currentbodyweight = 70.0;
+        
+    }
+    CGFloat totalConsumeEnergy = distance *kWalkingEnergyConsumePerKM(currentbodyweight);
+    
+    return totalConsumeEnergy;
+    
+}
 -(CGFloat)wakingDistanceToFat:(CGFloat)distance
 {
     

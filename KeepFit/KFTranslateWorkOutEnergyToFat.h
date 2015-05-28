@@ -32,5 +32,8 @@ typedef NS_ENUM(NSInteger, KFWorkOutEnergyType)
 
 -(CGFloat)wakingDistanceToFat:(CGFloat)distance;
 
+-(CGFloat)walkingDistanceToCal:(CGFloat)distance;
+
+
 
 @end
