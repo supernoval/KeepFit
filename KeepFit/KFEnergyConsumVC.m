@@ -21,6 +21,7 @@
 #import "MPGraphView.h"
 #import "NSDate+DateHelper.h"
 #import "CommentMeths.h"
+#import "KFGraphView.h"
 
 static NSString *todayStepKey = @"todaysteps";
 static NSString *yesterStepKey = @"yesterdaysteps";
@@ -90,6 +91,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     NSMutableArray *_todayStepsArray;
     
+    NSMutableArray *_yesterStepsArray;
+    
+    
+    KFGraphView *_todayGraphView;
     
     
     
@@ -139,6 +144,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _stepsMuDict = [[NSMutableDictionary alloc]init];
     _todayDisArray = [[NSMutableArray alloc]init];
     _todayStepsArray = [[NSMutableArray alloc]init];
+    _yesterStepsArray = [[NSMutableArray alloc]init];
+    
     
     self.title = @"Keep Fit";
     
@@ -278,6 +285,15 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _todayPlotView.detailTextColor = [UIColor whiteColor];
     _todayPlotView.curved = YES;
     
+    _yesterdayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING + kScreenWith,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
+    _yesterdayPlotView.fillColors = kGraphFillColors;
+    //_todayPlotView.backgroundColor = [UIColor yellowColor];
+    
+    _yesterdayPlotView.graphColor = [UIColor clearColor];
+    _yesterdayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
+    _yesterdayPlotView.detailTextColor = [UIColor whiteColor];
+    _yesterdayPlotView.curved = YES;
+    
     
     
 }
@@ -300,9 +316,42 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         
     }
     
-    if (muValues.count > 0) {
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
+    CGFloat totalValue = 0.0;
+    
+    for (int i = 0; i < muValues.count; i++)
+    {
         
-          plotView.values = muValues;
+      CGFloat oneValue   = [[muValues objectAtIndex:i]floatValue];
+        
+        totalValue += oneValue;
+        
+        
+        [newValues addObject:@(totalValue)];
+        
+        
+        
+    }
+    
+//    if (muValues.count > 0) {
+//        
+//       // [self.view addSubview:_todayGraphView];
+//        
+//        [_myscrollView addSubview:plotView];
+//    
+//        plotView.expectValue = 1000;
+//        plotView.points = muValues;
+//        
+//        [plotView animate];
+//        
+//        
+//    }
+    
+    if (newValues.count > 0) {
+        
+          plotView.values = newValues;
+        NSLog(@"newValues:%@,values:%@",newValues,muValues);
+        
         
         [_myscrollView addSubview:plotView];
         
@@ -397,7 +446,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     double steps = 0.0;
     double expectedSteps = 10000.0;
     double distance = 0.0;
-    double expectedDistance = 10.0;
+    double expectedDistance = 50.0;
     
     
     if (_activityStatus == ActivityIndicatorAnimatingStatusAnimating) {
@@ -443,6 +492,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             [self showOneDayData:_yesterDayDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate dateWithTimeIntervalSinceNow:-24*60*60]];
             
              [self showBottonViewWithTimeType:_yesterDayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
+            
+                 [self showChartViewWithView:_yesterdayPlotView values:_yesterStepsArray];
         }
             break;
         case WalkingStepsTimeTypeLastSevendays:
@@ -865,6 +916,12 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 {
                     
                        yestdaySteps += steps;
+                    
+                    
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps),@"startdate":startDate,@"hour":hourStr,@"minute":minuteStr};
+                    
+                    
+                    [_yesterStepsArray addObject:dataDict];
                     
                 }
            
