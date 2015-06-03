@@ -46,6 +46,7 @@
 		157569DC1AE947E8001A6803 /* OneMonthDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 157569DB1AE947E8001A6803 /* OneMonthDataView.m */; };
 		15A4CBE21AAF4043002375AA /* KFTakingPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */; };
 		15A4CBE51AB08E6F002375AA /* KFTakePotoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */; };
+		15EB02B41B196CD6003A18F6 /* KFGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EB02B31B196CD6003A18F6 /* KFGraphView.m */; };
 		B366F99A1AC1379D002A92F4 /* RootViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9991AC1379D002A92F4 /* RootViewContorller.m */; };
 		B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F99D1AC140B7002A92F4 /* KFWelComeFirstViewController.m */; };
 		B366F9B91AC187CF002A92F4 /* KFWelComeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B366F9B81AC187CF002A92F4 /* KFWelComeSecondViewController.m */; };
@@ -173,6 +174,8 @@
 		15A4CBE11AAF4043002375AA /* KFTakingPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTakingPictureViewController.m; sourceTree = "<group>"; };
 		15A4CBE31AB08E6F002375AA /* KFTakePotoBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFTakePotoBasicViewController.h; sourceTree = "<group>"; };
 		15A4CBE41AB08E6F002375AA /* KFTakePotoBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFTakePotoBasicViewController.m; sourceTree = "<group>"; };
+		15EB02B21B196CD6003A18F6 /* KFGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KFGraphView.h; path = MyGraphView/KFGraphView.h; sourceTree = "<group>"; };
+		15EB02B31B196CD6003A18F6 /* KFGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFGraphView.m; path = MyGraphView/KFGraphView.m; sourceTree = "<group>"; };
 		B366F9981AC1379D002A92F4 /* RootViewContorller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewContorller.h; sourceTree = "<group>"; };
 		B366F9991AC1379D002A92F4 /* RootViewContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewContorller.m; sourceTree = "<group>"; };
 		B366F99C1AC140B7002A92F4 /* KFWelComeFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFWelComeFirstViewController.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 			children = (
 				137F24CF1B16EB4700A94CE1 /* MyGraphView.h */,
 				137F24D01B16EB4700A94CE1 /* MyGraphView.m */,
+				15EB02B21B196CD6003A18F6 /* KFGraphView.h */,
+				15EB02B31B196CD6003A18F6 /* KFGraphView.m */,
 			);
 			name = MyGraphView;
 			sourceTree = "<group>";
@@ -701,6 +706,7 @@
 			files = (
 				131BD45D1B03389100BC17B1 /* UIView+Frame.m in Sources */,
 				131BD4551B0332B700BC17B1 /* MPPlot.m in Sources */,
+				15EB02B41B196CD6003A18F6 /* KFGraphView.m in Sources */,
 				1542CA731A7C70FD0035A5B9 /* KFHealthStore.m in Sources */,
 				B366F99E1AC140B7002A92F4 /* KFWelComeFirstViewController.m in Sources */,
 				152C74EE1AE69BFE005509EB /* OneDayDataView.m in Sources */,
