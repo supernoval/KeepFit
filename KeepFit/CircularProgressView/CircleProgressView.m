@@ -6,12 +6,7 @@
 //  Copyright (c) 2014 Mobistart. All rights reserved.
 //
 
-#define kLabelHeight 20.0
-#define kHelveticaNeue    @"HelveticaNeue"
-#define kHelveticaNeue_Bold  @"HelveticaNeue-Bold"
-#define kTimerschduleInterval  0.01
-//动画环颜色
-#define kCircleProgressViewColor    [UIColor colorWithRed:50.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0]
+
 
 
 #import "CircleProgressView.h"

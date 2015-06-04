@@ -13,9 +13,12 @@
 @interface MPGraphView : MPPlot{
     
     CAGradientLayer *gradient;
+    CAShapeLayer *lineLayer;
+    
 }
 
 @property (nonatomic,assign) BOOL curved;
 @property (nonatomic,retain) NSArray *fillColors; // array of colors or CGColor
+@property (nonatomic,strong) UIColor *lineColor;
 
 @end

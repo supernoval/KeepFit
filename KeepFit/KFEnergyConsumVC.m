@@ -283,15 +283,17 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _todayPlotView.graphColor = [UIColor clearColor];
     _todayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
     _todayPlotView.detailTextColor = [UIColor whiteColor];
+    _todayPlotView.lineColor = [UIColor redColor];
     _todayPlotView.curved = YES;
     
-    _yesterdayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING + kScreenWith,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
+    _yesterdayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING  + kScreenWith,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
     _yesterdayPlotView.fillColors = kGraphFillColors;
     //_todayPlotView.backgroundColor = [UIColor yellowColor];
     
     _yesterdayPlotView.graphColor = [UIColor clearColor];
     _yesterdayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
     _yesterdayPlotView.detailTextColor = [UIColor whiteColor];
+    _yesterdayPlotView.lineColor = kCircleProgressViewColor;
     _yesterdayPlotView.curved = YES;
     
     
@@ -330,6 +332,39 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         [newValues addObject:@(totalValue)];
         
         
+        
+    }
+    
+    NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
+    
+    if (newValues.count > 24)
+    {
+        
+        
+        for (NSInteger i = 0; i < newValues.count; i++)
+        {
+            
+            if (i%5 == 0)
+            {
+                
+                CGFloat value = [[newValues objectAtIndex:i]floatValue];
+                
+                [temNewValue addObject:@(value)];
+                
+                
+                
+            }
+            
+            if (i == newValues.count - 1 && i%5 != 0) {
+                
+                CGFloat value = [[newValues objectAtIndex:i]floatValue];
+                
+                [temNewValue addObject:@(value)];
+                
+            }
+            
+            
+        }
         
     }
     
@@ -374,7 +409,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     if (newValues.count > 0) {
         
-          plotView.values = newValues;
+          plotView.values = temNewValue;
         //NSLog(@"newValues:%@,values:%@",newValues,muValues);
         
         
