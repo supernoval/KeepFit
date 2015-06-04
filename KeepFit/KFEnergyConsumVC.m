@@ -333,6 +333,31 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         
     }
     
+    //pick N data
+//    NSMutableArray *tenDataArray = [[NSMutableArray alloc]init];
+//    
+//    NSInteger N = 10;
+//    if (newValues.count > N) {
+//        
+//        CGFloat per = newValues.count / N;
+//        
+//        for (NSInteger i = 0; i < N; i++)
+//        {
+//            
+//            i = lround(i * per);
+//            
+//            CGFloat temvalue = [[newValues objectAtIndex:i]floatValue];
+//            
+//            [tenDataArray addObject:@(temvalue)];
+//            
+//           
+//            
+//            
+//        }
+//    }
+//    newValues = tenDataArray;
+    
+    
 //    if (muValues.count > 0) {
 //        
 //       // [self.view addSubview:_todayGraphView];
@@ -350,7 +375,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     if (newValues.count > 0) {
         
           plotView.values = newValues;
-        NSLog(@"newValues:%@,values:%@",newValues,muValues);
+        //NSLog(@"newValues:%@,values:%@",newValues,muValues);
         
         
         [_myscrollView addSubview:plotView];

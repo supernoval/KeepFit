@@ -106,7 +106,7 @@
     
     if (self.curved) {
         
-        path=[path smoothedPathWithGranularity:30];
+        path=[path smoothedPathWithGranularity:0.5];
         
     }
     
