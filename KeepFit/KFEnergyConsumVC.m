@@ -318,131 +318,42 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 -(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values
 {
     
-    NSMutableArray *muValues = [[NSMutableArray alloc]init];
-    
-    for (int i = 0; i < values.count; i++) {
-        
-        NSDictionary *oneValue = [values objectAtIndex:i];
-        
-        CGFloat value = [[oneValue objectForKey:@"value"]floatValue];
-        
-        [muValues addObject:@(value)];
-        
-        
-        
-    }
-    
-    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    CGFloat totalValue = 0.0;
-    
-    for (int i = 0; i < muValues.count; i++)
-    {
-        
-      CGFloat oneValue   = [[muValues objectAtIndex:i]floatValue];
-        
-        totalValue += oneValue;
-        
-        
-        [newValues addObject:@(totalValue)];
-        
-        
-        
-    }
-    
-    NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
-    NSInteger N = 0;
-    
-    if (newValues.count > 24 && newValues.count < 100)
-    {
-        
-        
-        N = 5;
-        
-    }
-    else if (newValues.count >= 100 && newValues.count < 400 )
-    {
-      
-        N = 20;
-            
-    }
-    else if (newValues.count >= 400)
-    {
-        N = 40;
-        
-    }
-    else
-    {
-        N = 1;
-        
-    }
-        
-        for (NSInteger i = 0; i < newValues.count; i++)
-        {
-            
-            if (i%N == 0)
-            {
-                
-                CGFloat value = [[newValues objectAtIndex:i]floatValue];
-                
-                [temNewValue addObject:@(value)];
-                
-                
-                
-            }
-            
-            if (i == newValues.count - 1 && i%N != 0)
-            {
-                
-                CGFloat value = [[newValues objectAtIndex:i]floatValue];
-                
-                [temNewValue addObject:@(value)];
-                
-            }
-            
-            
-        
-    }
-    
-    //pick N data
-//    NSMutableArray *tenDataArray = [[NSMutableArray alloc]init];
+//    NSMutableArray *muValues = [[NSMutableArray alloc]init];
 //    
-//    NSInteger N = 10;
-//    if (newValues.count > N) {
+//    for (int i = 0; i < values.count; i++) {
 //        
-//        CGFloat per = newValues.count / N;
+//        NSDictionary *oneValue = [values objectAtIndex:i];
 //        
-//        for (NSInteger i = 0; i < N; i++)
-//        {
-//            
-//            i = lround(i * per);
-//            
-//            CGFloat temvalue = [[newValues objectAtIndex:i]floatValue];
-//            
-//            [tenDataArray addObject:@(temvalue)];
-//            
-//           
-//            
-//            
-//        }
+//        CGFloat value = [[oneValue objectForKey:@"value"]floatValue];
+//        
+//        [muValues addObject:@(value)];
+//        
+//        
+//        
 //    }
-//    newValues = tenDataArray;
-    
-    
-//    if (muValues.count > 0) {
-//        
-//       // [self.view addSubview:_todayGraphView];
-//        
-//        [_myscrollView addSubview:plotView];
 //    
-//        plotView.expectValue = 1000;
-//        plotView.points = muValues;
+//    NSMutableArray *newValues = [[NSMutableArray alloc]init];
+//    CGFloat totalValue = 0.0;
+//    
+//    for (int i = 0; i < muValues.count; i++)
+//    {
 //        
-//        [plotView animate];
+//      CGFloat oneValue   = [[muValues objectAtIndex:i]floatValue];
+//        
+//        totalValue += oneValue;
+//        
+//        
+//        [newValues addObject:@(totalValue)];
+//        
 //        
 //        
 //    }
     
-    if (newValues.count > 0) {
+    NSMutableArray *temNewValue = [DataHelper sortDataValue:values withTimeType:WalkingStepsTimeTypeToday];
+    
+  //  NSLog(@"%s,%@",__func__,temNewValue);
+    
+    if (temNewValue.count > 0) {
         
           plotView.values = temNewValue;
         //NSLog(@"newValues:%@,values:%@",newValues,muValues);
@@ -455,6 +366,68 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 
     
 
+    
+}
+
+- (NSMutableArray*)sortValues:(NSMutableArray*)newValues
+{
+    
+    NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
+    
+    NSInteger N = 0;
+    
+    if (newValues.count > 24 && newValues.count < 100)
+    {
+        
+        
+        N = 5;
+        
+    }
+    else if (newValues.count >= 100 && newValues.count < 400 )
+    {
+        
+        N = 20;
+        
+    }
+    else if (newValues.count >= 400)
+    {
+        N = 40;
+        
+    }
+    else
+    {
+        N = 1;
+        
+    }
+    
+    for (NSInteger i = 0; i < newValues.count; i++)
+    {
+        
+        if (i%N == 0)
+        {
+            
+            CGFloat value = [[newValues objectAtIndex:i]floatValue];
+            
+            [temNewValue addObject:@(value)];
+            
+            
+            
+        }
+        
+        if (i == newValues.count - 1 && i%N != 0)
+        {
+            
+            CGFloat value = [[newValues objectAtIndex:i]floatValue];
+            
+            [temNewValue addObject:@(value)];
+            
+        }
+        
+        
+        
+    }
+    
+    return temNewValue;
     
 }
 

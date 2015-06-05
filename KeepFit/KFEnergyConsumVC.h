@@ -8,25 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ConstantHeaders.h"
-
+#import "DataHelper.h"
 @import HealthKit;
 
-typedef NS_ENUM(NSInteger, WalkingStepsTimeType)
-{
- 
-    WalkingStepsTimeTypeToday,
-    
-    WalkingStepsTimeTypeYesterday,
-    
-    WalkingStepsTimeTypeLastTwodays,
-    
-    WalkingStepsTimeTypeTheDayBeforeYesterday,
-    
-    WalkingStepsTimeTypeLastSevendays,
-    
-    WalkingStepsTimeTypeLastMonth
-    
-};
+
 
 typedef NS_ENUM(NSInteger, ActivityIndicatorAnimatingStatus)
 {

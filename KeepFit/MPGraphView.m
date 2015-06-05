@@ -42,13 +42,16 @@
     [super drawRect:rect];
     
     
-    if (self.values.count && !self.waitToUpdate) {
+    if (self.values.count && !self.waitToUpdate)
+    {
         
         ((CAShapeLayer *)self.layer).fillColor=[UIColor clearColor].CGColor;
         ((CAShapeLayer *)self.layer).strokeColor = self.graphColor.CGColor;
         ((CAShapeLayer *)self.layer).path = [self graphPathFromPoints].CGPath;
         
         [self addLinePath];
+        
+        [self addLabels];
         
        
     }
@@ -57,7 +60,8 @@
 - (void)addLinePath
 {
     
-    if (lineLayer) {
+    if (lineLayer)
+    {
         
         [lineLayer removeFromSuperlayer];
         
@@ -68,7 +72,8 @@
     
     UIBezierPath *path=[UIBezierPath bezierPath];
     
-    for (NSInteger i=0;i<points.count;i++) {
+    for (NSInteger i=0;i<points.count;i++)
+    {
         
         
         CGPoint point=[self pointAtIndex:i];
@@ -89,14 +94,16 @@
         
     }
     
-    if (self.curved) {
+    if (self.curved)
+    {
         
         path=[path smoothedPathWithGranularity:kcurveValue];
         
     }
     
     
-    if (self.lineColor) {
+    if (self.lineColor)
+    {
         
         lineLayer.strokeColor  = self.lineColor.CGColor;
         
@@ -159,7 +166,8 @@
     }
     
     
-    if(fill){
+    if(fill)
+    {
         
         CGPoint last=[self pointAtIndex:points.count-1];
         CGPoint first=[self pointAtIndex:0];
@@ -169,7 +177,8 @@
         
     }
     
-    if (fill) {
+    if (fill)
+    {
         
         
         CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
@@ -195,13 +204,28 @@
 //    return CGPointMake(space+(space)*index,self.height + PADDING);
 }
 
--(CGPoint)labelPointAtIndex:(NSInteger)index
+-(void)addLabels
 {
-        CGFloat space=(self.frame.size.width)/(points.count+1);
+    NSInteger N = 1;
     
-        return CGPointMake(space+(space)*index,self.height + PADDING);
+    for (NSInteger i = 0; i < points.count; i ++)
+    {
+        
+        
+       
+        
+        
+    }
 }
 
+-(void)addlabelAtIndex:(NSInteger)index
+{
+    CGPoint labelPoint = [self pointAtIndex:index];
+    
+    UILabel *_label = [CommentMeths labelWithText:[NSString stringWithFormat:@"%ld",index] font:[UIFont systemFontOfSize:12] textColor:[UIColor redColor] frame:CGRectMake(labelPoint.x, self.height, 15.0, 15)];
+    
+    [self addSubview:_label];
+}
 
 
 - (void)animate{
