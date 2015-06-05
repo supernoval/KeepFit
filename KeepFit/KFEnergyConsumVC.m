@@ -86,12 +86,20 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     MPGraphView *_todayPlotView;
     MPGraphView *_yesterdayPlotView;
+    MPGraphView *_lastWeekPlotView;
+    MPGraphView *_lastMonthPlotView;
+    
   
     NSMutableArray *_todayDisArray;
     
     NSMutableArray *_todayStepsArray;
     
     NSMutableArray *_yesterStepsArray;
+    
+    NSMutableArray *_lastWeekStepsArray;
+    
+    NSMutableArray *_lastMonthStepsArray;
+    
     
     
     KFGraphView *_todayGraphView;
@@ -145,6 +153,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _todayDisArray = [[NSMutableArray alloc]init];
     _todayStepsArray = [[NSMutableArray alloc]init];
     _yesterStepsArray = [[NSMutableArray alloc]init];
+    _lastWeekStepsArray = [[NSMutableArray alloc]init];
+    _lastMonthStepsArray = [[NSMutableArray alloc]init];
+    
     
     
     self.title = @"Keep Fit";
@@ -272,34 +283,37 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     _lastMonthBottonView = [[SPBottonProgressView alloc]initWithFrame:CGRectMake(kScreenWith*3, BottonViewY, kScreenWith, BottonViewHeight)];
     
-    CGFloat graphViewHeight = 150;
+    CGFloat graphViewHeight = 150 - BarBottomPADDING;
     
     CGFloat graphViewY = BottonViewY - graphViewHeight - BarBottomPADDING *2;
     
-    _todayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
-    _todayPlotView.fillColors = kGraphFillColors;
-    //_todayPlotView.backgroundColor = [UIColor yellowColor];
+    CGFloat graphViewWith = kScreenWith - BarBottomPADDING*2;
     
-    _todayPlotView.graphColor = [UIColor clearColor];
-    _todayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
-    _todayPlotView.detailTextColor = [UIColor whiteColor];
-    _todayPlotView.lineColor = [UIColor redColor];
-    _todayPlotView.curved = YES;
+    _todayPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING,graphViewY, graphViewWith, graphViewHeight)];
+
+    _yesterdayPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING  + kScreenWith,graphViewY,graphViewWith, graphViewHeight )];
+  
+    _lastWeekPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING + kScreenWith *2, graphViewY, graphViewWith, graphViewHeight)];
     
-    _yesterdayPlotView = [MPGraphView plotWithType:MPPlotTypeGraph frame:CGRectMake(BarBottomPADDING  + kScreenWith,graphViewY, kScreenWith - BarBottomPADDING * 2, graphViewHeight- BarBottomPADDING )];
-    _yesterdayPlotView.fillColors = kGraphFillColors;
-    //_todayPlotView.backgroundColor = [UIColor yellowColor];
-    
-    _yesterdayPlotView.graphColor = [UIColor clearColor];
-    _yesterdayPlotView.detailBackgroundColor = kGraphDetailBackGroundColor;
-    _yesterdayPlotView.detailTextColor = [UIColor whiteColor];
-    _yesterdayPlotView.lineColor = kCircleProgressViewColor;
-    _yesterdayPlotView.curved = YES;
+    _lastMonthPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING + kScreenWith *3, graphViewY, graphViewWith, graphViewHeight)];
     
     
     
 }
 
+-(MPGraphView*)getGraphViewWithFrame:(CGRect)frame
+{
+    MPGraphView *mympgraphView = [MPGraphView plotWithType:MPPlotTypeGraph frame:frame];
+    mympgraphView.fillColors = kGraphFillColors;
+    mympgraphView.graphColor = [UIColor clearColor];
+    mympgraphView.detailBackgroundColor = kGraphDetailBackGroundColor;
+    mympgraphView.lineColor = [UIColor redColor];
+    mympgraphView.detailTextColor = [UIColor whiteColor];
+    mympgraphView.curved = YES;
+    
+    return mympgraphView;
+    
+}
 #pragma mark - 显示数据波形图
 -(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values
 {
@@ -336,15 +350,36 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     }
     
     NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
+    NSInteger N = 0;
     
-    if (newValues.count > 24)
+    if (newValues.count > 24 && newValues.count < 100)
     {
         
+        
+        N = 5;
+        
+    }
+    else if (newValues.count >= 100 && newValues.count < 400 )
+    {
+      
+        N = 20;
+            
+    }
+    else if (newValues.count >= 400)
+    {
+        N = 40;
+        
+    }
+    else
+    {
+        N = 1;
+        
+    }
         
         for (NSInteger i = 0; i < newValues.count; i++)
         {
             
-            if (i%5 == 0)
+            if (i%N == 0)
             {
                 
                 CGFloat value = [[newValues objectAtIndex:i]floatValue];
@@ -355,7 +390,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 
             }
             
-            if (i == newValues.count - 1 && i%5 != 0) {
+            if (i == newValues.count - 1 && i%N != 0)
+            {
                 
                 CGFloat value = [[newValues objectAtIndex:i]floatValue];
                 
@@ -364,7 +400,6 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             }
             
             
-        }
         
     }
     
@@ -567,7 +602,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             [self showOneWeekData:_lastWeekDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate date]];
             
              [self showBottonViewWithTimeType:_lastWeekBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
-    
+            
+             [self showChartViewWithView:_lastWeekPlotView values:_lastWeekStepsArray];
         }
             break;
         case WalkingStepsTimeTypeLastMonth:
@@ -580,7 +616,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:200 date:[NSDate date]];
             
              [self showBottonViewWithTimeType:_lastMonthBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
-            
+             [self showChartViewWithView:_lastMonthPlotView values:_lastMonthStepsArray];
             
         }
             break;
@@ -987,6 +1023,22 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
            
                 
                 }
+                
+                else if (timetype == WalkingStepsTimeTypeLastSevendays)
+                {
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps),@"startdate":startDate,@"hour":hourStr,@"minute":minuteStr};
+                    
+                    
+                    [_lastWeekStepsArray addObject:dataDict];
+                }
+                else
+                {
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps),@"startdate":startDate,@"hour":hourStr,@"minute":minuteStr};
+                    
+                    
+                    [_lastMonthStepsArray addObject:dataDict];
+                }
+                
                 
                 totalSteps +=steps;
                 

@@ -118,6 +118,17 @@ CGFloat titleLabelWidth = 60.0;
 
 -(void)animate
 {
+    
+    if (_calPersent > 1) {
+        
+        _calPersent = 1.0;
+        
+    }
+    if (_fatPersent > 1) {
+        
+        _fatPersent = 1.0;
+        
+    }
     [UIView animateWithDuration:kAnimationDuration animations:^{
        
         CGRect calFrame = calLabel.frame;

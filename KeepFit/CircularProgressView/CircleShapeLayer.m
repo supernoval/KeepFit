@@ -15,7 +15,7 @@
 
 @property (assign, nonatomic) double initialProgress;
 @property (nonatomic, strong) CAShapeLayer *progressLayer;
-@property (nonatomic, assign) CGRect frame;
+//@property (nonatomic, assign) CGRect frame;
 
 @end
 
