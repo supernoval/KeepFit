@@ -333,6 +333,7 @@
 				157569D51AE94381001A6803 /* OneWeekDataView */,
 				136AEA8E1AE63A7A00215720 /* OneDayView */,
 				B396B6F01AC3EA5F00D81BD5 /* CaculeEnergyToFat */,
+				1520F4E21A7CA46D00E6ACF5 /* EnergyConsumVC */,
 				B366F99F1AC15C4A002A92F4 /* Thirdclass */,
 				B366F99B1AC1407C002A92F4 /* welcomeView */,
 				1542CA1D1A7A76390035A5B9 /* AppDelegate.h */,
@@ -504,7 +505,6 @@
 		B366F99F1AC15C4A002A92F4 /* Thirdclass */ = {
 			isa = PBXGroup;
 			children = (
-				1520F4E21A7CA46D00E6ACF5 /* EnergyConsumVC */,
 				137F256D1B2176DD00A94CE1 /* DataHelper.h */,
 				137F256E1B2176DD00A94CE1 /* DataHelper.m */,
 				155C35C21B04DF7E00BC42E1 /* CommonMethods.h */,

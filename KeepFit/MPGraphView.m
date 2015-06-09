@@ -211,21 +211,33 @@
     for (NSInteger i = 0; i < points.count; i ++)
     {
         
-        
+        switch (points.count)
+        {
+            case 7: //一个星期
+            {
+                
+            }
+                break;
+                
+            case 24: //一天
+            {
+                
+            }
+                break;
+            
+                
+            default:
+            {
+                
+            }
+                break;
+        }
        
         
         
     }
 }
 
--(void)addlabelAtIndex:(NSInteger)index
-{
-    CGPoint labelPoint = [self pointAtIndex:index];
-    
-    UILabel *_label = [CommentMeths labelWithText:[NSString stringWithFormat:@"%ld",index] font:[UIFont systemFontOfSize:12] textColor:[UIColor redColor] frame:CGRectMake(labelPoint.x, self.height, 15.0, 15)];
-    
-    [self addSubview:_label];
-}
 
 
 - (void)animate{

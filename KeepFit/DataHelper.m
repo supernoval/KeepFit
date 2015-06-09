@@ -10,7 +10,7 @@
 
 @implementation DataHelper
 
-
+#pragma mark - 24小时排序 或者按天顺序排序
 +(NSMutableArray*)sortDataValue:(NSMutableArray *)values withTimeType:(NSInteger)timtype
 {
     
