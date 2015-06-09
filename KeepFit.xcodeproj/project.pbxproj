@@ -909,14 +909,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeepFit/KeepFit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haikun Zhu (72J467J83G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KeepFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9a76a414-edb0-4367-a9c2-041a856accb4";
+				PROVISIONING_PROFILE = "14a4ef1d-ec42-49e3-82ec-976b818471b2";
 			};
 			name = Debug;
 		};
@@ -927,13 +927,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeepFit/KeepFit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Haikun Zhu (K5443SNRTU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KeepFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2f51f3b6-0f5b-4c89-9c4a-7c6b577b1554";
+				PROVISIONING_PROFILE = "b809e315-1ad0-47df-af84-b275f6757224";
 			};
 			name = Release;
 		};
@@ -980,7 +980,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haikun Zhu (72J467J83G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -988,7 +988,7 @@
 				IBSC_MODULE = KeepFit_WatchKit_Extension;
 				INFOPLIST_FILE = "KeepFit WatchKit App/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23ad80bf-12a4-44cf-9682-10854bd18372";
+				PROVISIONING_PROFILE = "ad485127-21ce-444b-bbb9-7c2273befe3b";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1006,7 +1006,7 @@
 				IBSC_MODULE = KeepFit_WatchKit_Extension;
 				INFOPLIST_FILE = "KeepFit WatchKit App/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb2b7028-f35e-4ea8-8ed2-d282e0ad000a";
+				PROVISIONING_PROFILE = "6fffdb93-ed24-4846-bfb2-48034795781d";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1025,7 +1025,7 @@
 				INFOPLIST_FILE = "KeepFit WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "693da755-9875-401c-a35e-8b2c11c3d0d9";
+				PROVISIONING_PROFILE = "b97caffa-197c-4142-b753-6a1c2a5e19aa";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1038,7 +1038,7 @@
 				INFOPLIST_FILE = "KeepFit WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "f4aa3af7-a0ed-4ee0-b897-5f786002a176";
+				PROVISIONING_PROFILE = "84e77b73-0fd0-46b2-98ee-f42ea5529c11";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
