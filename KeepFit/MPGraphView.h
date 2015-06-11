@@ -16,7 +16,7 @@
     CAShapeLayer *lineLayer;
     
 }
-
+@property (nonatomic,retain) NSArray *daysArray;
 @property (nonatomic,assign) BOOL curved;
 @property (nonatomic,retain) NSArray *fillColors; // array of colors or CGColor
 @property (nonatomic,strong) UIColor *lineColor;

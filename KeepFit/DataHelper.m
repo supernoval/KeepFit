@@ -16,7 +16,7 @@
     
     NSMutableArray *muDataArray = [[NSMutableArray alloc]init];
     
-    if (timtype == WalkingStepsTimeTypeToday || timtype == WalkingStepsTimeTypeYesterday)
+    if (timtype == WalkingStepsTimeTypeToday || timtype == WalkingStepsTimeTypeYesterday) // 1天
     {
         NSMutableArray *sorthourArray = [[NSMutableArray alloc]init];
         
@@ -150,7 +150,7 @@
         return muDataArray;
         
     }
-    else
+    else // 一个星期  一个月
     {
         
     }
