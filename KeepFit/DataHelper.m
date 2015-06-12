@@ -132,7 +132,7 @@
         
         [musorthourArray sortUsingDescriptors:@[des]];
         
-        NSLog(@"%s,%@",__func__,musorthourArray);
+       
         
         
         for (int i = 0; i < musorthourArray.count ; i ++)
@@ -207,7 +207,7 @@
         [noSortDataArray sortUsingDescriptors:@[dateDes]];
         
         
-        
+          NSLog(@"%s,%@",__func__,noSortDataArray);
       
         for (int h = 0; h < noSortDataArray.count; h++) {
             
@@ -223,7 +223,7 @@
         
         
     }
-    
+   
     
     return muDataArray;
     
