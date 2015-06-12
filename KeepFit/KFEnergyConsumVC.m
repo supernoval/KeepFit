@@ -315,7 +315,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 #pragma mark - 显示数据波形图
--(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values
+-(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values timeType:(WalkingStepsTimeType)timetype
 {
     
 //    NSMutableArray *muValues = [[NSMutableArray alloc]init];
@@ -349,7 +349,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 //        
 //    }
     
-    NSMutableArray *temNewValue = [DataHelper sortDataValue:values withTimeType:WalkingStepsTimeTypeToday];
+    NSMutableArray *temNewValue = [DataHelper sortDataValue:values withTimeType:timetype];
     
   //  NSLog(@"%s,%@",__func__,temNewValue);
     
@@ -546,7 +546,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             [self showBottonViewWithTimeType:_todayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
-            [self showChartViewWithView:_todayPlotView values:_todayStepsArray];
+            [self showChartViewWithView:_todayPlotView values:_todayStepsArray timeType:WalkingStepsTimeTypeToday];
             
             
             
@@ -561,7 +561,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
              [self showBottonViewWithTimeType:_yesterDayBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
-                 [self showChartViewWithView:_yesterdayPlotView values:_yesterStepsArray];
+                 [self showChartViewWithView:_yesterdayPlotView values:_yesterStepsArray timeType:WalkingStepsTimeTypeYesterday];
         }
             break;
         case WalkingStepsTimeTypeLastSevendays:
@@ -576,7 +576,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
              [self showBottonViewWithTimeType:_lastWeekBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
             
-             [self showChartViewWithView:_lastWeekPlotView values:_lastWeekStepsArray];
+             [self showChartViewWithView:_lastWeekPlotView values:_lastWeekStepsArray timeType:WalkingStepsTimeTypeLastSevendays];
         }
             break;
         case WalkingStepsTimeTypeLastMonth:
@@ -589,7 +589,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:200 date:[NSDate date]];
             
              [self showBottonViewWithTimeType:_lastMonthBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
-             [self showChartViewWithView:_lastMonthPlotView values:_lastMonthStepsArray];
+             [self showChartViewWithView:_lastMonthPlotView values:_lastMonthStepsArray timeType:WalkingStepsTimeTypeLastMonth];
             
         }
             break;

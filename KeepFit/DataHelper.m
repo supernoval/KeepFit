@@ -152,6 +152,75 @@
      }
     else // 一个星期  一个月
     {
+        NSMutableArray *noSortDataArray = [[NSMutableArray alloc]init];
+        
+        for (NSInteger i = 0; i < values.count; i++)
+        {
+            
+            NSDictionary *oneDataDict = [values objectAtIndex:i];
+            
+            NSDate *date = [oneDataDict objectForKey:@"startdate"];
+             CGFloat value = [[oneDataDict objectForKey:@"value"]floatValue];
+            BOOL nosortHadData = NO;
+            
+            for (NSInteger d = 0; d < noSortDataArray.count; d++)
+            {
+                NSDictionary *nosortDict = [noSortDataArray objectAtIndex:d];
+                
+                NSDate *oneDate = [nosortDict objectForKey:@"startdate"]
+                ;
+                
+                if ([date isEqualToDate:oneDate])
+                {
+                    
+                    nosortHadData = YES;
+                    
+                    
+                    CGFloat savedValue = [[nosortDict objectForKey:@"value"]floatValue];
+                    
+                    savedValue += value;
+                    
+                    NSDictionary *temnosortdict = @{@"startdate":oneDate,@"value":@(savedValue)};
+                    
+                    [noSortDataArray replaceObjectAtIndex:d withObject:temnosortdict];
+                    
+                    
+                }
+                
+                
+            }
+            
+            if (!nosortHadData)
+            {
+                
+               
+                NSDictionary *temnosortdict = @{@"startdate":date,@"value":@(value)};
+                
+                [noSortDataArray addObject:temnosortdict];
+                
+                
+            }
+            
+        }
+        
+        NSSortDescriptor *dateDes = [[NSSortDescriptor alloc]initWithKey:@"startdate" ascending:YES];
+        [noSortDataArray sortUsingDescriptors:@[dateDes]];
+        
+        
+        
+      
+        for (int h = 0; h < noSortDataArray.count; h++) {
+            
+            NSDictionary *oneData = [noSortDataArray objectAtIndex:h];
+            
+            CGFloat onevalue = [[oneData objectForKey:@"value"]floatValue];
+            
+            [muDataArray addObject:@(onevalue)];
+            
+        }
+        
+        
+        
         
     }
     
