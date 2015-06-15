@@ -18,7 +18,10 @@
 
 #define HeadtextlabelsHeight  100
 
-#define BarBottomPADDING   10
+#define BarWith       315.0
+
+#define BarBottomPADDING    10
+
 
 //barView height
 #define kBarViewHeight   (kScreenHeight - HeadtextlabelsHeight - TapBarHeight - BarBottomPADDING )

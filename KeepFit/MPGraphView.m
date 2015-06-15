@@ -11,7 +11,7 @@
 #import "CommentMeths.h"
 
 
-#define kcurveValue  50
+#define kcurveValue  10
 
 @implementation MPGraphView
 
@@ -81,9 +81,12 @@
         if(i==0)
         {
             
-            point = CGPointMake(point.x + 1.5, point.y);
+            point = CGPointMake(point.x, point.y);
             
             [path moveToPoint:point];
+            
+            NSLog(@"lineFirstPointx:%f,y:%f",point.x,point.y);
+            
         }
         
     
@@ -145,6 +148,9 @@
         if(i==0)
         {
             [path moveToPoint:point];
+            
+            NSLog(@"graphfirstpointx:%f,y:%f",point.x,point.y);
+            
         }
         
 
@@ -199,40 +205,54 @@
 
     CGFloat space=(self.frame.size.width)/(points.count-1);
 
+    CGFloat percent = [self getPersent];
     
-    return CGPointMake((space)*index,self.height-((self.height-PADDING*2)*[[points objectAtIndex:index] floatValue]+PADDING));
+    return CGPointMake((space)*index,self.height - percent*[[points objectAtIndex:index] floatValue] - PADDING);
+    
 //    return CGPointMake(space+(space)*index,self.height + PADDING);
 }
-
--(void)addLabels
+-(CGFloat)getPersent
 {
-    NSInteger N = 1;
+    CGFloat max = 0.0;
     
-    for (NSInteger i = 0; i < points.count; i ++)
+    for (NSInteger i = 0; i < points.count; i++)
     {
         
-        switch (points.count)
-        {
-            case 7: //一个星期
-            {
-                
-            }
-                break;
-                
-            case 24: //一天
-            {
-                
-            }
-                break;
-            
-                
-            default:
-            {
-                
-            }
-                break;
-        }
+        CGFloat value = [[points objectAtIndex:i]floatValue];
+        
+        max = max >value?max:value;
+        
+    }
+    
+    CGFloat persent = (self.height- PADDING*1.5) /max;
+    
+    return persent;
+    
+}
+- (CGPoint)labelPointAtIndex:(NSInteger)index
+{
+    CGFloat space=(self.frame.size.width)/(_daysArray.count-1);
+    
+    
+    return CGPointMake((space)*index,self.height);
+}
+-(void)addLabels
+{
+
+    
+    for (NSInteger i = 0; i < _daysArray.count; i ++)
+    {
+        
+        NSString *timeStr = [_daysArray objectAtIndex:i];
+        CGPoint labelPoint = [self labelPointAtIndex:i];
        
+        UILabel *timeLabel = [CommentMeths labelWithText:timeStr font:[UIFont systemFontOfSize:8] textColor:[UIColor darkGrayColor] frame:CGRectMake(labelPoint.x, labelPoint.y, self.width/7, 15)];
+        timeLabel.center = CGPointMake(labelPoint.x, labelPoint.y + 8);
+        
+        timeLabel.textAlignment = NSTextAlignmentCenter;
+        
+        [self addSubview:timeLabel];
+        
         
         
     }

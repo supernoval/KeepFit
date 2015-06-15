@@ -13,6 +13,7 @@
 +(NSString*)HHmmStringWithDate:(NSDate*)date;
 +(NSString*)HHStringWithDate:(NSDate*)date;
 +(NSString*)mmStringWithDate:(NSDate*)date;
++(NSString*)MMddStringWithDate:(NSDate*)date;
 
 
 @end

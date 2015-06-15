@@ -52,7 +52,10 @@ NSArray *pointsFromBezierPath(UIBezierPath *bpath)
 {
     NSMutableArray *points = [pointsFromBezierPath(self) mutableCopy];
     
-    if (points.count < 4) return [self copy];
+    if (points.count < 4)
+    {
+        return [self copy];
+    }
     
     // Add control points to make the math make sense
     [points insertObject:[points objectAtIndex:0] atIndex:0];
@@ -88,7 +91,7 @@ NSArray *pointsFromBezierPath(UIBezierPath *bpath)
     }
     
     // finish by adding the last point
-    [smoothedPath addLineToPoint:POINT(points.count - 1)];
+    [smoothedPath addLineToPoint:POINT(points.count - 2)];
     
     return smoothedPath;
 }

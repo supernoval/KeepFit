@@ -35,4 +35,7 @@ typedef NS_ENUM(NSInteger, WalkingStepsTimeType)
 
 +(NSMutableArray*)sortDataValue:(NSMutableArray*)values withTimeType:(NSInteger)timtype;
 
++(NSMutableArray*)getDate:(NSMutableArray*)values withTimeType:(NSInteger)timetype;
+
+
 @end

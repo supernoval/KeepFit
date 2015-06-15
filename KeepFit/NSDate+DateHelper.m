@@ -28,7 +28,7 @@
     
     NSInteger minute = [components minute];
     
-    dateStr = [NSString stringWithFormat:@"%ld:%ld",hour,minute];
+    dateStr = [NSString stringWithFormat:@"%ld:%ld",(long)hour,(long)minute];
     
     
     
@@ -55,7 +55,7 @@
     
 //    NSInteger minute = [components minute];
     
-    dateStr = [NSString stringWithFormat:@"%ld",hour];
+    dateStr = [NSString stringWithFormat:@"%ld",(long)hour];
     
     
     
@@ -81,10 +81,31 @@
     
     NSInteger minute = [components minute];
     
-    dateStr = [NSString stringWithFormat:@"%ld",minute];
+    dateStr = [NSString stringWithFormat:@"%ld",(long)minute];
     
     
     
+    
+    return dateStr;
+}
+
++(NSString*)MMddStringWithDate:(NSDate *)date
+{
+    
+  
+    NSString *dateStr = @"";
+    
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSInteger uinitFlag =NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *components = [currentCalendar components:uinitFlag fromDate:date];
+    
+    
+    NSInteger month = [components month];
+    NSInteger day = [components day];
+
+
+    dateStr = [NSString stringWithFormat:@"%ld/%ld",(long)month,(long)day];
     
     return dateStr;
 }

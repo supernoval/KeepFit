@@ -285,17 +285,18 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     CGFloat graphViewHeight = 150 - BarBottomPADDING;
     
-    CGFloat graphViewY = BottonViewY - graphViewHeight - BarBottomPADDING *2;
+    CGFloat graphViewY = BottonViewY - graphViewHeight - BarBottomPADDING *3;
     
-    CGFloat graphViewWith = kScreenWith - BarBottomPADDING*2;
+    CGFloat barPadding = (kScreenWith - BarWith)/2;
     
-    _todayPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING,graphViewY, graphViewWith, graphViewHeight)];
+    
+    _todayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding,graphViewY, BarWith, graphViewHeight)];
 
-    _yesterdayPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING  + kScreenWith,graphViewY,graphViewWith, graphViewHeight )];
+    _yesterdayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding  + kScreenWith,graphViewY,BarWith, graphViewHeight )];
   
-    _lastWeekPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING + kScreenWith *2, graphViewY, graphViewWith, graphViewHeight)];
+    _lastWeekPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *2, graphViewY, BarWith, graphViewHeight)];
     
-    _lastMonthPlotView = [self getGraphViewWithFrame:CGRectMake(BarBottomPADDING + kScreenWith *3, graphViewY, graphViewWith, graphViewHeight)];
+    _lastMonthPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *3, graphViewY, BarWith, graphViewHeight)];
     
     
     
@@ -318,42 +319,23 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 -(void)showChartViewWithView:(MPGraphView*)plotView values:(NSMutableArray*)values timeType:(WalkingStepsTimeType)timetype
 {
     
-//    NSMutableArray *muValues = [[NSMutableArray alloc]init];
-//    
-//    for (int i = 0; i < values.count; i++) {
-//        
-//        NSDictionary *oneValue = [values objectAtIndex:i];
-//        
-//        CGFloat value = [[oneValue objectForKey:@"value"]floatValue];
-//        
-//        [muValues addObject:@(value)];
-//        
-//        
-//        
-//    }
-//    
-//    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-//    CGFloat totalValue = 0.0;
-//    
-//    for (int i = 0; i < muValues.count; i++)
-//    {
-//        
-//      CGFloat oneValue   = [[muValues objectAtIndex:i]floatValue];
-//        
-//        totalValue += oneValue;
-//        
-//        
-//        [newValues addObject:@(totalValue)];
-//        
-//        
-//        
-//    }
+
+    //先将数据按时间排序
+    NSSortDescriptor *des = [[NSSortDescriptor alloc]initWithKey:@"startdate" ascending:YES];
+    [values sortUsingDescriptors:@[des]];
     
     NSMutableArray *temNewValue = [DataHelper sortDataValue:values withTimeType:timetype];
+    
+   // NSLog(@"%s,%@",__func__,values);
+    
+    
+    NSMutableArray *dateValues = [DataHelper getDate:values withTimeType:timetype];
     
   //  NSLog(@"%s,%@",__func__,temNewValue);
     
     if (temNewValue.count > 0) {
+        
+          plotView.daysArray = dateValues;
         
           plotView.values = temNewValue;
         //NSLog(@"newValues:%@,values:%@",newValues,muValues);

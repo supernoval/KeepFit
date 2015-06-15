@@ -7,6 +7,7 @@
 //
 
 #import "DataHelper.h"
+#import "NSDate+DateHelper.h"
 
 @implementation DataHelper
 
@@ -152,62 +153,11 @@
      }
     else // 一个星期  一个月
     {
-        NSMutableArray *noSortDataArray = [[NSMutableArray alloc]init];
-        
-        for (NSInteger i = 0; i < values.count; i++)
-        {
-            
-            NSDictionary *oneDataDict = [values objectAtIndex:i];
-            
-            NSDate *date = [oneDataDict objectForKey:@"startdate"];
-             CGFloat value = [[oneDataDict objectForKey:@"value"]floatValue];
-            BOOL nosortHadData = NO;
-            
-            for (NSInteger d = 0; d < noSortDataArray.count; d++)
-            {
-                NSDictionary *nosortDict = [noSortDataArray objectAtIndex:d];
-                
-                NSDate *oneDate = [nosortDict objectForKey:@"startdate"]
-                ;
-                
-                if ([date isEqualToDate:oneDate])
-                {
-                    
-                    nosortHadData = YES;
-                    
-                    
-                    CGFloat savedValue = [[nosortDict objectForKey:@"value"]floatValue];
-                    
-                    savedValue += value;
-                    
-                    NSDictionary *temnosortdict = @{@"startdate":oneDate,@"value":@(savedValue)};
-                    
-                    [noSortDataArray replaceObjectAtIndex:d withObject:temnosortdict];
-                    
-                    
-                }
-                
-                
-            }
-            
-            if (!nosortHadData)
-            {
-                
-               
-                NSDictionary *temnosortdict = @{@"startdate":date,@"value":@(value)};
-                
-                [noSortDataArray addObject:temnosortdict];
-                
-                
-            }
-            
-        }
-        
-        NSSortDescriptor *dateDes = [[NSSortDescriptor alloc]initWithKey:@"startdate" ascending:YES];
-        [noSortDataArray sortUsingDescriptors:@[dateDes]];
         
         
-          NSLog(@"%s,%@",__func__,noSortDataArray);
+        NSMutableArray *noSortDataArray = [self getSortedDaysData:values];
+        
+          //NSLog(@"%s,%@",__func__,noSortDataArray);
       
         for (int h = 0; h < noSortDataArray.count; h++) {
             
@@ -226,6 +176,152 @@
    
     
     return muDataArray;
+    
+}
+
+
+//一个星期，一个月
++(NSMutableArray*)getSortedDaysData:(NSMutableArray*)values
+{
+    NSMutableArray *noSortDataArray = [[NSMutableArray alloc]init];
+    
+    for (NSInteger i = 0; i < values.count; i++)
+    {
+        
+        NSDictionary *oneDataDict = [values objectAtIndex:i];
+        
+        NSDate *date = [oneDataDict objectForKey:@"startdate"];
+        CGFloat value = [[oneDataDict objectForKey:@"value"]floatValue];
+        BOOL nosortHadData = NO;
+        
+        for (NSInteger d = 0; d < noSortDataArray.count; d++)
+        {
+            NSDictionary *nosortDict = [noSortDataArray objectAtIndex:d];
+            
+            NSDate *oneDate = [nosortDict objectForKey:@"startdate"]
+            ;
+            
+            if ([date isEqualToDate:oneDate])
+            {
+                
+                nosortHadData = YES;
+                
+                
+                CGFloat savedValue = [[nosortDict objectForKey:@"value"]floatValue];
+                
+                savedValue += value;
+                
+                NSDictionary *temnosortdict = @{@"startdate":oneDate,@"value":@(savedValue)};
+                
+                [noSortDataArray replaceObjectAtIndex:d withObject:temnosortdict];
+                
+                
+            }
+            
+            
+        }
+        
+        if (!nosortHadData)
+        {
+            
+            
+            NSDictionary *temnosortdict = @{@"startdate":date,@"value":@(value)};
+            
+            [noSortDataArray addObject:temnosortdict];
+            
+            
+        }
+        
+    }
+    
+    NSSortDescriptor *dateDes = [[NSSortDescriptor alloc]initWithKey:@"startdate" ascending:YES];
+    [noSortDataArray sortUsingDescriptors:@[dateDes]];
+    
+    
+    return noSortDataArray;
+    
+}
++(NSMutableArray*)getDate:(NSMutableArray *)values withTimeType:(NSInteger)timetype
+{
+    
+    NSMutableArray *muDataArray = [[NSMutableArray alloc]init];
+    
+    if (timetype == WalkingStepsTimeTypeToday || timetype == WalkingStepsTimeTypeYesterday) {
+        
+        [muDataArray addObject:@"00:00"];
+        [muDataArray addObject:@"06:00"];
+        [muDataArray addObject:@"12:00"];
+        [muDataArray addObject:@"18:00"];
+        [muDataArray addObject:@"23:59"];
+        
+        
+    }
+    else
+    {
+       
+        values = [self getSortedDaysData:values];
+        
+            
+            if (values.count < 8)
+            {
+                for (NSInteger i = 0; i < values.count; i++)
+                {
+                
+                NSString *getStr = [self getStr:values index:i];
+                    
+                    
+                [muDataArray addObject:getStr];
+                
+                }
+            }
+            
+            else
+            {
+                NSInteger  per = lround( values.count/4);
+                
+                NSString *firstStr = [self getStr:values index:0];
+                
+                [muDataArray addObject:firstStr];
+                
+                NSString *secStr = [self getStr:values index:per];
+                
+                [muDataArray addObject:secStr];
+                
+                NSString *thirdStr = [self getStr:values index:per*2];
+                
+                [muDataArray addObject:thirdStr];
+                
+                NSString *fourthStr = [self getStr:values index:per*3];
+                
+                [muDataArray addObject:fourthStr];
+                
+                NSString *lastStr = [self getStr:values index:values.count - 1];
+                [muDataArray addObject:lastStr];
+                
+                
+                
+            }
+        
+    }
+    
+    
+    
+    
+    return muDataArray;
+    
+    
+    
+}
+
++(NSString*)getStr:(NSMutableArray*)values index:(NSInteger)index
+{
+    NSDictionary *oneDict = [values objectAtIndex:index];
+    
+    NSDate *startDate = [oneDict objectForKey:@"startdate"];
+    
+    NSString *getStr = [NSDate MMddStringWithDate:startDate ];
+    
+    return getStr;
     
 }
 
