@@ -9,15 +9,16 @@
 
 
 #import "SPBottonProgressView.h"
-
-CGFloat offset = 10.0;
+#import "ConstantValues.h"
+CGFloat offset = 5.0;
 CGFloat labelHeight = 20.0;
-CGFloat titleLabelWidth = 60.0;
+CGFloat titleLabelHeight = 15.0;
+CGFloat titleLabelWidth = 50.0;
 
-#define kTextColor   [UIColor darkGrayColor]
+
 #define kCalAnimateBarColor [UIColor orangeColor]
 #define kTextFont    [UIFont systemFontOfSize:15]
-#define kLabelBackgroundColor  [UIColor lightGrayColor]
+
 
 #define kAnimationDuration  1.0
 #define kTimeInterval   0.1
@@ -40,62 +41,63 @@ CGFloat titleLabelWidth = 60.0;
 
 -(void)initLabels
 {
-    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"耗能"];
+    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset*2, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"耗能"];
     
     [self addSubview:energyTitleLabel];
     
     
   
-    energyBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, offset, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kTextColor  font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
-    energyBackGroundLabel.backgroundColor = [UIColor lightGrayColor];
+    energyBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, offset*2, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kGrayBackgroundColor  font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    energyBackGroundLabel.backgroundColor = kGrayBackgroundColor;
     energyBackGroundLabel.layer.cornerRadius = labelHeight/2;
     energyBackGroundLabel.clipsToBounds = YES;
     
     [self addSubview:energyBackGroundLabel];
     
-    calLabel  = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y, 0, labelHeight) TextColor:[UIColor orangeColor] font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    calLabel  = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y, 0, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
     [self addSubview:calLabel];
     calLabel.layer.cornerRadius = CGRectGetHeight(calLabel.frame)/2;
     calLabel.clipsToBounds = YES;
-    calLabel.backgroundColor = kCalAnimateBarColor;
+    calLabel.backgroundColor = kEnergyBottomBarColor;
     
-    calHeadLabel = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y  - labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    calHeadLabel = [self getLabelWithFrame:CGRectMake(energyBackGroundLabel.frame.origin.x, energyBackGroundLabel.frame.origin.y  - titleLabelHeight, titleLabelWidth, titleLabelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10]
+                              textAligment:NSTextAlignmentCenter text:nil];
     
-    calHeadLabel.layer.cornerRadius = CGRectGetHeight(calLabel.frame)/2;
-    calHeadLabel.clipsToBounds = YES;
+
     [self addSubview:calHeadLabel];
     
     
-    UILabel *energyUnittitleLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - CGRectGetWidth(energyTitleLabel.frame) - offset, offset, CGRectGetWidth(energyTitleLabel.frame), labelHeight) TextColor:[UIColor darkGrayColor] font:[UIFont systemFontOfSize:15] textAligment:NSTextAlignmentCenter text:@"大卡"];
+    UILabel *energyUnittitleLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - CGRectGetWidth(energyTitleLabel.frame) - offset, offset*2, CGRectGetWidth(energyTitleLabel.frame), labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"大卡"];
     
     [self  addSubview:energyUnittitleLabel];
     
     
     //脂肪消耗
-    UILabel *fatTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset *2 + labelHeight , titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"燃脂"];
+    UILabel *fatTitleLabel = [self getLabelWithFrame:CGRectMake(offset, calLabel.frame.origin.y + CGRectGetHeight(calLabel.frame) + offset *3 , titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13]textAligment:NSTextAlignmentCenter text:@"燃脂"];
     
     [self addSubview:fatTitleLabel];
     
     
-    UILabel *fatUnitLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - titleLabelWidth - offset, offset * 2 + labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:@"克"];
+    UILabel *fatUnitLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - titleLabelWidth - offset, fatTitleLabel.frame.origin.y, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"克"];
     
     [self addSubview:fatUnitLabel];
     
-    UILabel *fatBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, offset * 2 + labelHeight, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
-    fatBackGroundLabel.backgroundColor = kLabelBackgroundColor;
+    //背景
+    UILabel *fatBackGroundLabel = [self getLabelWithFrame:CGRectMake(offset+titleLabelWidth, fatTitleLabel.frame.origin.y, self.frame.size.width - 2*offset - 2*titleLabelWidth, labelHeight) TextColor:kGrayBackgroundColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    fatBackGroundLabel.backgroundColor = kGrayBackgroundColor;
     fatBackGroundLabel.layer.cornerRadius = CGRectGetHeight(fatBackGroundLabel.frame)/2;
     fatBackGroundLabel.clipsToBounds = YES;
     
     [self addSubview:fatBackGroundLabel];
     
-    fatLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x, offset * 2 + labelHeight, 0, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    fatLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x, fatTitleLabel.frame.origin.y, 0, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
     fatLabel.layer.cornerRadius = CGRectGetHeight(fatLabel.frame)/2;
     fatLabel.clipsToBounds = YES;
-    fatLabel.backgroundColor = kCalAnimateBarColor;
+    fatLabel.backgroundColor = kFatBottomBarColor;
     
     [self addSubview:fatLabel];
     
-    fatHeadLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x,fatBackGroundLabel.frame.origin.y + labelHeight, titleLabelWidth, labelHeight) TextColor:kTextColor font:kTextFont textAligment:NSTextAlignmentCenter text:nil];
+    fatHeadLabel = [self getLabelWithFrame:CGRectMake(fatBackGroundLabel.frame.origin.x,fatBackGroundLabel.frame.origin.y + titleLabelHeight +offset*1.5, titleLabelWidth, titleLabelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10] textAligment:NSTextAlignmentCenter text:nil];
     
     [self addSubview:fatHeadLabel];
     

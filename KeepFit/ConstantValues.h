@@ -26,19 +26,45 @@
 //barView height
 #define kBarViewHeight   (kScreenHeight - HeadtextlabelsHeight - TapBarHeight - BarBottomPADDING )
 
+//字体
+#define kTextFontName_Helvetica     @"HelveticaNeue"
+#define kHelveticaNeue_Bold  @"HelveticaNeue-Bold"
+
+//字体颜色
+#define kTextColor      [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1.0]
+
 
 /*===============CircleProgressView================*/
 #define kLabelHeight 20.0
 #define kHelveticaNeue    @"HelveticaNeue"
-#define kHelveticaNeue_Bold  @"HelveticaNeue-Bold"
+
 #define kTimerschduleInterval  0.01
 //动画环颜色
-#define kCircleProgressViewColor    [UIColor colorWithRed:50.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0]
+#define kCircleProgressViewColor    [UIColor colorWithRed:67.0/255.0 green:211.0/255.0 blue:255.0/255.0 alpha:1.0]
 
 /*==================================================*/
 
-//字体
-#define kTextFontName_Helvetica     @"Helvetica"
+//背景灰色  统一使用
+#define kGrayBackgroundColor    [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1.0]
+
+/*====================GraphView================*/
+//graph 填充色
+#define kGraphFillColors  @[[UIColor colorWithRed:223.0/255.0 green:252.0/255.0 blue:231.0/255.0 alpha:1.0],[UIColor colorWithRed:223.0/255.0 green:252.0/255.0 blue:231.0/255.0 alpha:1.0]]
+
+//graph 线条颜色
+#define kGraphLineColor  [UIColor colorWithRed:100.0/255.0 green:233.0/255.0 blue:122.0/255.0 alpha:1.0]
+
+/*=============================================*/
+
+/*================BottomBar=============*/
+
+//耗能
+#define kEnergyBottomBarColor  [UIColor colorWithRed:255.0/255.0 green:219.0/255.0 blue:52.0/255.0 alpha:1.0]
+
+//燃脂
+#define kFatBottomBarColor  [UIColor colorWithRed:255.0/255.0 green:163.0/255.0 blue:108.0/255.0 alpha:1.0]
+
+
 
 //体重quantitytype
 #define kWeightQuantityType  [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]
@@ -52,13 +78,6 @@
 //骑自行车 quantitytype
 #define kCyclingDistantQuantityType          [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling]
 
-//graph 填充色
-#define kGraphFillColors  @[[UIColor colorWithRed:0.251 green:0.232 blue:1.000 alpha:1.000],[UIColor colorWithRed:0.282 green:0.945 blue:1.000 alpha:1.000]]
 
-//graph 线条颜色
-#define kGraphColor  [UIColor colorWithRed:0.500 green:0.158 blue:1.000 alpha:1.000]
-
-//graph 背景颜色
-#define kGraphDetailBackGroundColor [UIColor colorWithRed:0.444 green:0.842 blue:1.000 alpha:1.000]
 
 

@@ -30,7 +30,7 @@
     [self addSubview:self.circleProgressView];
     
     _dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, kScreenWith, 40)];
-    _dateLabel.textColor = [UIColor blackColor];
+    _dateLabel.textColor = kTextColor;
     _dateLabel.font = [UIFont systemFontOfSize:18];
     _dateLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_dateLabel];

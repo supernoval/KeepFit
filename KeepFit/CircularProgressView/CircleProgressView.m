@@ -118,8 +118,8 @@
         _stepsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height/2 - kLabelHeight/2, self.frame.size.width, kLabelHeight)];
         _stepsLabel.numberOfLines = 1;
         _stepsLabel.textAlignment = NSTextAlignmentCenter;
-        _stepsLabel.font = [UIFont fontWithName:kHelveticaNeue size:20];
-        _stepsLabel.textColor = [UIColor blackColor];
+        _stepsLabel.font = [UIFont fontWithName:kHelveticaNeue size:45];
+        _stepsLabel.textColor = kTextColor;
         //_stepsLabel.backgroundColor = [UIColor yellowColor];
         
         [self addSubview:_stepsLabel];
@@ -138,8 +138,8 @@
         _stepTitleLabel.numberOfLines = 1;
         _stepTitleLabel.textAlignment = NSTextAlignmentCenter;
         _stepTitleLabel.text = @"步数";
-        _stepTitleLabel.font = [UIFont fontWithName:kHelveticaNeue size:15];
-        _stepTitleLabel.textColor = [UIColor darkGrayColor];
+        _stepTitleLabel.font = [UIFont fontWithName:kTextFontName_Helvetica size:15];
+        _stepTitleLabel.textColor = kTextColor;
         
         [self addSubview:_stepTitleLabel];
         
@@ -157,7 +157,7 @@
         _walkingDisLabel.numberOfLines = 0;
         _walkingDisLabel.textAlignment = NSTextAlignmentCenter;
         _walkingDisLabel.font = [UIFont fontWithName:kHelveticaNeue size:15];
-        _walkingDisLabel.textColor = [UIColor darkGrayColor];
+        _walkingDisLabel.textColor = kTextColor;
       
         [self addSubview:_walkingDisLabel];
         
@@ -232,7 +232,7 @@
     NSMutableAttributedString *muStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",stepsStr]];
     
     
-    [muStr addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:20],NSStrokeColorAttributeName:[UIColor darkGrayColor]} range:NSMakeRange(0,stepsStr.length)];
+    [muStr addAttributes:@{NSFontAttributeName:[UIFont fontWithName:kTextFontName_Helvetica size:20],NSStrokeColorAttributeName:kTextColor} range:NSMakeRange(0,stepsStr.length)];
     
     return muStr;
 }

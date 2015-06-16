@@ -103,14 +103,14 @@
     
     
     _persenLabel = [[UILabel alloc]initWithFrame:CGRectMake(xPoint + barWidth, yPoint - 15, 80, 30)];
-    _persenLabel.textColor = [UIColor blueColor];
+    _persenLabel.textColor = kTextColor;
     _persenLabel.textAlignment = NSTextAlignmentCenter;
     _persenLabel.font = [UIFont fontWithName:kTextFontName_Helvetica size:14];
     
     [self addSubview:_persenLabel];
     
   
-    UILabel *_stepstilelLabel = [CommentMeths labelWithText:NSLocalizedString(@"Steps", nil) font:[UIFont fontWithName:kTextFontName_Helvetica size:15] textColor:[UIColor blackColor] frame:CGRectMake(20, 40, 65, 30)];
+    UILabel *_stepstilelLabel = [CommentMeths labelWithText:NSLocalizedString(@"Steps", nil) font:[UIFont fontWithName:kTextFontName_Helvetica size:15] textColor:kTextColor frame:CGRectMake(20, 40, 65, 30)];
     
     _stepstilelLabel.textAlignment = NSTextAlignmentRight;
     

@@ -287,16 +287,18 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     CGFloat graphViewY = BottonViewY - graphViewHeight - BarBottomPADDING *3;
     
-    CGFloat barPadding = (kScreenWith - BarWith)/2;
+    CGFloat barWith = kScreenWith - 60;
+    
+    CGFloat barPadding = (kScreenWith - barWith)/2;
     
     
-    _todayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding,graphViewY, BarWith, graphViewHeight)];
+    _todayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding,graphViewY, barWith, graphViewHeight)];
 
-    _yesterdayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding  + kScreenWith,graphViewY,BarWith, graphViewHeight )];
+    _yesterdayPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding  + kScreenWith,graphViewY,barWith, graphViewHeight )];
   
-    _lastWeekPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *2, graphViewY, BarWith, graphViewHeight)];
+    _lastWeekPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *2, graphViewY, barWith, graphViewHeight)];
     
-    _lastMonthPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *3, graphViewY, BarWith, graphViewHeight)];
+    _lastMonthPlotView = [self getGraphViewWithFrame:CGRectMake(barPadding + kScreenWith *3, graphViewY, barWith, graphViewHeight)];
     
     
     
@@ -307,9 +309,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     MPGraphView *mympgraphView = [MPGraphView plotWithType:MPPlotTypeGraph frame:frame];
     mympgraphView.fillColors = kGraphFillColors;
     mympgraphView.graphColor = [UIColor clearColor];
-    mympgraphView.detailBackgroundColor = kGraphDetailBackGroundColor;
-    mympgraphView.lineColor = [UIColor redColor];
-    mympgraphView.detailTextColor = [UIColor whiteColor];
+    mympgraphView.detailBackgroundColor = kGrayBackgroundColor;
+    mympgraphView.lineColor = kGraphLineColor;
+    mympgraphView.detailTextColor = kTextColor;
     mympgraphView.curved = YES;
     
     return mympgraphView;
