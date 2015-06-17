@@ -44,9 +44,9 @@
     
     if (self.values.count && !self.waitToUpdate)
     {
-        UIColor *fillColor = [_fillColors firstObject];
+       
         
-        ((CAShapeLayer *)self.layer).fillColor=fillColor.CGColor;
+        ((CAShapeLayer *)self.layer).fillColor=[UIColor clearColor].CGColor;
         ((CAShapeLayer *)self.layer).strokeColor = self.graphColor.CGColor;
         ((CAShapeLayer *)self.layer).path = [self graphPathFromPoints].CGPath;
         
@@ -204,11 +204,11 @@
 
 - (CGPoint)pointAtIndex:(NSInteger)index{
 
-    CGFloat space=(self.frame.size.width)/(points.count-1);
+    CGFloat space=(self.frame.size.width )/(points.count-1);
 
     CGFloat percent = [self getPersent];
     
-    return CGPointMake((space)*index,self.height - percent*[[points objectAtIndex:index] floatValue] - PADDING);
+    return CGPointMake((space)*index ,self.height - percent*[[points objectAtIndex:index] floatValue] - PADDING);
     
 //    return CGPointMake(space+(space)*index,self.height + PADDING);
 }
@@ -369,23 +369,23 @@
     
     if(fillColors.count){
         
-//        NSMutableArray *colors=[[NSMutableArray alloc] initWithCapacity:fillColors.count];
-//        
-//        for (UIColor* color in fillColors) {
-//            if ([color isKindOfClass:[UIColor class]]) {
-//                [colors addObject:(id)[color CGColor]];
-//            }else{
-//                [colors addObject:(id)color];
-//            }
-//        }
-//        _fillColors=colors;
-//        
-//        gradient = [CAGradientLayer layer];
-//      //  gradient.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 0, self.bounds.size.height);
-//        gradient.frame = self.bounds;
-//        
-//        gradient.colors = _fillColors;
-//        [self.layer addSublayer:gradient];
+        NSMutableArray *colors=[[NSMutableArray alloc] initWithCapacity:fillColors.count];
+        
+        for (UIColor* color in fillColors) {
+            if ([color isKindOfClass:[UIColor class]]) {
+                [colors addObject:(id)[color CGColor]];
+            }else{
+                [colors addObject:(id)color];
+            }
+        }
+        _fillColors=colors;
+        
+        gradient = [CAGradientLayer layer];
+      //  gradient.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 0, self.bounds.size.height);
+        gradient.frame = self.bounds;
+        
+        gradient.colors = _fillColors;
+        [self.layer addSublayer:gradient];
         
         
     }else

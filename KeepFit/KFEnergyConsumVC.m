@@ -110,6 +110,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 }
 
 @property (nonatomic) KFHealthStore *myHealthStore;
+@property (nonatomic,assign) CGFloat averageSteps;
 
 @end
 
@@ -228,6 +229,113 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
+#pragma mark - 先获取一个月的数据 得到平均值
+-(void)getOneMonthData
+{
+    
+   
+    NSDate *lastOneMonth = [[NSDate date]dateByAddingTimeInterval:-24*60*60*30];
+    lastOneMonth = [CommentMeths getYYYYMMdd0000DateWithDate:lastOneMonth];
+    
+    
+    NSDate *now = [NSDate date];
+    
+    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:lastOneMonth endDate:now options:HKQueryOptionStrictStartDate];
+    
+    
+    [_myHealthStore mostRecentQuantitySamleOfType:kStepsQuantityType limit:HKObjectQueryNoLimit predicate:predicate completion:^(NSArray *quantitys, NSError *Error)  {
+        
+        
+        if (quantitys.count == 0) {
+            
+            NSLog(@"%s,fail to get steps,error:%@",__func__,Error);
+            
+        }
+        
+        else
+        {
+            
+            double totalSteps = 0.0;
+            
+            double todaySteps = 0.0;
+            
+            double yestdaySteps = 0.0;
+            
+            for (NSInteger i = 0; i < quantitys.count; i++)
+            {
+                
+                HKSample *onesample = [quantitys objectAtIndex:i];
+                
+                NSDate *today = [CommentMeths getYYYYMMddDateWithDate:[NSDate date]];
+                
+                NSDate *yesterday = [CommentMeths getYYYYMMdd0000DateWithDate:[today dateByAddingTimeInterval:-24*60*60]];
+                
+                
+                NSDate *startDate = [CommentMeths getYYYYMMddDateWithDate:[onesample startDate]];
+                
+                
+                HKQuantitySample *oneSample = [quantitys objectAtIndex:i];
+                HKQuantity *quantity = oneSample.quantity;
+                
+                HKUnit *countUnit = [HKUnit countUnit];
+                
+                
+                double steps = [quantity doubleValueForUnit:countUnit];
+                
+                NSDate *quantityStartDate = oneSample.startDate;
+                NSDate *quantityEndDate = oneSample.endDate;
+                
+                NSString *starttimeStr  = [NSDate HHmmStringWithDate:quantityStartDate];
+                NSString *endtimeStr = [NSDate HHmmStringWithDate:quantityEndDate];
+                
+                NSString *hourStr = [NSDate HHStringWithDate:quantityStartDate];
+                NSString *minuteStr = [NSDate mmStringWithDate:quantityStartDate];
+                
+                
+             
+                
+           
+                    NSDictionary *dataDict = @{@"starttime":starttimeStr,@"endtime":endtimeStr,@"value":@(steps),@"startdate":startDate,@"hour":hourStr,@"minute":minuteStr};
+                    
+                    
+                    [_lastMonthStepsArray addObject:dataDict];
+          
+                
+                
+                   totalSteps +=steps;
+                
+                
+                
+                    
+                    [_stepsMuDict setObject:@(totalSteps) forKey:lastonemonthStepKey];
+                    
+                    hadGetLastOneMonthSteps = YES;
+                    
+                    if (hadGetLastOneMonthDistance && currentScrollViewPageIndex == 3)
+                    {
+                        
+                        [self showdatasWithTimeType:WalkingStepsTimeTypeLastMonth];
+                        hadShowedLastOneMonthData = YES;
+                        
+                        
+                    }
+        
+                    
+           
+            }
+            
+            
+            
+            
+            
+            
+            
+            //NSLog(@"totalSteps:%f",totalSteps);
+            
+            
+        }
+    }];
+}
 
 #pragma mark - 请求数据
 -(void)requestDataFromHealhStore
@@ -752,8 +860,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     
                     hadGetLastTwoDaysDistance = YES;
                     
-                    CGFloat todayfats = [_fatTranlater wakingDistanceToFat:todaydistance];
-                    CGFloat yesterdayfats = [_fatTranlater wakingDistanceToFat:yesterdistance];
+//                    CGFloat todayfats = [_fatTranlater wakingDistanceToFat:todaydistance];
+//                    CGFloat yesterdayfats = [_fatTranlater wakingDistanceToFat:yesterdistance];
                     
                    // NSLog(@"%s,todayfats%.2f,yesterdayfats:%.2f",__func__,todayfats,yesterdayfats);
                     

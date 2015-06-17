@@ -12,9 +12,11 @@
 //目前体重
 #define kCurrentWeiht @"CurrentWeight"
 
-
 //目标体重
 #define kTargetWeight   @"TaigetWeight"
+
+//平均步行距离
+#define kAverageDistance   @"AverageDistance"
 
 
 //是否第一次打开app
