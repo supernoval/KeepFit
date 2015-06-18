@@ -110,4 +110,21 @@
     return dateStr;
 }
 
+
++(BOOL)isAWeekAgo:(NSDate *)saveDate
+{
+    NSDate *aWeekAgo = [NSDate dateWithTimeIntervalSinceNow:-7*24*60];
+    
+    if ([aWeekAgo isEqualToDate:[saveDate earlierDate:aWeekAgo]]) {
+        
+        
+        return NO;
+        
+    }
+    
+    return YES;
+    
+    
+    
+}
 @end

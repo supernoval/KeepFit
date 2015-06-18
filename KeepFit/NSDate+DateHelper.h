@@ -15,5 +15,7 @@
 +(NSString*)mmStringWithDate:(NSDate*)date;
 +(NSString*)MMddStringWithDate:(NSDate*)date;
 
++(BOOL)isAWeekAgo:(NSDate*)saveDate;
+
 
 @end

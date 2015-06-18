@@ -23,7 +23,7 @@
     
   
     
-    NSInteger dateFlag = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSInteger dateFlag = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     
     NSDateComponents *components = [calendar components:dateFlag fromDate:date];
     

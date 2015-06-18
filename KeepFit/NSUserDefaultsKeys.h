@@ -18,6 +18,8 @@
 //平均步行距离
 #define kAverageDistance   @"AverageDistance"
 
+//平均距离 保存时间
+#define kAverageSaveDate   @"AverageSaveDate"
 
 //是否第一次打开app
 #define kHadShowWelComeView    @"HadShowWelComeView"

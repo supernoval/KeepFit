@@ -33,8 +33,7 @@ typedef void (^XHThirdLoginBlock)(BOOL hadLogin);
 
 
 
-#pragma mark - 网络请求该城市的数据
-+(NSArray*)RequestCityDataWithParameters:(NSArray*)paraArray andAction:(NSString*)action;
+
 
 #pragma mark - 请求图片
 +(void)setImageViewWithImageURL:(NSString*)url imageView:(UIImageView*)imageView;
@@ -55,16 +54,13 @@ typedef void (^XHThirdLoginBlock)(BOOL hadLogin);
 + (BOOL)isValidateEmail:(NSString *)Email;
 
 
-#pragma mark - 请求省、市、区、县
-+(void)RequestTheOldAddressLocationWithCityLevel:(NSString*)cityLevel andcityid:(NSString*)cityid andCitysArrayBlock:(XHGetCityBlock)block;
 
 
-#pragma mark - 验证第三方用户是否已授权
-+(void)thirdLoginHadSignUpWithpk:(NSString*)pk checktype:(NSString*)checktype hadSignUp:(XHCheckThirdLoginBlock)block;
 
 
-#pragma mark - 未授权第三方用户注册
-+(void)addthirduserWithpk:(NSString*)pk checktype:(NSString*)checktype nickname:(NSString*)nickname sex:(NSString*)sex photo:(NSString*)photo hadLogin:(XHThirdLoginBlock)hadLoginblock;
+
+
+
 
 
 #pragma mark - 判断用户名
