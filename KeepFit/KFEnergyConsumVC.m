@@ -777,9 +777,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                       //  NSLog(@"today:%@,startDateStr:%@",today,startDateStr);
                         
                         todaydistance += distance;
-                        NSString *startStr = [CommentMeths getYYYYMMddmmssWithDate:startDate];
+//                        NSString *startStr = [CommentMeths getYYYYMMddmmssWithDate:startDate];
                         
-                         NSLog(@"todayDistance:%f,startStr:%@",distance,startStr);
+//                         NSLog(@"todayDistance:%f,startStr:%@",distance,startStr);
                         
                     }
                     

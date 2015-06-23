@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import <WatchKit/WatchKit.h>
+#import "CommonMethods.h"
+#import "CommentMeths.h"
+#import "NSUserDefaultsKeys.h"
+#import "KFHealthStore.h"
+
 
 @interface AppDelegate ()
 
@@ -134,4 +140,71 @@
     }
 }
 
+
+
+-(void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply
+{
+    __block CGFloat persent  = 0.0;
+    
+    CGFloat averageDis = [[NSUserDefaults standardUserDefaults ] floatForKey:kAverageDistance];
+    
+    
+    NSDate *onedaydate = [[NSDate date] dateByAddingTimeInterval:-24*60*60*1];
+    
+    onedaydate = [CommentMeths getYYYYMMdd0000DateWithDate:onedaydate];
+    
+    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:onedaydate endDate:[NSDate date] options:HKQueryOptionStrictStartDate];
+    // kWalkingRunningDistantQuantityType HKObjectQueryNoLimit
+    
+    NSLog(@"watch request!");
+    
+    KFHealthStore *_healthStore = [KFHealthStore shareHealthStore];
+    
+    [_healthStore mostRecentQuantitySamleOfType:kWalkingRunningDistantQuantityType limit:HKObjectQueryNoLimit predicate:predicate completion:^(NSArray *quantitys, NSError *Error) {
+        
+        
+        
+        CGFloat todaydistance = 0.0;
+        
+        for (NSInteger i = 0; i < quantitys.count; i++)
+        {
+            
+            HKSample *onesample = [quantitys objectAtIndex:i];
+            
+            NSString *today = [CommentMeths getddDateStrWithDate:[NSDate date]];
+            
+            
+            NSDate *startDate = [CommentMeths getYYYYMMddDateWithDate:[onesample startDate]];
+            
+            NSString *startDateStr = [CommentMeths getddDateStrWithDate:startDate];
+            
+            
+            HKQuantitySample *oneSample = [quantitys objectAtIndex:i];
+            HKQuantity *quantity = oneSample.quantity;
+            
+            HKUnit *countUnit = [HKUnit meterUnitWithMetricPrefix:HKMetricPrefixKilo];
+            
+            double distance = [quantity  doubleValueForUnit:countUnit];
+            
+            
+            if ([today isEqualToString:startDateStr])
+            {
+                
+                //  NSLog(@"today:%@,startDateStr:%@",today,startDateStr);
+                
+                todaydistance += distance;
+            }
+            
+            
+        }
+        
+        
+        persent = todaydistance/averageDis;
+        
+        
+        reply(@{@"persent":@(persent)});
+        
+    }];
+
+}
 @end

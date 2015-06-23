@@ -11,5 +11,6 @@
 
 @interface InterfaceController : WKInterfaceController
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *persentLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceLabel *persentValueLabel;
 
 @end

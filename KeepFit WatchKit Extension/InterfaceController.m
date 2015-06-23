@@ -24,7 +24,12 @@
     
     [WKInterfaceController openParentApplication:@{@"action":@"1"} reply:^(NSDictionary *replyInfo, NSError *error) {
         
-        
+        if (replyInfo) {
+            
+            [self showPersentWithReplyInfo:replyInfo];
+            
+            
+        }
         
     }];
     
@@ -34,10 +39,9 @@
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
     
-   // CGFloat persent = [CommonMethods getPersent ];
+
     
     
-    [self showPersent];
     
 }
 
@@ -48,14 +52,15 @@
 }
 
 
--(void)showPersent
+-(void)showPersentWithReplyInfo:(NSDictionary*)replyInfo
 {
 
   
 
-    //self.persentLabel.text = [NSString stringWithFormat:@"%.1f%@",persent,@"%"];
-
-
+    CGFloat persent = [[replyInfo objectForKey:@"persent"]floatValue]*100.0;
+    
+    
+    self.persentValueLabel.text = [NSString stringWithFormat:@"%.1f%@",persent,@"%"];
     
    
     
