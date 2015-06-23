@@ -80,6 +80,7 @@ typedef void (^XHThirdLoginBlock)(BOOL hadLogin);
 #pragma mark - 将中间字符变成 ****
 +(NSString*)geteditedmobile:(NSString*)mobile;
 
++(CGFloat)getPersent;
 
 @end
 

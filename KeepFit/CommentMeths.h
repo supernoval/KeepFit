@@ -15,6 +15,7 @@
 +(NSString*)getMMddDateStrWithDate:(NSDate*)date;
 
 +(NSDate*)getYYYYMMddDateWithDate:(NSDate*)date;
++(NSString*)getYYYYMMddmmssWithDate:(NSDate*)date;
 
 
 +(NSDate*)getYYYYMMdd0000DateWithDate:(NSDate*)date;

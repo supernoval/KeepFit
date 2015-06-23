@@ -158,4 +158,7 @@ KFHealthStore *_kfHealthStore = nil;
     [self executeQuery:query];
 }
 
+
+
+
 @end

@@ -90,7 +90,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     MPGraphView *_lastMonthPlotView;
     
   
-    NSMutableArray *_todayDisArray;
+   
     
     NSMutableArray *_todayStepsArray;
     
@@ -155,7 +155,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     _userWeight = 0.0;
     
     _stepsMuDict = [[NSMutableDictionary alloc]init];
-    _todayDisArray = [[NSMutableArray alloc]init];
+    
     _todayStepsArray = [[NSMutableArray alloc]init];
     _yesterStepsArray = [[NSMutableArray alloc]init];
     _lastWeekStepsArray = [[NSMutableArray alloc]init];
@@ -214,7 +214,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             if (isSucess)
             {
-          
+           
                 [self getOneMonthData];
                 
             }
@@ -242,7 +242,18 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     BOOL isAWeekAgo = [NSDate isAWeekAgo:saveDate];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+      
+        [self.view addSubview:_activetyIndicator];
+        [_activetyIndicator startAnimating];
+        _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
+        
+    });
     
+
+//    // 没有值 就先请求一个月的数据 ，再请求一天的数据
+//    _isNeedRefreshAVG = YES;
+//    [self getwalkingDistanceWithDayType:WalkingStepsTimeTypeLastMonth];
     //如果有值
     if (_averageDistance > 0 && !isAWeekAgo)
     {
@@ -256,6 +267,16 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     }
     else
     {
+        
+//        _activetyIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(kScreenWith/2 - 22.5, kScreenHeight/2 - 22.5, 45, 45)];
+//        
+//        _activetyIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+//        [_myscrollView  addSubview:_activetyIndicator];
+//        [_activetyIndicator startAnimating];
+//        
+//        _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
+//        
+//        [_myscrollView bringSubviewToFront:_activetyIndicator];
         
         // 没有值 就先请求一个月的数据 ，再请求一天的数据
           _isNeedRefreshAVG = YES;
@@ -282,7 +303,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
-#pragma mark -从后台返回
+#pragma mark - 从后台返回
 -(void)appWillEnterForword
 {
     [self requestDataFromHealhStore];
@@ -646,7 +667,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     lastSevendays = [CommentMeths getYYYYMMdd0000DateWithDate:lastSevendays];
     
     
-    NSDate *lastOneMonth = [[NSDate date]dateByAddingTimeInterval:-24*60*60*30];
+    NSDate *lastOneMonth = [[NSDate date]dateByAddingTimeInterval:-24*60*60*27];
     lastOneMonth = [CommentMeths getYYYYMMdd0000DateWithDate:lastOneMonth];
     
     
@@ -684,6 +705,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         {
             startDate = lastOneMonth;
             
+            NSLog(@"lastMonthDate:%@",lastOneMonth);
+            
+            
             endDate = now;
             
         }
@@ -695,7 +719,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             break;
     }
     
-   // NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
+    NSLog(@"startdate:%@,enddate:%@",startDate,endDate);
     
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
     
@@ -711,25 +735,28 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         else
         {
             
-            KFTranslateWorkOutEnergyToFat *_fatTranlater = [KFTranslateWorkOutEnergyToFat shareEnergyToFat];
+//            KFTranslateWorkOutEnergyToFat *_fatTranlater = [KFTranslateWorkOutEnergyToFat shareEnergyToFat];
             
             
             double todaydistance = 0.0;
             double yesterdistance = 0.0;
             
             double totaldistance = 0.0;
+        
             
             for (NSInteger i = 0; i < quantitys.count; i++)
             {
                 
                 HKSample *onesample = [quantitys objectAtIndex:i];
                 
-                NSDate *today = [CommentMeths getYYYYMMddDateWithDate:[NSDate date]];
+                NSString *today = [CommentMeths getddDateStrWithDate:[NSDate date]];
                 
-                NSDate *yesterday = [CommentMeths getYYYYMMdd0000DateWithDate:[today dateByAddingTimeInterval:-24*60*60]];
+                NSDate *yesterday = [CommentMeths getYYYYMMdd0000DateWithDate:[[NSDate date] dateByAddingTimeInterval:-24*60*60]];
                 
                 
                 NSDate *startDate = [CommentMeths getYYYYMMddDateWithDate:[onesample startDate]];
+                
+                NSString *startDateStr = [CommentMeths getddDateStrWithDate:startDate];
                 
                 
                 HKQuantitySample *oneSample = [quantitys objectAtIndex:i];
@@ -743,15 +770,16 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 {
                     
                     
-                    
-                    if ([today isEqualToDate:startDate])
+                  
+                    if ([today isEqualToString:startDateStr])
                     {
                         
-                   
+                      //  NSLog(@"today:%@,startDateStr:%@",today,startDateStr);
+                        
                         todaydistance += distance;
+                        NSString *startStr = [CommentMeths getYYYYMMddmmssWithDate:startDate];
                         
-                        [_todayDisArray addObject:@(distance)];
-                        
+                         NSLog(@"todayDistance:%f,startStr:%@",distance,startStr);
                         
                     }
                     
@@ -766,17 +794,20 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     }
                     
                     
-                 }
+                  }
                 
                
-                
+         
                 totaldistance += distance;
                 
                 
                 
-            }
+             }
             
-           // NSLog(@"%s,totaldistacne:%.2f",__func__,totaldistance);
+            NSLog(@"todayDistance:%f",todaydistance);
+            
+            NSLog(@"%s,totaldistacne:%.2f,count:%ld",__func__,totaldistance,(long)quantitys.count);
+            
             
             switch (timetype) {
                 case WalkingStepsTimeTypeLastTwodays:
@@ -831,10 +862,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                   
                     if (_isNeedRefreshAVG)
                     {
-                        //只请求一次
-                        _averageDistance = totaldistance/30.0;
                         
-                        NSLog(@"%s,_averageDistance:%f",__func__,_averageDistance);
+                       
+                        
+                        //只请求一次
+                        _averageDistance = totaldistance/27.0;
+                        
+                        NSLog(@"%s,_averageDistance:%f,totalDistance:%f",__func__,_averageDistance,totaldistance);
                         
                         [[NSUserDefaults standardUserDefaults ] setFloat:_averageDistance forKey:kAverageDistance];
                         
@@ -970,7 +1004,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             for (NSInteger i = 0; i < quantitys.count; i++) {
                 
                 HKSample *onesample = [quantitys objectAtIndex:i];
-                
+        
                 NSDate *today = [CommentMeths getYYYYMMddDateWithDate:[NSDate date]];
                 
                 NSDate *yesterday = [CommentMeths getYYYYMMdd0000DateWithDate:[today dateByAddingTimeInterval:-24*60*60]];
@@ -983,6 +1017,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 HKQuantity *quantity = oneSample.quantity;
                 
                 HKUnit *countUnit = [HKUnit countUnit];
+//                HKSampleType *type = oneSample.sampleType;
+//                NSLog(@"sampleType:%@",type);
+                
                 
                 
                 double steps = [quantity doubleValueForUnit:countUnit];

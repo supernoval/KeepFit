@@ -105,6 +105,16 @@
     
 }
 
++(NSString*)getYYYYMMddmmssWithDate:(NSDate *)date
+{
+    NSDateFormatter *_dateFormatter = [[NSDateFormatter alloc]init];
+    
+    [_dateFormatter setDateFormat:@"YYYY:MM:dd HH:mm:ss"];
+
+    
+    
+    return [_dateFormatter stringFromDate:date];
+}
 +(UILabel*)labelWithText:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textcolor frame:(CGRect )frame
 {
     
