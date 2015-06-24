@@ -17,6 +17,7 @@
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
 		137EED751B3AA708004923D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137EED741B3AA708004923D4 /* Info.plist */; };
 		137EED7A1B3AA798004923D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137EED791B3AA798004923D4 /* Info.plist */; };
+		137EED7D1B3AA805004923D4 /* info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 137EED7F1B3AA805004923D4 /* info.strings */; };
 		137F24D11B16EB4700A94CE1 /* MyGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 137F24D01B16EB4700A94CE1 /* MyGraphView.m */; };
 		137F256F1B2176DD00A94CE1 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 137F256E1B2176DD00A94CE1 /* DataHelper.m */; };
 		138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */; };
@@ -115,6 +116,9 @@
 		137EED621B3A9EC8004923D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
 		137EED741B3AA708004923D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137EED791B3AA798004923D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		137EED7E1B3AA805004923D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/info.strings; sourceTree = "<group>"; };
+		137EED801B3AA806004923D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/info.strings; sourceTree = "<group>"; };
+		137EED811B3AA806004923D4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/info.strings"; sourceTree = "<group>"; };
 		137F24CF1B16EB4700A94CE1 /* MyGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGraphView.h; path = MyGraphView/MyGraphView.h; sourceTree = "<group>"; };
 		137F24D01B16EB4700A94CE1 /* MyGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyGraphView.m; path = MyGraphView/MyGraphView.m; sourceTree = "<group>"; };
 		137F256D1B2176DD00A94CE1 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			children = (
 				137EED741B3AA708004923D4 /* Info.plist */,
 				1542CA1B1A7A76390035A5B9 /* main.m */,
+				137EED7F1B3AA805004923D4 /* info.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -675,6 +680,7 @@
 				1542CA851A7C84B10035A5B9 /* Localizable.strings in Resources */,
 				1542CA281A7A76390035A5B9 /* Main.storyboard in Resources */,
 				137EED751B3AA708004923D4 /* Info.plist in Resources */,
+				137EED7D1B3AA805004923D4 /* info.strings in Resources */,
 				1542CA2D1A7A76390035A5B9 /* LaunchScreen.xib in Resources */,
 				1542CA781A7C758D0035A5B9 /* KeepFit.entitlements in Resources */,
 				1542CA2A1A7A76390035A5B9 /* Images.xcassets in Resources */,
@@ -786,6 +792,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		137EED7F1B3AA805004923D4 /* info.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				137EED7E1B3AA805004923D4 /* Base */,
+				137EED801B3AA806004923D4 /* en */,
+				137EED811B3AA806004923D4 /* zh-Hans */,
+			);
+			name = info.strings;
+			sourceTree = "<group>";
+		};
 		1542CA261A7A76390035A5B9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
