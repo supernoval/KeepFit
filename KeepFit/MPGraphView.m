@@ -148,9 +148,10 @@
         
         if(i==0)
         {
+            NSLog(@"graphfirstpointx:%f,y:%f",point.x,point.y);
             [path moveToPoint:point];
             
-            NSLog(@"graphfirstpointx:%f,y:%f",point.x,point.y);
+          
             
         }
         
@@ -222,6 +223,12 @@
         CGFloat value = [[points objectAtIndex:i]floatValue];
         
         max = max >value?max:value;
+        
+    }
+    if (max == 0 )
+    {
+        return 0;
+        
         
     }
     

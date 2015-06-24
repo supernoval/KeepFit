@@ -392,7 +392,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     NSMutableArray *temNewValue = [DataHelper sortDataValue:values withTimeType:timetype];
     
-   // NSLog(@"%s,%@",__func__,values);
+    NSLog(@"%s,%@",__func__,temNewValue);
     
     
     NSMutableArray *dateValues = [DataHelper getDate:values withTimeType:timetype];
@@ -417,67 +417,70 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
-- (NSMutableArray*)sortValues:(NSMutableArray*)newValues
-{
-    
-    NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
-    
-    NSInteger N = 0;
-    
-    if (newValues.count > 24 && newValues.count < 100)
-    {
-        
-        
-        N = 5;
-        
-    }
-    else if (newValues.count >= 100 && newValues.count < 400 )
-    {
-        
-        N = 20;
-        
-    }
-    else if (newValues.count >= 400)
-    {
-        N = 40;
-        
-    }
-    else
-    {
-        N = 1;
-        
-    }
-    
-    for (NSInteger i = 0; i < newValues.count; i++)
-    {
-        
-        if (i%N == 0)
-        {
-            
-            CGFloat value = [[newValues objectAtIndex:i]floatValue];
-            
-            [temNewValue addObject:@(value)];
-            
-            
-            
-        }
-        
-        if (i == newValues.count - 1 && i%N != 0)
-        {
-            
-            CGFloat value = [[newValues objectAtIndex:i]floatValue];
-            
-            [temNewValue addObject:@(value)];
-            
-        }
-        
-        
-        
-    }
-    
-    return temNewValue;
-    
-}
+//- (NSMutableArray*)sortValues:(NSMutableArray*)newValues
+//{
+//    
+//    NSMutableArray *temNewValue = [[NSMutableArray alloc]init];
+//    
+//    NSInteger N = 0;
+//    
+//    if (newValues.count > 24 && newValues.count < 100)
+//    {
+//        
+//        
+//        N = 5;
+//        
+//    }
+//    else if (newValues.count >= 100 && newValues.count < 400 )
+//    {
+//        
+//        N = 20;
+//        
+//    }
+//    else if (newValues.count >= 400)
+//    {
+//        N = 40;
+//        
+//    }
+//    else
+//    {
+//        N = 1;
+//        
+//    }
+//    
+// 
+//        
+//        for (NSInteger i = 0; i < newValues.count; i++)
+//        {
+//            
+//            if (i%N == 0)
+//            {
+//                
+//                CGFloat value = [[newValues objectAtIndex:i]floatValue];
+//                
+//                [temNewValue addObject:@(value)];
+//                
+//                
+//                
+//            }
+//            
+//            if (i == newValues.count - 1 && i%N != 0)
+//            {
+//                
+//                CGFloat value = [[newValues objectAtIndex:i]floatValue];
+//                
+//                [temNewValue addObject:@(value)];
+//                
+//            }
+//            
+//            
+//            
+//        }
+//
+//    
+//    return temNewValue;
+//    
+//}
 
 #pragma mark - 显示底部数据条
 -(void)showBottonViewWithTimeType:(SPBottonProgressView*)bottonView currentSteps:(CGFloat)currentSteps currentDis:(CGFloat)currentDis expectedDis:(CGFloat)expectedDis
@@ -634,7 +637,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
              steps = [[_stepsMuDict objectForKey:lastonemonthStepKey]doubleValue];
             distance = [[_stepsMuDict objectForKey:lastonemonthdistanceKey]doubleValue];
             
-            [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:200 date:[NSDate date]];
+            [self showOneMonthData:_lastMonthDataView currentsteps:steps currentDistance:distance expectDistance:expectedDistance date:[NSDate date]];
             
              [self showBottonViewWithTimeType:_lastMonthBottonView currentSteps:steps currentDis:distance expectedDis:expectedDistance];
              [self showChartViewWithView:_lastMonthPlotView values:_lastMonthStepsArray timeType:WalkingStepsTimeTypeLastMonth];
