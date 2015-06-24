@@ -6,6 +6,22 @@
   Copyright (c) 2015年 ZhuHaikun. All rights reserved.
 */
 
+//健康中心无法使用
+"HealthCenterNotAri" = "健康中心无法使用!";
+
+//未授权健康中心提示
+"HealthCenterTips" = "请允许KeepFit读取您的健康数据,才能帮您分析健康信息";
+
+//体重
+"weight" = "体重";
+//步数
+"step" = "步数";
+//步行+跑步距离
+"walkandrun" = "步行+跑步距离";
+
+//未授权部分选项提示语
+"NotAvaibleTips" = "请到 设置-隐私-健康 中允许KeepFit读取您的体重、步数、步行+跑步距离";
+
 //标题
 "title" = "保持健康";
 

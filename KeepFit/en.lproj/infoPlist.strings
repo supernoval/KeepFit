@@ -1,0 +1,9 @@
+/* 
+  infoPlist.strings
+  KeepFit
+
+  Created by ZhuHaikun on 15/6/24.
+  Copyright (c) 2015年 ZhuHaikun. All rights reserved.
+*/
+"CFBundleDisplayName" = "KeepFit";
+"NSHealthShareUsageDescription" = "please";

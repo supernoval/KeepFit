@@ -2,7 +2,7 @@
   infoPlist.strings
   KeepFit
 
-  Created by Haikun Zhu on 15/6/24.
+  Created by ZhuHaikun on 15/6/24.
   Copyright (c) 2015年 ZhuHaikun. All rights reserved.
 */
-"CFBundleDisplayName" = "保持健康";
+"CFBundleDisplayName" = "KeepFit";

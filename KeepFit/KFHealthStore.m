@@ -15,7 +15,45 @@ KFHealthStore *_kfHealthStore = nil;
 
 @implementation KFHealthStore
 
-
+-(BOOL)isHealthDataTypeArivable
+{
+    
+    BOOL available = YES;
+    
+    HKQuantityType *weightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
+ 
+    
+    HKQuantityType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    HKQuantityType *walkingrunningDistanceType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
+    
+    
+    NSInteger weight = [_kfHealthStore authorizationStatusForType:weightType ];
+    NSInteger step = [_kfHealthStore authorizationStatusForType:stepCountType];
+    NSInteger walk = [_kfHealthStore authorizationStatusForType:walkingrunningDistanceType];
+    
+   
+    
+    
+    
+    if (weight == HKAuthorizationStatusSharingAuthorized && step == HKAuthorizationStatusSharingAuthorized && walk == HKAuthorizationStatusSharingAuthorized)
+    {
+        
+        available = YES;
+        
+    }
+    
+    else
+    {
+        available = NO;
+      
+        
+        
+    }
+    
+    return available;
+    
+    
+}
 +(KFHealthStore*)shareHealthStore
 {
    static dispatch_once_t oneceToken;
@@ -44,6 +82,11 @@ KFHealthStore *_kfHealthStore = nil;
             block(success);
             
             if (!success) {
+                
+                
+             
+                
+                
                 NSLog(@"You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: %@. If you're using a simulator, try it on a device.", error);
                 
           
@@ -51,13 +94,12 @@ KFHealthStore *_kfHealthStore = nil;
                 return;
             }
             
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                // Update the user interface based on the current user's health information.
-//                [self updateUsersAgeLabel];
-//                [self updateUsersHeightLabel];
-//                [self updateUsersWeightLabel];
-//            });
+
         }];
+    }
+    else
+    {
+        
     }
 }
 

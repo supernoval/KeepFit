@@ -6,7 +6,21 @@
   Copyright (c) 2015年 ZhuHaikun. All rights reserved.
 */
 
+//健康中心无法使用
+"HealthCenterNotAri" = "Health data is not available!";
 
+//未授权健康中心提示
+"HealthCenterTips" = "Please allow KeepFit to read your health data to help you analyze health information";
+
+//体重
+"weight" = "Weight";
+//步数
+"step" = "Steps";
+//步行+跑步距离
+"walkandrun" = "Walking+Running Distance";
+
+//未授权部分选项提示语
+"NotAvaibleTips" = "Please go to settings-Privacy-Health allowing KeepFit to read your Steps, Walking + Running Distance,Weight";
 
 //标题
 "title" = "Keep Fit";

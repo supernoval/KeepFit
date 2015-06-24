@@ -33,7 +33,7 @@ static NSString *yesterdaydistanceKey = @"yesterdaydistance";
 static NSString *lastsevendaysdistanceKey = @"lastsevendaysdistance";
 static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 
-@interface KFEnergyConsumVC ()<UITextFieldDelegate,UIScrollViewDelegate>
+@interface KFEnergyConsumVC ()<UITextFieldDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     UITapGestureRecognizer *_resignTapGesture;
     
@@ -103,6 +103,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     
     KFGraphView *_todayGraphView;
+    
+    
+    UIAlertView *requestAlert;
     
     
     
@@ -184,40 +187,57 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     [_activetyIndicator startAnimating];
     _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
     
+    [self requestHealthAuthorization];
     
     [self initScrollViews];
     
     
-    BOOL isHealthDataEnable = [HKHealthStore isHealthDataAvailable];
-    
-    if (isHealthDataEnable) {
-        
-        _myHealthStore = [KFHealthStore shareHealthStore];
-        
-       
-        [_myHealthStore requestAuthorization:^(BOOL isSucess) {
-            
-            if (isSucess)
-            {
-           
-                [self getOneMonthData];
-                
-            }
-            else
-            {
-                
-            }
-            
-        }];
-    }
-    else
-    {
-        
-    }
+  
 
     
 }
 
+- (void)requestHealthAuthorization
+{
+  
+    
+    BOOL isHealthDataEnable = [HKHealthStore isHealthDataAvailable];
+    
+    if (isHealthDataEnable)
+    {
+        
+       
+        _myHealthStore = [KFHealthStore shareHealthStore];
+       
+    
+        [_myHealthStore requestAuthorization:^(BOOL isSucess)
+            {
+                 
+                 if (isSucess)
+                 {
+                     
+                        [self getOneMonthData];
+                     
+                     
+                  
+                     
+                 }
+                 else
+                 {
+                     requestAlert =  [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"HealthCenterTips", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                     
+                     [requestAlert show];
+                     
+                 }
+                 
+             }];
+        
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"HealthCenterNotAri", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show ];
+    }
+}
 #pragma mark - 先获取一个月的数据 得到平均值
 -(void)getOneMonthData
 {
@@ -846,7 +866,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                        
                         
                         //只请求一次
-                        _averageDistance = totaldistance/30.0;
+                        _averageDistance = totaldistance/30.0*1.2;
                         
                         NSLog(@"%s,_averageDistance:%f,totalDistance:%f",__func__,_averageDistance,totaldistance);
                         
@@ -1300,6 +1320,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             }
             else if (!hadShowedLastOneMonthData)
             {
+                  hadShowedLastOneMonthData = YES;
                 [self.view addSubview:_activetyIndicator];
                 [_activetyIndicator startAnimating];
                 _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
@@ -1356,5 +1377,16 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         
          [self scrollViewDidEndDecelerating:_myscrollView];
     }];
+}
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == requestAlert)
+    {
+        
+        [self requestHealthAuthorization];
+        
+    }
 }
 @end

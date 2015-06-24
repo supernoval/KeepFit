@@ -15,6 +15,7 @@ typedef void (^KFHealthStoreRequestBlock)(BOOL isSucess);
 
 @interface KFHealthStore : HKHealthStore
 
+-(BOOL)isHealthDataTypeArivable;
 
 +(KFHealthStore*)shareHealthStore;
 

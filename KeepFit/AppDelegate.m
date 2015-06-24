@@ -200,6 +200,7 @@
         
         
         persent = todaydistance/averageDis;
+        NSLog(@"persent:%f",persent);
         
         
         reply(@{@"persent":@(persent)});
