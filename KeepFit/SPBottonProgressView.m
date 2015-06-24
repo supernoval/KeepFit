@@ -13,7 +13,7 @@
 CGFloat offset = 5.0;
 CGFloat labelHeight = 20.0;
 CGFloat titleLabelHeight = 15.0;
-CGFloat titleLabelWidth = 50.0;
+CGFloat titleLabelWidth = 60.0;
 
 
 #define kCalAnimateBarColor [UIColor orangeColor]
@@ -41,7 +41,7 @@ CGFloat titleLabelWidth = 50.0;
 
 -(void)initLabels
 {
-    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset*2, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"耗能"];
+    UILabel *energyTitleLabel = [self getLabelWithFrame:CGRectMake(offset, offset*2, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10] textAligment:NSTextAlignmentCenter text:NSLocalizedString(@"Consumption", nil)];
     
     [self addSubview:energyTitleLabel];
     
@@ -67,18 +67,18 @@ CGFloat titleLabelWidth = 50.0;
     [self addSubview:calHeadLabel];
     
     
-    UILabel *energyUnittitleLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - CGRectGetWidth(energyTitleLabel.frame) - offset, offset*2, CGRectGetWidth(energyTitleLabel.frame), labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"大卡"];
+    UILabel *energyUnittitleLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - CGRectGetWidth(energyTitleLabel.frame) - offset, offset*2, CGRectGetWidth(energyTitleLabel.frame), labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10] textAligment:NSTextAlignmentCenter text:NSLocalizedString(@"Kcal", nil)];
     
     [self  addSubview:energyUnittitleLabel];
     
     
     //脂肪消耗
-    UILabel *fatTitleLabel = [self getLabelWithFrame:CGRectMake(offset, calLabel.frame.origin.y + CGRectGetHeight(calLabel.frame) + offset *3 , titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13]textAligment:NSTextAlignmentCenter text:@"燃脂"];
+    UILabel *fatTitleLabel = [self getLabelWithFrame:CGRectMake(offset, calLabel.frame.origin.y + CGRectGetHeight(calLabel.frame) + offset *3 , titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10]textAligment:NSTextAlignmentCenter text:NSLocalizedString(@"FatBurned", nil)];
     
     [self addSubview:fatTitleLabel];
     
     
-    UILabel *fatUnitLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - titleLabelWidth - offset, fatTitleLabel.frame.origin.y, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:13] textAligment:NSTextAlignmentCenter text:@"克"];
+    UILabel *fatUnitLabel = [self getLabelWithFrame:CGRectMake(self.frame.size.width - titleLabelWidth - offset, fatTitleLabel.frame.origin.y, titleLabelWidth, labelHeight) TextColor:kTextColor font:[UIFont fontWithName:kTextFontName_Helvetica size:10] textAligment:NSTextAlignmentCenter text:NSLocalizedString(@"g", nil)];
     
     [self addSubview:fatUnitLabel];
     

@@ -55,6 +55,8 @@ KFTranslateWorkOutEnergyToFat *_energytoFat = nil;
         
         currentbodyweight = 70.0;
         
+      
+        
     }
     CGFloat totalConsumeEnergy = distance *kWalkingEnergyConsumePerKM(currentbodyweight);
     

@@ -1,0 +1,12 @@
+
+/* Class = "WKInterfaceLabel"; text = "今天完成量"; ObjectID = "4YZ-0I-kWy"; */
+"4YZ-0I-kWy.text" = "Today's percentage";
+
+/* Class = "WKInterfaceController"; title = "KeepFit"; ObjectID = "AgC-eL-Hgc"; */
+"AgC-eL-Hgc.title" = "KeepFit";
+
+/* Class = "WKInterfaceLabel"; text = "80%"; ObjectID = "DPt-bU-2zt"; */
+"DPt-bU-2zt.text" = "80%";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Alert Label";

@@ -36,10 +36,10 @@ KFHealthStore *_kfHealthStore = nil;
 -(void)requestAuthorization:(KFHealthStoreRequestBlock)block
 {
     if ([HKHealthStore isHealthDataAvailable]) {
-        NSSet *writeDataTypes = [self dataTypesToWrite];
+//        NSSet *writeDataTypes = [self dataTypesToWrite];
         NSSet *readDataTypes = [self dataTypesToRead];
         
-        [_kfHealthStore requestAuthorizationToShareTypes:writeDataTypes readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
+        [_kfHealthStore requestAuthorizationToShareTypes:nil readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
             
             block(success);
             
@@ -85,11 +85,11 @@ KFHealthStore *_kfHealthStore = nil;
     HKQuantityType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     HKQuantityType *walkingrunningDistanceType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
     
-    HKQuantityType *cycleType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling];
+//    HKQuantityType *cycleType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling];
     
    //  HKQuantityType *heartRate = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
     
-    return [NSSet setWithObjects:  weightType, stepCountType,walkingrunningDistanceType,cycleType,nil];
+    return [NSSet setWithObjects:  weightType, stepCountType,walkingrunningDistanceType,nil];
 }
 
 -(void)mostRecentQuantitySamleOfType:(HKQuantityType *)quantityType predicate:(NSPredicate *)predicate completion:(void (^)(HKQuantity *quantity, NSError *Error))completion
@@ -101,6 +101,7 @@ KFHealthStore *_kfHealthStore = nil;
         if (!results) {
             
             if (completion) {
+                NSLog(@"error:%@",error);
                 
                 completion(nil,error);
             }
@@ -129,7 +130,7 @@ KFHealthStore *_kfHealthStore = nil;
 
 -(void)mostRecentQuantitySamleOfType:(HKQuantityType *)quantityType limit:(NSInteger)limit predicate:(NSPredicate *)predicate completion:(void (^)(NSArray *, NSError *))completion
 {
-    NSSortDescriptor *timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierStartDate ascending:NO];
+    NSSortDescriptor *timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierStartDate ascending:YES];
     
 
     HKSampleQuery *query = [[HKSampleQuery alloc]initWithSampleType:quantityType predicate:predicate limit:limit sortDescriptors:@[timeSortDescriptor] resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
@@ -137,21 +138,42 @@ KFHealthStore *_kfHealthStore = nil;
         if (!results) {
             
             if (completion) {
-                
+                 NSLog(@"error:%@",error);
                 completion(nil,error);
             }
             
             return;
         }
         
-        if (completion) {
+        if (completion)
+        {
     
-        
-            completion(results,error);
+
+            HKSample *oneSample = [results firstObject];
+            NSString *firstsourcename = oneSample.source.name;
+            
+            NSLog(@"name:%@,id:%@",oneSample.source.name,oneSample.source.bundleIdentifier);
+            
+            NSMutableArray *sortresults = [[NSMutableArray alloc]init];
+            
+            for (int i = 0; i < results.count; i++)
+            {
+                
+                HKSample *oneSample = [results objectAtIndex:i];
+                
+                if ([oneSample.source.name isEqualToString:firstsourcename])
+                {
+                    
+                    [sortresults addObject:oneSample];
+                    
+                }
+            }
             
             
-        }
-        
+            completion(sortresults,error);
+                
+            }
+  
         
     }];
     

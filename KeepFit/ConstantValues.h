@@ -6,6 +6,11 @@
 //  Copyright (c) 2015年 ZhuHaikun. All rights reserved.
 //
 
+
+
+
+
+
 //屏幕宽度
 #define kScreenWith    [UIScreen mainScreen].bounds.size.width
 

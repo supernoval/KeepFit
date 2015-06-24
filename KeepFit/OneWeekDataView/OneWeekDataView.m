@@ -56,10 +56,8 @@
 
 -(void)setShowDate:(NSDate *)showDate
 {
-    NSString *lastSixdateStr = [CommentMeths getMMddDateStrWithDate:[showDate dateByAddingTimeInterval:-6*24*60*60]];
-    NSString *todaydateStr = [CommentMeths getddDateStrWithDate:showDate];
     
-    _dateLabel.text = [NSString stringWithFormat:@"%@~%@",lastSixdateStr,todaydateStr];
+    _dateLabel.text = NSLocalizedString(@"Last7Days", nil);
     
     
 }

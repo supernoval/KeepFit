@@ -121,14 +121,14 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 @implementation KFEnergyConsumVC
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    
     
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+   
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -137,7 +137,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
   
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowNotification) name:UIKeyboardDidShowNotification object:nil];
+    
     
  
 
@@ -163,32 +163,17 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     
     
-    self.title = @"Keep Fit";
+    self.title = NSLocalizedString(@"title", nil);
     
     
     //添加从后台返回 通知接收
 //    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(appWillEnterForword) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     
-    //目标体重
-    _targetWeight = [[[NSUserDefaults standardUserDefaults ] objectForKey:kTargetWeight]doubleValue];
-    
-    
-    
-    _resignTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyBoard)];
-    
 
-    _weghtTextField.keyboardType = UIKeyboardTypeDecimalPad;
-    _weghtTextField.delegate = self;
+  
+    _arrow_leftButton.hidden = YES;
     
-    _targetWeightTF.keyboardType = UIKeyboardTypeDecimalPad;
-    _targetWeightTF.delegate = self;
-    
-    if (_targetWeight > 0) {
-        
-        _targetWeightTF.text = [NSString stringWithFormat:@"%.1f",_targetWeight];
-        
-    }
     
     _activetyIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(kScreenWith/2 - 22.5, kScreenHeight/2 - 22.5, 45, 45)];
     
@@ -242,15 +227,6 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
     BOOL isAWeekAgo = [NSDate isAWeekAgo:saveDate];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-      
-        [self.view addSubview:_activetyIndicator];
-        [_activetyIndicator startAnimating];
-        _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
-        
-    });
-    
-
 //    // 没有值 就先请求一个月的数据 ，再请求一天的数据
 //    _isNeedRefreshAVG = YES;
 //    [self getwalkingDistanceWithDayType:WalkingStepsTimeTypeLastMonth];
@@ -279,6 +255,15 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 //        [_myscrollView bringSubviewToFront:_activetyIndicator];
         
         // 没有值 就先请求一个月的数据 ，再请求一天的数据
+        //显示加载view
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.view addSubview:_activetyIndicator];
+            [_activetyIndicator startAnimating];
+            _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
+            
+        });
+        
           _isNeedRefreshAVG = YES;
         [self getwalkingDistanceWithDayType:WalkingStepsTimeTypeLastMonth];
     
@@ -667,7 +652,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     lastSevendays = [CommentMeths getYYYYMMdd0000DateWithDate:lastSevendays];
     
     
-    NSDate *lastOneMonth = [[NSDate date]dateByAddingTimeInterval:-24*60*60*27];
+    NSDate *lastOneMonth = [[NSDate date]dateByAddingTimeInterval:-24*60*60*30];
     lastOneMonth = [CommentMeths getYYYYMMdd0000DateWithDate:lastOneMonth];
     
     
@@ -735,7 +720,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
         else
         {
             
-//            KFTranslateWorkOutEnergyToFat *_fatTranlater = [KFTranslateWorkOutEnergyToFat shareEnergyToFat];
+
             
             
             double todaydistance = 0.0;
@@ -743,7 +728,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             double totaldistance = 0.0;
         
+    
             
+
             for (NSInteger i = 0; i < quantitys.count; i++)
             {
                 
@@ -774,12 +761,11 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                     if ([today isEqualToString:startDateStr])
                     {
                         
-                      //  NSLog(@"today:%@,startDateStr:%@",today,startDateStr);
+                    
                         
                         todaydistance += distance;
-//                        NSString *startStr = [CommentMeths getYYYYMMddmmssWithDate:startDate];
-                        
-//                         NSLog(@"todayDistance:%f,startStr:%@",distance,startStr);
+                    
+
                         
                     }
                     
@@ -801,12 +787,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 totaldistance += distance;
                 
                 
-                
-             }
+                 }
             
-            NSLog(@"todayDistance:%f",todaydistance);
             
-            NSLog(@"%s,totaldistacne:%.2f,count:%ld",__func__,totaldistance,(long)quantitys.count);
+           
             
             
             switch (timetype) {
@@ -814,17 +798,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                 {
               
                     
-                  
                     [_stepsMuDict setObject:@(todaydistance) forKey:todaydistanceKey];
                     
                     [_stepsMuDict setObject:@(yesterdistance) forKey:yesterdaydistanceKey];
                     
                     hadGetLastTwoDaysDistance = YES;
                     
-//                    CGFloat todayfats = [_fatTranlater wakingDistanceToFat:todaydistance];
-//                    CGFloat yesterdayfats = [_fatTranlater wakingDistanceToFat:yesterdistance];
-                    
-                   // NSLog(@"%s,todayfats%.2f,yesterdayfats:%.2f",__func__,todayfats,yesterdayfats);
+
                     
                     
                     
@@ -866,7 +846,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                        
                         
                         //只请求一次
-                        _averageDistance = totaldistance/27.0;
+                        _averageDistance = totaldistance/30.0;
                         
                         NSLog(@"%s,_averageDistance:%f,totalDistance:%f",__func__,_averageDistance,totaldistance);
                         
@@ -1220,29 +1200,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
              _userWeight = [quantity doubleValueForUnit:weightUnit];
             
-           // NSLog(@"get usersweight:%.1f",_userWeight);
+         
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-               
-                
-                self.weghtTextField.text = [NSString stringWithFormat:@"%.1f",_userWeight];
-                
-                if (self.targetWeightTF.text.length == 0) {
-                    
-                    self.targetWeightTF.text = [NSString stringWithFormat:@"%.1f",(_userWeight - 5.0)];
-                    double targetWeight = _userWeight - 5.0;
-                    
-                    [[NSUserDefaults standardUserDefaults ] setObject:@(targetWeight) forKey:kTargetWeight];
-                    
-                    [[NSUserDefaults standardUserDefaults ] synchronize];
-                    
-                    
-                }
-                
-            });
+          [[NSUserDefaults standardUserDefaults ] setObject:@(_userWeight) forKey:kCurrentWeiht];
             
+            [[NSUserDefaults standardUserDefaults ] synchronize];
             
-          
+           
             
         }
         
@@ -1253,93 +1217,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
 }
 
 
-#pragma mark  写入体重
--(void)writetWeightIntoHealthStore:(double)weight
-{
-    HKUnit *kiloGram = [HKUnit gramUnitWithMetricPrefix:HKMetricPrefixKilo];
-    
-    HKQuantity *weightQuantity = [HKQuantity quantityWithUnit:kiloGram doubleValue:weight];
-    
-    HKQuantitySample *weightSample = [HKQuantitySample quantitySampleWithType:kWeightQuantityType quantity:weightQuantity startDate:[NSDate date] endDate:[NSDate date]];
-    
-    [_myHealthStore saveObject:weightSample withCompletion:^(BOOL success, NSError *error) {
-       
-        if (!success) {
-            
-            NSLog(@"%s,fail to save weight,error:%@",__func__,error);
-            
-            
-        }
-        else
-        {
-         //   NSLog(@"sucess save weight");
-            
-            
-        }
-        
-    }];
-  
-}
 
 
-#pragma mark -  键盘显示notification seletor
--(void)keyboardDidShowNotification
-{
-    [self.view addGestureRecognizer:_resignTapGesture];
-    
-}
-//隐藏键盘
--(void)hideKeyBoard
-{
-    [self.view endEditing:YES];
-    
-    [self.view removeGestureRecognizer:_resignTapGesture];
-    
-}
-#pragma mark - UITextFieldDelegate
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    
-}
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-     double inputUserWeight = [textField.text doubleValue];
-    
-    
-    if (textField == _weghtTextField) {
-        
-        
-       
-        
-        if (inputUserWeight >0) {
-            
-            if (inputUserWeight != _userWeight)
-            {
-                _userWeight = inputUserWeight;
-                
-                [self writetWeightIntoHealthStore:inputUserWeight];
-                
-            }
-        }
-    }
-    
-    if (textField == _targetWeightTF) {
-        
-        if (inputUserWeight >0) {
-            
-            if (inputUserWeight != _targetWeight)
-            {
-                _targetWeight = inputUserWeight;
-                
-                [[NSUserDefaults standardUserDefaults ] setObject:@(_targetWeight) forKey:kTargetWeight];
-                [[NSUserDefaults standardUserDefaults ] synchronize];
-                
-                
-            }
-        }
-    }
-}
+
+
 
 #pragma mark  - UIScrollViewDelegate
 
@@ -1356,12 +1237,15 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     switch (pageIndex) {
         case 0:
         {
-           
+            _arrow_leftButton.hidden = YES;
+            _arrow_right.hidden = NO;
+            
         }
             break;
         case 1:
         {
-            
+            _arrow_leftButton.hidden = NO;
+            _arrow_right.hidden = NO;
             
             if (!hadShowedYesterdayData && hadGetLastTwoDaysSteps && hadGetLastTwoDaysDistance) {
                
@@ -1375,6 +1259,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             break;
         case 2:
         {
+            
+            _arrow_leftButton.hidden = NO;
+            _arrow_right.hidden = NO;
+            
             if (!hadShowedLastSevenDaysData && hadGetLastSevenDaysDistance && hadGetLastSevenDaysSteps) {
                 
                 [self animatecircleViewWithTimeType:WalkingStepsTimeTypeLastSevendays];
@@ -1399,6 +1287,10 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             break;
         case 3:
         {
+            
+            _arrow_leftButton.hidden = NO;
+            _arrow_right.hidden = YES;
+            
             if (!hadShowedLastOneMonthData && hadGetLastOneMonthDistance && hadGetLastOneMonthSteps) {
                 
                 [self animatecircleViewWithTimeType:WalkingStepsTimeTypeLastMonth];
@@ -1432,4 +1324,37 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     
 }
 
+- (IBAction)right_scroAction:(id)sender {
+    
+    CGFloat oX = _myscrollView.contentOffset.x;
+    CGFloat oY = _myscrollView.contentOffset.y;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+    
+        _myscrollView.contentOffset = CGPointMake(oX + kScreenWith, oY);
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [self scrollViewDidEndDecelerating:_myscrollView];
+        
+    }];
+    
+}
+
+- (IBAction)left_scrolAction:(id)sender {
+    
+    CGFloat oX = _myscrollView.contentOffset.x;
+    CGFloat oY = _myscrollView.contentOffset.y;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        _myscrollView.contentOffset = CGPointMake(oX - kScreenWith, oY);
+        
+        
+    }completion:^(BOOL finished) {
+        
+         [self scrollViewDidEndDecelerating:_myscrollView];
+    }];
+}
 @end

@@ -7,12 +7,29 @@
 */
 
 
+//标题
+"title" = "Keep Fit";
+
 //距离
 "Distance:" = "Distance:";
 //步数
-"Steps:" = "Steps:";
+"Steps" = "Steps";
+
+//步行
+"Walking" = "Walking";
+"Km" = "Km";
 
 "Today" = "Today";
 "Yesterday" = "Yesterday";
-"Last 7 Days" = "Last 7 Days";
-"Last 30 Days" = "Last 30 Days";
+"Last7Days" = "Last 7 Days";
+"Last30Days" = "Last 30 Days";
+
+//耗能
+"Consumption" = "Consume";
+//大卡
+"Kcal" = "Kcal";
+
+//燃脂
+"FatBurned" = "FatBurned";
+//克
+"g" = "g";

@@ -57,7 +57,7 @@
 {
 
     
-    _dateLabel.text = @"过去一个月";
+   _dateLabel.text = NSLocalizedString(@"Last30Days", nil);
     
     
 }

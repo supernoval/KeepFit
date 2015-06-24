@@ -137,7 +137,7 @@
         _stepTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.bounds.origin.x, self.frame.size.height/4, self.bounds.size.width, kLabelHeight)];
         _stepTitleLabel.numberOfLines = 1;
         _stepTitleLabel.textAlignment = NSTextAlignmentCenter;
-        _stepTitleLabel.text = @"步数";
+        _stepTitleLabel.text = NSLocalizedString(@"Steps", nil);
         _stepTitleLabel.font = [UIFont fontWithName:kTextFontName_Helvetica size:15];
         _stepTitleLabel.textColor = kTextColor;
         
@@ -239,7 +239,7 @@
 
 -(NSMutableAttributedString*)getdistanceString:(CGFloat)distance
 {
-    NSMutableAttributedString *muStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"步行%.2f千米",distance]];
+    NSMutableAttributedString *muStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@ %.2f%@",NSLocalizedString(@"Walking", nil),distance,NSLocalizedString(@"Km", nil)]];
     
     
     return muStr;
@@ -255,11 +255,11 @@
     
     
     NSString *stepsStr = [NSString stringWithFormat:@"%.0f",steps];
-    NSString *disStr = [NSString stringWithFormat:@"步行%.0f千米",currentdistance];
+    NSString *disStr = [NSString stringWithFormat:@"%@ %.0f%@",NSLocalizedString(@"Walking", nil),currentdistance,NSLocalizedString(@"Km", nil)];
     
     
   
-    _distancetext = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"步数\n%@\n%@",stepsStr,disStr]];
+    _distancetext = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@\n%@\n%@",NSLocalizedString(@"Steps", nil),stepsStr,disStr]];
         
         
     [_distancetext addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:15],NSStrokeColorAttributeName:[UIColor darkGrayColor]} range:NSMakeRange(0,2)];

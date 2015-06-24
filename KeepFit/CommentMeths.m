@@ -41,8 +41,30 @@
     NSInteger month = component.month;
     NSInteger day = component.day;
     
-    NSString *dateStr = [NSString stringWithFormat:@"%ld月%ld日",(long)month,(long)day];
+    NSDateComponents *todayCom = [currentCalent components:dateUnit fromDate:[NSDate date]];
+    NSInteger tMonth = todayCom.month;
+    NSInteger tday = todayCom.day;
     
+    
+    
+    
+    
+    NSString *dateStr = nil;
+    
+    if (tMonth == month && day == tday)
+    {
+      
+        dateStr = NSLocalizedString(@"Today", nil);
+        
+    }
+    
+    else
+    {
+        dateStr = NSLocalizedString(@"Yesterday", nil);
+        
+    }
+    
+  
 
 
     return dateStr;

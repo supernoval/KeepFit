@@ -25,8 +25,17 @@ typedef NS_ENUM(NSInteger, ActivityIndicatorAnimatingStatus)
     
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *myscrollView;
-@property (weak, nonatomic) IBOutlet UITextField *targetWeightTF;
-@property (weak, nonatomic) IBOutlet UITextField *weghtTextField;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *arrow_right;
+
+- (IBAction)right_scroAction:(id)sender;
+
+
+- (IBAction)left_scrolAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *arrow_leftButton;
+
 @property (nonatomic) HKHealthStore *healthStore;
 @end
 

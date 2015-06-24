@@ -110,6 +110,10 @@
 		136AEA891AE6254D00215720 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
+		137EED621B3A9EC8004923D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
+		137EED631B3AA06F004923D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		137EED651B3AA070004923D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		137EED661B3AA071004923D4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Info.plist"; sourceTree = "<group>"; };
 		137F24CF1B16EB4700A94CE1 /* MyGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGraphView.h; path = MyGraphView/MyGraphView.h; sourceTree = "<group>"; };
 		137F24D01B16EB4700A94CE1 /* MyGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyGraphView.m; path = MyGraphView/MyGraphView.m; sourceTree = "<group>"; };
 		137F256D1B2176DD00A94CE1 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
@@ -126,7 +130,6 @@
 		152C74EC1AE69BFE005509EB /* OneDayDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayDataView.h; sourceTree = "<group>"; };
 		152C74ED1AE69BFE005509EB /* OneDayDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayDataView.m; sourceTree = "<group>"; };
 		1542CA161A7A76390035A5B9 /* KeepFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1542CA1A1A7A76390035A5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1542CA1B1A7A76390035A5B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1542CA1D1A7A76390035A5B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1542CA1E1A7A76390035A5B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -137,7 +140,6 @@
 		1542CA291A7A76390035A5B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1542CA2C1A7A76390035A5B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1542CA321A7A76390035A5B9 /* KeepFitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepFitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1542CA371A7A76390035A5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1542CA381A7A76390035A5B9 /* KeepFitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeepFitTests.m; sourceTree = "<group>"; };
 		1542CA461A7A764B0035A5B9 /* KeepFit WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeepFit WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1542CA491A7A764B0035A5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -358,7 +360,6 @@
 		1542CA191A7A76390035A5B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1542CA1A1A7A76390035A5B9 /* Info.plist */,
 				1542CA1B1A7A76390035A5B9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -376,7 +377,7 @@
 		1542CA361A7A76390035A5B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1542CA371A7A76390035A5B9 /* Info.plist */,
+				137EED641B3AA06F004923D4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -781,6 +782,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		137EED641B3AA06F004923D4 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				137EED631B3AA06F004923D4 /* Base */,
+				137EED651B3AA070004923D4 /* en */,
+				137EED661B3AA071004923D4 /* zh-Hans */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 		1542CA261A7A76390035A5B9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -805,6 +816,7 @@
 			children = (
 				1542CA5D1A7A764B0035A5B9 /* Base */,
 				1542CA821A7C84730035A5B9 /* zh-Hans */,
+				137EED621B3A9EC8004923D4 /* en */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
