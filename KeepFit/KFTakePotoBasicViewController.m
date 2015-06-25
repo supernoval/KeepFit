@@ -93,11 +93,11 @@ typedef NS_ENUM(NSInteger, TakePotoState)
     NSDictionary *imageMediaMetadata  = [info objectForKey:UIImagePickerControllerMediaMetadata];
     NSDictionary *tiff = [imageMediaMetadata objectForKey:@"{TIFF}"];
     
-     UIImage *_phototake = [info objectForKey:UIImagePickerControllerOriginalImage];
+//     UIImage *_phototake = [info objectForKey:UIImagePickerControllerOriginalImage];
      NSString *_dateStr = [tiff objectForKey:@"DateTime"];
      NSDate *_photoDate = [CommentMeths getYYYYMMddHHmmssWithString:_dateStr];
     
-    AppDelegate *_appdelegate = [[AppDelegate alloc]init];
+//    AppDelegate *_appdelegate = [[AppDelegate alloc]init];
     
  
     

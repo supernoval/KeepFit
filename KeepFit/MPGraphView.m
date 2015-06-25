@@ -11,7 +11,7 @@
 #import "CommentMeths.h"
 #import "ConstantValues.h"
 
-#define kcurveValue  10
+#define kcurveValue  20
 
 @implementation MPGraphView
 

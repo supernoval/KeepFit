@@ -141,13 +141,17 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
   
     
     
-    
- 
-
-
 
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+     [self requestHealthAuthorization];
 }
 
 
@@ -187,7 +191,7 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     [_activetyIndicator startAnimating];
     _activityStatus = ActivityIndicatorAnimatingStatusAnimating;
     
-    [self requestHealthAuthorization];
+   
     
     [self initScrollViews];
     
@@ -204,6 +208,8 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     BOOL isHealthDataEnable = [HKHealthStore isHealthDataAvailable];
     
     if (isHealthDataEnable)
+        
+        
     {
         
        
@@ -1316,8 +1322,9 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
             
             if (!hadShowedLastOneMonthData && hadGetLastOneMonthDistance && hadGetLastOneMonthSteps) {
                 
+                  hadShowedLastOneMonthData = YES;
                 [self animatecircleViewWithTimeType:WalkingStepsTimeTypeLastMonth];
-                hadShowedLastOneMonthData = YES;
+              
                 
                 
             }
@@ -1353,16 +1360,20 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat oX = _myscrollView.contentOffset.x;
     CGFloat oY = _myscrollView.contentOffset.y;
     
-    [UIView animateWithDuration:0.5 animations:^{
-    
-        _myscrollView.contentOffset = CGPointMake(oX + kScreenWith, oY);
+    if (oX < kScreenWith * 3) {
         
-        
-    } completion:^(BOOL finished) {
-        
-        [self scrollViewDidEndDecelerating:_myscrollView];
-        
-    }];
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            _myscrollView.contentOffset = CGPointMake(oX + kScreenWith, oY);
+            
+            
+        } completion:^(BOOL finished) {
+            
+            [self scrollViewDidEndDecelerating:_myscrollView];
+            
+        }];
+    }
+
     
 }
 
@@ -1371,15 +1382,19 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
     CGFloat oX = _myscrollView.contentOffset.x;
     CGFloat oY = _myscrollView.contentOffset.y;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    if (oX > 0) {
         
-        _myscrollView.contentOffset = CGPointMake(oX - kScreenWith, oY);
-        
-        
-    }completion:^(BOOL finished) {
-        
-         [self scrollViewDidEndDecelerating:_myscrollView];
-    }];
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            _myscrollView.contentOffset = CGPointMake(oX - kScreenWith, oY);
+            
+            
+        }completion:^(BOOL finished) {
+            
+            [self scrollViewDidEndDecelerating:_myscrollView];
+        }];
+    }
+  
 }
 
 #pragma mark - UIAlertViewDelegate

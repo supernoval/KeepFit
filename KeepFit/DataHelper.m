@@ -155,7 +155,7 @@
     {
         
         
-        NSMutableArray *noSortDataArray = [self getSortedDaysData:values];
+        NSMutableArray *noSortDataArray = [self getSortedDaysData:values withtimeType:timtype];
         
           //NSLog(@"%s,%@",__func__,noSortDataArray);
       
@@ -181,9 +181,9 @@
 
 
 //一个星期，一个月
-+(NSMutableArray*)getSortedDaysData:(NSMutableArray*)values
++(NSMutableArray*)getSortedDaysData:(NSMutableArray*)values withtimeType:(WalkingStepsTimeType)timeType
 {
-    NSMutableArray *noSortDataArray = [[NSMutableArray alloc]init];
+    NSMutableArray *noSortDataArray = [self zeroValuedateWithTimeType:timeType];
     
     for (NSInteger i = 0; i < values.count; i++)
     {
@@ -241,6 +241,53 @@
     return noSortDataArray;
     
 }
+
+//获得为零的有日期的数组
++(NSMutableArray*)zeroValuedateWithTimeType:(WalkingStepsTimeType)timetype
+{
+    NSMutableArray *muArray = [[NSMutableArray alloc]init];
+    
+    int dayNum = 0;
+    
+    switch (timetype) {
+        case WalkingStepsTimeTypeLastSevendays:
+        {
+            
+            dayNum = 7;
+        }
+            break;
+            
+        case WalkingStepsTimeTypeLastMonth:
+        {
+            dayNum = 30;
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+   
+    
+    for (int i = 0; i < dayNum; i++)
+    {
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-24*60*60*i];
+        date = [CommentMeths getYYYYMMddDateWithDate:date];
+        
+        NSDictionary *temnosortdict = @{@"startdate":date,@"value":@(0)};
+        
+        [muArray addObject:temnosortdict];
+        
+        
+    }
+//    NSLog(@"%s,%@",__func__,muArray);
+    
+    
+    return muArray;
+    
+}
 +(NSMutableArray*)getDate:(NSMutableArray *)values withTimeType:(NSInteger)timetype
 {
     
@@ -259,7 +306,7 @@
     else
     {
        
-        values = [self getSortedDaysData:values];
+        values = [self getSortedDaysData:values withtimeType:timetype];
         
             
             if (values.count < 8)

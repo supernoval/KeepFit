@@ -117,8 +117,7 @@
     
     NSMutableArray *pointsArray=[[NSMutableArray alloc] init];
     
-//    if(max!=min)
-    {
+
         for (NSString *p in values)
         {
             
@@ -140,8 +139,7 @@
           
         }
         
-    }
-//    else [pointsArray addObject:@(1)];
+
     
     return pointsArray;
 }

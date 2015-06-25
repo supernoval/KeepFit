@@ -15,8 +15,6 @@
 		131BD4C31B04753B00BC17B1 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 131BD4C21B04753B00BC17B1 /* NSDate+DateHelper.m */; };
 		136AEA8C1AE6254D00215720 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA891AE6254D00215720 /* CircleProgressView.m */; };
 		136AEA8D1AE6254D00215720 /* CircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */; };
-		137EED751B3AA708004923D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137EED741B3AA708004923D4 /* Info.plist */; };
-		137EED7A1B3AA798004923D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137EED791B3AA798004923D4 /* Info.plist */; };
 		137F24D11B16EB4700A94CE1 /* MyGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 137F24D01B16EB4700A94CE1 /* MyGraphView.m */; };
 		137F256F1B2176DD00A94CE1 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 137F256E1B2176DD00A94CE1 /* DataHelper.m */; };
 		138C8BD91AF9AC0F001B0EAB /* SPBottonProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 138C8BD81AF9AC0F001B0EAB /* SPBottonProgressView.m */; };
@@ -114,8 +112,7 @@
 		136AEA8A1AE6254D00215720 /* CircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleShapeLayer.h; sourceTree = "<group>"; };
 		136AEA8B1AE6254D00215720 /* CircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleShapeLayer.m; sourceTree = "<group>"; };
 		137EED621B3A9EC8004923D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
-		137EED741B3AA708004923D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		137EED791B3AA798004923D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		137EED821B3BAA90004923D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137F24CF1B16EB4700A94CE1 /* MyGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGraphView.h; path = MyGraphView/MyGraphView.h; sourceTree = "<group>"; };
 		137F24D01B16EB4700A94CE1 /* MyGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyGraphView.m; path = MyGraphView/MyGraphView.m; sourceTree = "<group>"; };
 		137F256D1B2176DD00A94CE1 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
@@ -366,7 +363,7 @@
 		1542CA191A7A76390035A5B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				137EED741B3AA708004923D4 /* Info.plist */,
+				137EED821B3BAA90004923D4 /* Info.plist */,
 				1542CA1B1A7A76390035A5B9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -384,7 +381,6 @@
 		1542CA361A7A76390035A5B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				137EED791B3AA798004923D4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -679,7 +675,6 @@
 			files = (
 				1542CA851A7C84B10035A5B9 /* Localizable.strings in Resources */,
 				1542CA281A7A76390035A5B9 /* Main.storyboard in Resources */,
-				137EED751B3AA708004923D4 /* Info.plist in Resources */,
 				1507B6491B3AD7F30038DBD5 /* infoPlist.strings in Resources */,
 				1542CA2D1A7A76390035A5B9 /* LaunchScreen.xib in Resources */,
 				1542CA781A7C758D0035A5B9 /* KeepFit.entitlements in Resources */,
@@ -691,7 +686,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				137EED7A1B3AA798004923D4 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,7 +924,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeepFit/KeepFit.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haikun Zhu (72J467J83G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KeepFit/Info.plist;
@@ -938,7 +932,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "14a4ef1d-ec42-49e3-82ec-976b818471b2";
+				PROVISIONING_PROFILE = "24f6ff29-d049-473c-82a1-af0361629bd9";
 			};
 			name = Debug;
 		};
@@ -955,7 +949,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09244ba8-4c84-4123-9144-428d622c2156";
+				PROVISIONING_PROFILE = "cfcb61a6-f087-447e-9e62-6c3bdf5e9cfd";
 			};
 			name = Release;
 		};
@@ -1010,7 +1004,7 @@
 				IBSC_MODULE = KeepFit_WatchKit_Extension;
 				INFOPLIST_FILE = "KeepFit WatchKit App/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ad485127-21ce-444b-bbb9-7c2273befe3b";
+				PROVISIONING_PROFILE = "741e7e70-5f0a-4e13-9d00-dc14c6b3dcc3";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1028,7 +1022,7 @@
 				IBSC_MODULE = KeepFit_WatchKit_Extension;
 				INFOPLIST_FILE = "KeepFit WatchKit App/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5434ee5d-0dc3-41f0-b00c-3d502cd7db43";
+				PROVISIONING_PROFILE = "d1611c68-a803-40ce-abb5-4f3d68bdb5d9";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1060,7 +1054,7 @@
 				INFOPLIST_FILE = "KeepFit WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "31e49f9a-9af5-4306-a52b-15fa55785573";
+				PROVISIONING_PROFILE = "ed2d91c9-0572-4cb8-b81c-6e6eb3003d13";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

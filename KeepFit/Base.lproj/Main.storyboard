@@ -4,27 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--饮食照片-->
-        <scene sceneID="UGc-NK-faS">
-            <objects>
-                <viewController id="07N-JU-0zy" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NEw-Ep-bJP"/>
-                        <viewControllerLayoutGuide type="bottom" id="96B-SM-Qnq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="84w-Gh-Hbs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="饮食照片" id="CwA-RS-WUj">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n5y-88-0ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-867" y="1292"/>
-        </scene>
         <!--Item-->
         <scene sceneID="0fG-T8-kef">
             <objects>
@@ -142,16 +121,16 @@
                                 <exclude reference="b9F-cG-v1K"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="0sU-Er-r7p"/>
+                                <exclude reference="YvI-aU-3oa"/>
+                                <exclude reference="nkW-tT-RMU"/>
+                                <exclude reference="0hP-cG-Ffj"/>
+                                <exclude reference="W7b-fj-vkB"/>
                                 <exclude reference="ACn-lC-cCo"/>
                                 <exclude reference="Bql-aV-50I"/>
                                 <exclude reference="jKK-8K-bja"/>
                                 <exclude reference="ncF-ls-zOz"/>
                                 <exclude reference="yaD-aV-JKA"/>
-                                <exclude reference="0hP-cG-Ffj"/>
-                                <exclude reference="W7b-fj-vkB"/>
-                                <exclude reference="YvI-aU-3oa"/>
-                                <exclude reference="nkW-tT-RMU"/>
-                                <exclude reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -161,16 +140,16 @@
                                 <include reference="b9F-cG-v1K"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0sU-Er-r7p"/>
+                                <include reference="YvI-aU-3oa"/>
+                                <include reference="nkW-tT-RMU"/>
+                                <include reference="0hP-cG-Ffj"/>
+                                <include reference="W7b-fj-vkB"/>
                                 <include reference="ACn-lC-cCo"/>
                                 <exclude reference="Bql-aV-50I"/>
                                 <include reference="jKK-8K-bja"/>
                                 <include reference="ncF-ls-zOz"/>
                                 <exclude reference="yaD-aV-JKA"/>
-                                <include reference="0hP-cG-Ffj"/>
-                                <include reference="W7b-fj-vkB"/>
-                                <include reference="YvI-aU-3oa"/>
-                                <include reference="nkW-tT-RMU"/>
-                                <include reference="0sU-Er-r7p"/>
                             </mask>
                         </variation>
                     </view>
@@ -189,19 +168,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEf-Qy-NeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-729" y="-262.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="blf-XX-ssM">
-            <objects>
-                <navigationController storyboardIdentifier="WelComeNav" id="3Pv-IR-XxW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p39-gH-NVL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cAw-xv-pgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4044" y="-204"/>
         </scene>
     </scenes>
     <resources>
