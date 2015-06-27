@@ -32,6 +32,7 @@ KFHealthStore *_kfHealthStore = nil;
     NSInteger walk = [_kfHealthStore authorizationStatusForType:walkingrunningDistanceType];
     
    
+    NSLog(@"weightType:%ld,step:%ld,walk:%ld",(long)weight,(long)step,(long)walk);
     
     
     
@@ -74,10 +75,10 @@ KFHealthStore *_kfHealthStore = nil;
 -(void)requestAuthorization:(KFHealthStoreRequestBlock)block
 {
     if ([HKHealthStore isHealthDataAvailable]) {
-//        NSSet *writeDataTypes = [self dataTypesToWrite];
+        NSSet *writeDataTypes = [self dataTypesToWrite];
         NSSet *readDataTypes = [self dataTypesToRead];
         
-        [_kfHealthStore requestAuthorizationToShareTypes:nil readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
+        [_kfHealthStore requestAuthorizationToShareTypes:writeDataTypes readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
             
             block(success);
             
@@ -111,8 +112,10 @@ KFHealthStore *_kfHealthStore = nil;
    // HKQuantityType *activeEnergyBurnType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
    // HKQuantityType *heightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];
     HKQuantityType *weightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
+    HKQuantityType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    HKQuantityType *walkingrunningDistanceType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
     
-    return [NSSet setWithObjects: weightType, nil];
+    return [NSSet setWithObjects: weightType,stepCountType,walkingrunningDistanceType, nil];
 }
 
 // Returns the types of data that Fit wishes to read from HealthKit.

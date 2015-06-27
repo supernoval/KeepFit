@@ -222,6 +222,13 @@ static NSString *lastonemonthdistanceKey = @"lastonemonthdistance";
                  if (isSucess)
                  {
                      
+                     BOOL availabel  = [_myHealthStore isHealthDataTypeArivable];
+                     
+                     if (!availabel) {
+                         
+                         [[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"NotAvaibleTips", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                         
+                     }
                         [self getOneMonthData];
                      
                      
